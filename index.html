@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>首页</title>
+	<link rel="stylesheet" type="text/css" href="static/css/index.css" />
+	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="static/css/iview.min.css" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<!-- <link rel="stylesheet" type="text/css" href="static/css/animate.min.css" /> -->
+
+	<!-- <link rel="stylesheet" type="text/css" href="static/css/quasar.min.css" /> -->
+</head>
+
+<style>
+	.ivu-tabs {
+		width: 100%
+	}
+
+	.ivu-tabs-nav {
+		width: 100%;
+
+	}
+
+	.ivu-tabs-nav-wrap {
+		text-align: center
+	}
+
+	.ivu-tabs-ink-bar {
+		background-color: #e4e7ed
+	}
+
+	.mb-4,
+	.my-4 {
+		margin-bottom: 0 !important
+	}
+	.pt-5, .py-5{
+		padding-top: 0 !important
+	}
+</style>
+
+<body>
+	<div id="app" class="">
+		<div class="row header">
+			<div class="left col-4 col-sm-5 col-md-5 col-lg-5">
+				<div class="">
+					<img class="logo" src="./static/img/logo.png" alt="" title="安广·规上古">
+				</div>
+			</div>
+			<div class="right col-8 col-sm-7 col-md-7 col-lg-7">
+				<nav class="nav nav-pills">
+					<a class="nav-link active" href="./index.html">创客空间</a>
+					<a class="nav-link " href="./news.html">规上古头条</a>
+					<a class="nav-link" href="./links.html">环保科技链</a>
+					<a class="nav-link " href="./services.html">企业服务</a>
+				</nav>
+			</div>
+		</div>
+
+		<div class="box">
+			<!-- 轮播 -->
+			<div id="carouselExampleIndicators" class="carousel slide carousel1" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+					<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+					<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="carousel-item active" data-interval="3000">
+						<img :style="{height:carouselHeight + 'px'}" src="./static/img/c_1.jpeg" class="d-block w-100"
+							alt="轮播图片">
+					</div>
+					<div class="carousel-item " data-interval="3000">
+						<img :style="{height:carouselHeight + 'px'}" src="./static/img/c_2.jpg" class="d-block w-100"
+							alt="轮播图片">
+					</div>
+					<div class="carousel-item " data-interval="3000">
+						<img :style="{height:carouselHeight + 'px'}" src="./static/img/c_3.jpg" class="d-block w-100"
+							alt="轮播图片">
+					</div>
+				</div>
+				<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+
+			<!-- 众创空间 -->
+			<div class="tab1">
+				<Tabs type="card" name='tab'>
+					<Tab-Pane tab='tab' :label="item.title" v-for='(item,index) in itemData' :key='index'>
+						<div class="tab-title">
+							<div>
+								负责人：
+								<span>
+									{{item.name}}
+								</span>
+							</div>
+							<div>
+								联系电话：
+								<span>
+									{{item.phone}}
+								</span>
+							</div>
+							<div>
+								地址：
+								<span>
+									{{item.address}}
+								</span>
+							</div>
+						</div>
+						<Tabs :animated="false" size="small" name='tab1'>
+							<Tab-Pane tab='tab1' :label="item.detail[0].category">
+								<div class="album py-5 bg-light">
+									<div class="">
+
+										<div class="row">
+											<div class=" col-md-6  col-xl-4"
+												v-for='(office,index1) in item.detail[0].detail' :key='index1'>
+												<div class="border">
+
+													<div class="card mb-4 shadow-sm" @click='detail(office.id)'>
+														<div class="itemImg">
+															<img class="bd-placeholder-img card-img-top" width="100%"
+																height="280" :src="office.img" alt="">
+														</div>
+														<div class="card-body">
+															<p class="title">
+																{{office.title}}
+															</p>
+															<p class="card-text">
+																简介： {{office.brief}}
+															</p>
+															<div
+																class="d-flex justify-content-between align-items-center">
+																<p class="price">
+																	￥: {{office.price}} 元
+																</p>
+																<small
+																	class="text-muted">押付：{{office.deposittype}}</small>
+																<small class="text-muted">面积：{{office.area}} /m²</small>
+																<small class="text-muted">楼层：{{office.code}} /
+																	{{office.floortotal}}</small>
+															</div>
+														</div>
+													</div>
+
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</Tab-Pane>
+							<Tab-Pane tab='tab1' :label="item.detail[1].category">
+								<div class="album py-5 bg-light">
+									<div class="">
+
+										<div class="row">
+											<div class=" col-md-6  col-xl-4" v-for='(flat,index1) in item.detail[1].detail'
+												:key='index1'>
+												<div class="border">
+													<div class="card mb-4 shadow-sm" @click='detail(flat.id)'>
+														<div class="itemImg">
+															<img class="bd-placeholder-img card-img-top" width="100%"
+																height="280" :src="flat.img" alt="">
+														</div>
+														<div class="card-body">
+															<p class="title">
+																{{flat.title}}
+															</p>
+															<p class="card-text">
+																简介： {{flat.brief}}
+															</p>
+															<div
+																class="d-flex justify-content-between align-items-center">
+																<p class="price">
+																	￥: {{flat.price}} 元
+																</p>
+																<small
+																	class="text-muted">押付：{{flat.deposittype}}</small>
+																<small class="text-muted">面积：{{flat.area}} /m²</small>
+																<small class="text-muted">楼层：{{flat.code}} /
+																	{{flat.floortotal}}</small>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</Tab-Pane>
+							<Tab-Pane tab='tab1' :label="item.detail[2].category">
+								<div class="album py-5 bg-light">
+									<div class="">
+
+										<div class="row">
+											<div class=" col-md-6  col-xl-4" v-for='(shop,index1) in item.detail[2].detail'
+												:key='index1'>
+												<div class="border">
+													<div class="card mb-4 shadow-sm" @click='detail(shop.id)'>
+														<div class="itemImg">
+															<img class="bd-placeholder-img card-img-top" width="100%"
+																height="280" :src="shop.img" alt="">
+														</div>
+														<div class="card-body">
+															<p class="title">
+																{{shop.title}}
+															</p>
+															<p class="card-text">
+																简介： {{shop.brief}}
+															</p>
+															<div
+																class="d-flex justify-content-between align-items-center">
+																<p class="price">
+																	￥: {{shop.price}} 元
+																</p>
+																<small
+																	class="text-muted">押付：{{shop.deposittype}}</small>
+																<small class="text-muted">面积：{{shop.area}} /m²</small>
+																<small class="text-muted">楼层：{{shop.code}} /
+																	{{shop.floortotal}}</small>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</Tab-Pane>
+						</Tabs>
+					</Tab-Pane>
+				</Tabs>
+			</div>
+
+		</div>
+	</div>
+
+
+	<script src="static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/axios.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/iview.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/request.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/quasar.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/zh-hans.min.js" type="text/javascript" charset="utf-8"></script>
+
+	<script type="text/javascript">
+		new Vue({
+			el: '#app',
+			data: function () {
+				return {
+					itemData: [],
+					carouselHeight: ''
+				}
+			},
+			created() {
+				this.getCHeight();
+			},
+			mounted() {
+				this.init();
+			},
+
+			methods: {
+				getCHeight() {
+					this.carouselHeight = window.innerHeight - 100;
+				},
+				init() {
+					let postData = {
+						Function: 'GetHousingStockList',
+						page: 1,
+						rows: 10,
+						isrented: 0
+					};
+					// postData = JSON.stringify(postData);
+					Post('/api/Incubator/APIMethod', postData)
+						.then(res => {
+							console.log(res);
+							this.itemData = res.data.data;
+							// console.log(this.itemData);
+
+						})
+						.catch(err => {
+							console.log(err)
+						})
+				},
+
+				detail(id) {
+					console.log(id);
+					let url = 'houseDetail.html' + '?id=' + id;
+					window.open(url, )
+				}
+			}
+		})
+
+	</script>
+</body>
+
+</html>

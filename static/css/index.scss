@@ -1,0 +1,122 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 18px;
+  overflow-y: auto;
+}
+body,
+ul,
+li,
+a,
+p,
+div {
+  /*慎删*/
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 1380px) {
+  body,
+  html {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 992px) {
+  body,
+  html {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body,
+  html {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 576px) {
+  body,
+  html {
+    font-size: 10px;
+    font-size: 80%;
+  }
+}
+
+
+  .header {
+    padding: 5px;
+    width: 100%;
+    // border-bottom: 1px solid red;
+    .left {
+      // border: 1px solid red;
+      // background: #009688;
+      
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .logo {
+        // width: 10vw;
+        height: 3vw;
+      }
+    }
+    .right {
+      font-size: 1rem;
+      height: 3vw;
+      // border: 1px solid blue;
+      display: flex;
+      justify-content: center;
+      align-items: center
+    }
+  }
+  .box{
+    box-sizing: border-box;
+    padding: 0 8vw;
+    
+    .tab1{
+      margin: 40px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .tab-title{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 0.8rem;
+        color:#606266;
+        line-height: 40px;
+        height: 40px;
+        span{
+          font-size: 1rem;
+          color: #303133
+        }
+      }
+      .itemImg{
+        padding: 10px;
+        box-sizing: border-box
+      }
+    }
+  }
+
+  .card-body{
+    .title{
+      font-size: 1rem;
+      color: black;
+      font-weight: 500
+
+    }
+    .price{
+      font-size: 1rem;
+      color: red;
+      font-weight: 500
+    }
+  }
+  .border :hover{
+		cursor: pointer;
+  }
+  .border{
+    margin-bottom: 30px;
+  }
+  
+  
+
