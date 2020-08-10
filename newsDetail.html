@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>房源详情</title>
+    <title>新闻详情</title>
     <link rel="stylesheet" type="text/css" href="static/css/index.css" />
     <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="static/css/iview.min.css" />
@@ -13,16 +13,17 @@
 
     <!-- <link rel="stylesheet" type="text/css" href="static/css/quasar.min.css" /> -->
 </head>
-
 <style>
-.box{
-    box-sizing: border-box;
-    padding: 0 15vw;
-}
-.card-body{
-    padding: 0 1.25rem
-}
+    .box {
+        box-sizing: border-box;
+        padding: 0 15vw;
+    }
+
+    .card-body {
+        padding: 0 1.25rem
+    }
 </style>
+
 <body>
     <div id="app" class="">
         <!-- 头部 -->
@@ -34,8 +35,8 @@
             </div>
             <div class="right col-8 col-sm-7 col-md-7 col-lg-7">
                 <nav class="nav nav-pills">
-                    <a class="nav-link active" href="./index.html">创客空间</a>
-                    <a class="nav-link " href="./news.html">规上古头条</a>
+                    <a class="nav-link " href="./index.html">创客空间</a>
+                    <a class="nav-link active" href="./news.html">规上古头条</a>
                     <a class="nav-link" href="./links.html">环保科技链</a>
                     <a class="nav-link " href="./services.html">企业服务</a>
                 </nav>
@@ -43,70 +44,23 @@
         </div>
 
         <div class="box">
-            <!-- 轮播 -->
-            <div >
-                    <Carousel 
-                        autoplay
-                         v-model="carousel" 
-                         loop
-                         :autoplay-speed='3000'
-                         >
-                            <Carousel-Item v-for='(item,index) in detail.swiperList'>
-                                <div class="demo-carousel">
-                                        <img style="width:100%" :style="{height:carouselHeight + 'px'}" :src="item" class="" alt="轮播图片">
-                                </div>
-                            </Carousel-Item>
-                            
-                        </Carousel>
+            <Divider></Divider>
+            <div class="news">
+                <p class="title">{{detail.title}}</p>
+
+                <div class="p_time">
+                    <span>发布者：{{detail.publisher}}</span>
+                    <span style="margin-left:10px">发布时间：{{detail.p_time}}</span>
+                </div>
+                <img class="newsImg" :src="detail.img" alt="">
+                <div class="news-detail">
+                    {{detail.detail}}
                 </div>
 
-            <!-- 详情 -->
-            <div>
-                <Divider></Divider>
-                <div class="intro">
-                    <div class="card-body">
-                        <p class="title">
-                            {{detail.title}}
-                        </p>
-                        <p class="card-text">
-                            简介： {{detail.brief}}
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <p class="price">
-                                ￥: {{detail.price}} 元
-                            </p>
-                            <div class="other d-flex justify-content-between" >
-                                    <small class="text-muted">押付：{{detail.deposittype}}</small>
-                                    <small class="text-muted">面积：{{detail.area}} /m²</small>
-                                    <small class="text-muted">楼层：{{detail.code}} /
-                                        {{detail.floortotal}}</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <Divider>详情介绍</Divider>
-                <div class="detail">
-                        <div class="noData" v-if='!detail.detail'>暂无介绍</div>
-                        <div class="video" v-if='detail.video'>
-                            <video  :src="detail.video" controls preload ></video>
-                        </div>
-                        <div class="content">
-                                {{detail.detail}}
-                        </div>
-                </div>
-                <Divider>end</Divider>
             </div>
+            <Divider>end</Divider>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
 
 
     <script src="static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
@@ -124,21 +78,22 @@
             data: function () {
                 return {
                     detail: '',
-                    carouselHeight: ''
+                    // carouselHeight: ''
                 }
             },
             created() {
-                this.getCHeight();
+                // this.getCHeight();
+                this.getID();
             },
             mounted() {
                 // this.init();
-                this.getID();
+
             },
 
             methods: {
-                getCHeight() {
-                    this.carouselHeight = window.innerHeight - 100;
-                },
+                // getCHeight() {
+                //     this.carouselHeight = window.innerHeight - 100;
+                // },
                 getID() {
                     let params = location.search.substring(1);
                     let values = params.split('&');
@@ -152,17 +107,14 @@
                 },
 
                 init(id) {
-                    // console.log(id);
                     let postData = {
-                        Function: 'GetHousingStock',
+                        Function: 'GetHeadline',
                         id: id
                     };
-                    // postData = JSON.stringify(postData);
                     Post('/api/Incubator/APIMethod', postData)
                         .then(res => {
                             console.log(res);
                             this.detail = res.data.data;
-                            // console.log(this.itemData);
 
                         })
                         .catch(err => {
@@ -172,8 +124,8 @@
 
             }
         })
-        
     </script>
+
 </body>
 
 </html>

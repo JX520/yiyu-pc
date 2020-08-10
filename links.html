@@ -7,6 +7,7 @@
 	<title>环保科技链</title>
 	<link rel="stylesheet" type="text/css" href="static/css/index.css" />
 	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="static/css/iview.min.css" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 	<!-- <link rel="stylesheet" type="text/css" href="static/css/animate.min.css" /> -->
 
@@ -14,7 +15,17 @@
 </head>
 
 <style>
-
+	body{
+		overflow-y: auto
+	}
+.ivu-tabs-nav-scroll{
+	display: flex;
+	align-items: center;
+	justify-content: center
+}
+.ivu-list-split .ivu-list-item:last-child{
+	border-bottom: 1px solid #afb2b8
+}
 </style>
 
 <body>
@@ -33,14 +44,64 @@
 					<a class="nav-link " href="./services.html">企业服务</a>
 				</nav>
 			</div>
-        </div>
-    </div>
+		</div>
+		<div class="box">
+				<Divider></Divider>
+				<Tabs value="name1">
+						<Tab-Pane label="环境" name="name1">
+								<List item-layout="vertical">
+										<div class="noData" v-if='!environment.length'>暂无数据</div>
+										<List-Item  v-for="(item,index) in environment" :key="index" >
+											
+											<div class="item" @click='detail(item.tid)'>
+												<img :src="item.img" style="width: 15vw;height:10vw;border-radius: 10px;padding: 2px">
+												<div class="right">
+													<p class="title">{{item.title}}</p>
+													<div class="p_time">
+														<span>发布者：{{item.publisher}}</span>
+														<span>发布时间：{{item.p_time}}</span>
+													</div>
+													<div class="content">
+														{{item.detail}}
+													</div>
+												</div>
+											</div>
+										</List-Item>
+										<Divider>end</Divider>
+									</List>
+						</Tab-Pane>
 
+						<Tab-Pane label="科技" name="name2">
+								<List item-layout="vertical">
+										<div class="noData" v-if='!technology.length'>暂无数据</div>
+										<List-Item  v-for="(item1,index1) in technology" :key="index1" >
+												<div class="item" @click='detail(item1.tid)'>
+												<img :src="item1.img" style="width: 15vw;height:10vw;border-radius: 10px;padding: 2px">
+												<div class="right">
+													<p class="title">{{item1.title}}</p>
+													<div class="p_time">
+														<span>负责人：{{item1.linkName}}</span>
+														<span>联系电话：{{item1.linkPhone}}</span>
+													</div>
+													<div class="content">
+														{{item1.detail}}
+													</div>
+												</div>
+												</div>
+										</List-Item>
+										<Divider>end</Divider>
+									</List>
+						</Tab-Pane>
+				</Tabs>
+		</div>
+    </div>
+	
 
     <script src="static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/axios.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/iview.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/request.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/quasar.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/zh-hans.min.js" type="text/javascript" charset="utf-8"></script>
@@ -51,19 +112,45 @@
 			el: '#app',
 			data: function () {
 				return {
-					
+					environment:[],
+					technology:[],
+                
 				}
 			},
 			created(){
-
+				this.init();
 			},
 			mounted() {
 				
 			},
 			methods: {
-				
+				init() {
+					let postData = {
+						Function: 'GetIndustryServiceList',
+						page: 1,
+						rows: 10,
+					};
+					// postData = JSON.stringify(postData);
+					Post('/api/Incubator/APIMethod', postData)
+						.then(res => {
+							console.log(res);
+							this.environment = res.data.data[0].detail;
+							this.technology = res.data.data[1].detail;
+
+						})
+						.catch(err => {
+							console.log(err)
+						})
+				},
+
+				detail(id) {
+					console.log(id);
+					let url = 'linksDetail.html' + '?id=' + id;
+					window.open(url, )
+				}
 			}
         })
+        
         
 	</script>
 </body>

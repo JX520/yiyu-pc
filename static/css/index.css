@@ -48,7 +48,7 @@ div {
 }
 
 .header {
-  padding: 5px;
+  padding: 10px;
   width: 100%;
 }
 
@@ -71,21 +71,47 @@ div {
 .header .right {
   font-size: 1rem;
   height: 3vw;
+}
+
+.header .login {
+  font-size: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  height: 3vw;
+}
+
+.header .login span:hover {
+  cursor: pointer;
+  color: cornflowerblue;
+}
+
+.vertical-center-modal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.vertical-center-modal .ivu-modal {
+  top: 0;
 }
 
 .box {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 0 8vw;
+  padding: 0 10vw;
 }
 
 .box .tab1 {
@@ -141,11 +167,144 @@ div {
   font-weight: 500;
 }
 
+.card-body .other {
+  width: 50%;
+}
+
 .border :hover {
   cursor: pointer;
 }
 
 .border {
   margin-bottom: 30px;
+}
+
+.noData {
+  width: 100%;
+  font-size: 1rem;
+  color: #606266;
+  text-align: center;
+}
+
+.detail {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 20px;
+  font-size: 1rem;
+  color: #606266;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.detail video {
+  height: 25vw;
+}
+
+.detail .content {
+  margin-top: 20px;
+}
+
+.box .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid white;
+}
+
+.box .item .right {
+  margin: 0 20px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.box .item .right .title {
+  font-size: 1rem;
+  color: #303133;
+}
+
+.box .item .right .p_time {
+  padding: 5px;
+  width: 40%;
+  font-size: 0.6rem;
+  color: #606266;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.box .item .right .content {
+  font-size: 0.8rem;
+  color: #5c5e61;
+  overflow: hidden;
+  word-break: break-all;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.box .item:hover {
+  cursor: pointer;
+  border: 1px solid #afb2b8;
+  border-radius: 10px;
+}
+
+.box .news {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.box .news .title {
+  font-size: 1.2rem;
+  color: #303133;
+}
+
+.box .news .newsImg {
+  max-height: 30vw;
+  margin: 2vw 0;
+  max-width: 36vw;
+}
+
+.box .news .news-detail {
+  font-size: 1rem;
+  letter-spacing: 1px;
+  padding: 0 4vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 /*# sourceMappingURL=index.css.map */

@@ -43,9 +43,10 @@ div {
   }
 }
 
+// 首页
 
   .header {
-    padding: 5px;
+    padding: 10px;
     width: 100%;
     // border-bottom: 1px solid red;
     .left {
@@ -64,14 +65,32 @@ div {
       font-size: 1rem;
       height: 3vw;
       // border: 1px solid blue;
+      
+    }
+    .login{
+      font-size: 1rem;
       display: flex;
-      justify-content: center;
-      align-items: center
+      justify-content: space-between;
+      align-items: center;
+      height: 3vw;
+      span:hover{
+        cursor: pointer;
+        color: cornflowerblue
+      }
     }
   }
+  .vertical-center-modal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .ivu-modal{
+        top: 0;
+    }
+}
   .box{
     box-sizing: border-box;
-    padding: 0 8vw;
+    padding: 0 10vw;
     
     .tab1{
       margin: 40px 0;
@@ -110,12 +129,109 @@ div {
       color: red;
       font-weight: 500
     }
+    .other{
+      width: 50%;
+    }
   }
   .border :hover{
 		cursor: pointer;
   }
   .border{
     margin-bottom: 30px;
+    
+  }
+  .noData{
+    width: 100%;
+    font-size: 1rem;
+    color: #606266;
+    text-align: center
+  }
+  .detail{
+    box-sizing: border-box;
+    padding: 20px;
+    font-size: 1rem;
+    color: #606266;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    video{
+      height: 25vw;
+    }
+    .content{
+      margin-top: 20px
+    }
+  }
+
+
+  // news
+
+  .box{
+    .item{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      border: 1px solid white;
+       
+      .right{
+        margin: 0 20px;
+        
+        flex: 1;
+        .title{
+          font-size: 1rem;
+          color: #303133
+        }
+        .p_time{
+          padding: 5px;
+          width: 40%;
+          font-size:0.6rem;
+          color: #606266;
+          display: flex;
+          justify-content: space-between;
+        }
+        .content{
+          font-size:0.8rem;
+          color: #5c5e61;
+          overflow: hidden;
+          word-break: break-all;
+          box-sizing: border-box;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 4;
+          -webkit-box-orient: vertical
+        }
+      }
+    }
+    .item:hover{
+      cursor: pointer;
+      border:1px solid #afb2b8;
+      border-radius: 10px
+    }
+  }
+
+  // 新闻详情
+  .box{
+    .news{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .title{
+        font-size: 1.2rem;
+        color: #303133
+      }
+      .newsImg{
+        max-height: 30vw;
+        margin: 2vw 0;
+        max-width: 36vw;
+      }
+      .news-detail{
+        font-size: 1rem;
+        letter-spacing: 1px;
+        padding: 0 4vw;
+        box-sizing: border-box
+      }
+    }
   }
   
   
