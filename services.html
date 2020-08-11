@@ -3,10 +3,15 @@
 
 <head>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 	<title>企业服务</title>
 	<link rel="stylesheet" type="text/css" href="static/css/index.css" />
 	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="static/css/iview.min.css" />
+	<link rel="stylesheet" type="text/css" href="static/css/vuetify.min.css" />
+	<link rel="stylesheet" type="text/css" href="static/css/materialdesignicons.min.css" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 	<!-- <link rel="stylesheet" type="text/css" href="static/css/animate.min.css" /> -->
 
@@ -14,11 +19,27 @@
 </head>
 
 <style>
+	[v-cloak] {
+		display: none;
+	}
 
+	.v-application--wrap {
+		min-height: 60vh;
+	}
+
+	.v-application p {
+		margin-bottom: 0;
+	}
+
+	.v-btn--fab.v-size--default {
+		width: 3vw;
+		height: 3vw;
+	}
 </style>
 
 <body>
-	<div id="app" class="">
+	<div id="app" class="" v-cloak>
+
 		<div class="row header">
 			<div class="left col-4 col-sm-5 col-md-5 col-lg-5">
 				<div class="">
@@ -33,38 +54,179 @@
 					<a class="nav-link active" href="./services.html">企业服务</a>
 				</nav>
 			</div>
-        </div>
-    </div>
+		</div>
+		<v-app>
+			<div class="box">
+
+				<v-card>
+					<v-toolbar flat color="primary" dark>
+						<v-toolbar-title>你想要的企业服务都在这里，快来咨询吧！</v-toolbar-title>
+					</v-toolbar>
+					<v-tabs vertical>
+						<div ref='element'>
+							<v-tab class="tab-title" v-for='(tab,index) in tabsList' :key='index'
+								@click='getData(tab.id)'>
+								{{tab.title}}
+							</v-tab>
+						</div>
 
 
-    <script src="static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="static/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+						<v-tab-item v-for='(tab,index) in tabsList' :key='index'>
+							<v-card flat>
+								<div class="card" :style="{'min-height':tabHeight + 'px'}">
+									<p class="title">{{tabData.category}}</p>
+									<div class="text-center">
+										<v-btn class="mx-2" fab dark color="teal" @click='dialog=true'>
+											<span>咨询</span>
+										</v-btn>
+									</div>
+									<div class="link">
+										<div><span>负责人：</span>{{tabData.name}}</div>
+										<div><span>联系电话：</span>{{tabData.phone}}</div>
+									</div>
+									<img :src="tabData.img" alt="">
+									<div class="m-divider">
+										<p></p>
+										<span>服务介绍</span>
+										<p></p>
+									</div>
+									<div class="content">
+										{{tabData.detail}}
+									</div>
+								</div>
+
+
+							</v-card>
+						</v-tab-item>
+
+					</v-tabs>
+
+				</v-card>
+				<Divider>end</Divider>
+			</div>
+
+			<!-- 咨询框 -->
+			<v-row justify="center">
+				<v-dialog v-model="dialog" persistent max-width="600px">
+					<v-form ref="form" v-model="valid" lazy-validation>
+						<v-card>
+							<v-card-title>
+								<span class="headline">咨询内容</span>
+							</v-card-title>
+							<v-card-text>
+								<v-container>
+									<v-row>
+
+										<v-col cols="12">
+											<v-text-field label="咨询类型：" disabled :placeholder='tabData.category'>
+											</v-text-field>
+										</v-col>
+										<v-textarea v-model="tip" clearable :rules="[rules.required]"
+											placeholder='请输入咨询内容(必填)' auto-grow filled color="deep-purple" label="咨询内容"
+											rows="3" required>
+										</v-textarea>
+									</v-row>
+								</v-container>
+							</v-card-text>
+							<v-card-actions>
+								<v-spacer></v-spacer>
+								<v-btn color="blue darken-1" text @click="dialog = false">取消</v-btn>
+								<v-btn color="blue darken-1" text @click="submit">提交</v-btn>
+							</v-card-actions>
+						</v-card>
+					</v-form>
+				</v-dialog>
+			</v-row>
+		</v-app>
+	</div>
+
+
+	<script src="static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<!-- <script src="static/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script> -->
 	<script src="static/js/axios.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/iview.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/vuetify.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/request.js" type="text/javascript" charset="utf-8"></script>
-	<script src="static/js/quasar.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="static/js/zh-hans.min.js" type="text/javascript" charset="utf-8"></script>
 
 	<script type="text/javascript">
-
 		new Vue({
 			el: '#app',
+			vuetify: new Vuetify(),
 			data: function () {
 				return {
-					
+					tabsList: [
+						'选项1', '选项2', '选项3'
+					],
+					tabData: '',
+					tabHeight: '',
+					dialog: false,
+					tip: '',
+					valid: true,
+					rules: {
+						required: v => !!v || '这是必填的内容',
+					},
+
 				}
 			},
-			created(){
+			created() {
+				
+			},
+			beforeMount() {
 
 			},
 			mounted() {
-				
+				this.init();
+				this.getData(32);
+				this.getHeight()
 			},
 			methods: {
-				
+				getHeight() {
+					// this.tabHeight = this.$refs.element.offsetHeight * 2;
+					this.tabHeight = window.innerHeight - 240;
+					console.log(this.tabHeight)
+				},
+				init() {
+					let postData = {
+						Function: 'GetEnterpriseServiceType',
+						page: 1,
+						rows: 10,
+					};
+					// postData = JSON.stringify(postData);
+					Post('/api/Incubator/APIMethod', postData)
+						.then(res => {
+							console.log(res);
+							this.tabsList = res.data.data
+						})
+						.catch(err => {
+							console.log(err)
+						})
+				},
+				getData(id) {
+					let postData = {
+						Function: 'GetEnterpriseService',
+						page: 1,
+						rows: 10,
+						id: id
+					};
+					// postData = JSON.stringify(postData);
+					Post('/api/Incubator/APIMethod', postData)
+						.then(res => {
+							console.log(res);
+							this.tabData = res.data.data[0]
+						})
+						.catch(err => {
+							console.log(err)
+						})
+				},
+				submit() {
+					// this.dialog = false;
+					if(this.$refs.form.validate()){
+						this.$refs.form.reset()
+					}
+				}
 			}
-        })
-        
+		})
 	</script>
 </body>
 

@@ -111,7 +111,7 @@ div {
 .box {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 0 10vw;
+  padding: 0 15vw;
 }
 
 .box .tab1 {
@@ -215,6 +215,18 @@ div {
   margin-top: 20px;
 }
 
+.demo-carousel img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .box .item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -231,13 +243,14 @@ div {
 
 .box .item .right {
   margin: 0 20px;
+  padding: 5px 0;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
 
 .box .item .right .title {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #303133;
 }
 
@@ -306,5 +319,94 @@ div {
   padding: 0 4vw;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+.m-divider {
+  width: 100%;
+  line-height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 20px 0;
+}
+
+.m-divider p {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border: 0.5px solid #e8eaec;
+}
+
+.m-divider span {
+  width: auto;
+  margin: 0 20px;
+  color: cornflowerblue;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.box .tab-title {
+  font-size: 1rem;
+}
+
+.box .card {
+  overflow-y: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+.box .card .title {
+  font-size: 1.2rem;
+  text-align: center;
+  color: #303133;
+  line-height: 50px;
+  height: 40px;
+}
+
+.box .card .text-center {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.box .card img {
+  border-radius: 10px;
+  margin: 0 auto;
+  max-height: 20vw;
+}
+
+.box .card .link {
+  margin-bottom: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.box .card .link span {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.box .card .content {
+  padding: 0 20px 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: #5c5e61;
 }
 /*# sourceMappingURL=index.css.map */

@@ -8,13 +8,20 @@
 	<link rel="stylesheet" type="text/css" href="static/css/index.css" />
 	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="static/css/iview.min.css" />
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="static/css/vuetify.min.css" />
+	<link rel="stylesheet" type="text/css" href="static/css/materialdesignicons.min.css" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /> -->
 	<!-- <link rel="stylesheet" type="text/css" href="static/css/animate.min.css" /> -->
 
 	<!-- <link rel="stylesheet" type="text/css" href="static/css/quasar.min.css" /> -->
 </head>
 
 <style>
+	[v-cloak]{
+ display: none;
+}
 	/* .ivu-tabs {
 		width: 100%
 	}
@@ -23,16 +30,17 @@
 		width: 100%;
 
 	} */
-	.ivu-tabs-nav{
+	.ivu-tabs-nav {
 		display: flex;
-	align-items: center;
-	justify-content: center
+		align-items: center;
+		justify-content: center
 	}
-	.ivu-tabs-nav-scroll{
-	display: flex;
-	align-items: center;
-	justify-content: center
-}
+
+	.ivu-tabs-nav-scroll {
+		display: flex;
+		align-items: center;
+		justify-content: center
+	}
 
 	.mb-4,
 	.my-4 {
@@ -43,10 +51,13 @@
 	.py-5 {
 		padding-top: 0 !important
 	}
+	.v-application--wrap{
+		min-height: 0
+	}
 </style>
 
 <body>
-	<div id="app" class="">
+	<div id="app" class="" v-cloak>
 		<div class="row header">
 			<div class="left col-4 col-sm-5 col-md-5 col-lg-5">
 				<div class="">
@@ -59,35 +70,32 @@
 					<a class="nav-link " href="./news.html">规上古头条</a>
 					<a class="nav-link" href="./links.html">环保科技链</a>
 					<a class="nav-link " href="./services.html">企业服务</a>
+					<a class="nav-link " href="" @click='showNeed()'>我有需求</a>
 				</nav>
 			</div>
 			<div class="login col-2 col-sm-2 col-md-2 col-lg-2">
 				<span @click='modal = true'>微信登录</span>
-				
+
 			</div>
 		</div>
 		<!-- 微信登录模态框 -->
 		<Modal :title="moadlTitle" v-model="modal" class-name="vertical-center-modal">
-				<p>Content of dialog</p>
-				<p>Content of dialog</p>
-				<p>Content of dialog</p>
+			<p>Content of dialog</p>
+			<p>Content of dialog</p>
+			<p>Content of dialog</p>
 		</Modal>
 		<div class="box">
 			<!-- 轮播 -->
-			<div >
-				<Carousel 
-					autoplay
-					 v-model="carousel" 
-					 loop
-					 :autoplay-speed='3000'
-					 >
-						<Carousel-Item v-for='(item,index) in carouselList' :key='index'>
-							<div class="demo-carousel">
-									<img style="width:100%" :style="{height:carouselHeight + 'px'}" :src="item" class="" alt="轮播图片">
-							</div>
-						</Carousel-Item>
-						
-					</Carousel>
+			<div>
+				<Carousel autoplay v-model="carousel" loop :autoplay-speed='3000'>
+					<Carousel-Item v-for='(item,index) in carouselList' :key='index'>
+						<div class="demo-carousel">
+							<img style="width:100%" :style="{height:carouselHeight + 'px'}" :src="item" class=""
+								alt="轮播图片">
+						</div>
+					</Carousel-Item>
+
+				</Carousel>
 			</div>
 
 			<!-- 众创空间 -->
@@ -121,7 +129,7 @@
 
 										<div class="row">
 											<div class="noData" v-if='!item.detail[0].detail.length'>暂无数据</div>
-											<div class=" col-md-6  col-xl-4"
+											<div class="col-sm-6 col-md-6  col-lg-4"
 												v-for='(office,index1) in item.detail[0].detail' :key='index1'>
 												<div class="border">
 
@@ -164,7 +172,7 @@
 
 										<div class="row">
 											<div class="noData" v-if='!item.detail[1].detail.length'>暂无数据</div>
-											<div class=" col-md-6  col-xl-4"
+											<div class="col-sm-6 col-md-6  col-lg-4"
 												v-for='(flat,index1) in item.detail[1].detail' :key='index1'>
 												<div class="border">
 
@@ -206,7 +214,7 @@
 
 										<div class="row">
 											<div class="noData" v-if='!item.detail[2].detail.length'>暂无数据</div>
-											<div class=" col-md-6  col-xl-4"
+											<div class="col-sm-6 col-md-6  col-lg-4"
 												v-for='(shop,index1) in item.detail[2].detail' :key='index1'>
 												<div class="border">
 													<div class="card mb-4 shadow-sm" @click='detail(shop.id)'>
@@ -245,35 +253,77 @@
 					</Tab-Pane>
 				</Tabs>
 			</div>
-
+			<Divider>end</Divider>
 		</div>
+
+		<v-app>
+			<v-row justify="center">
+				<v-dialog v-model="dialog" persistent max-width="600px">
+					<v-form ref="form" v-model="valid" lazy-validation>
+						<v-card>
+							<v-card-title>
+								<span class="headline">我有需求</span>
+							</v-card-title>
+							<v-card-text>
+								<v-container>
+									<v-row>
+
+										<v-col cols="12">
+											<v-text-field label="咨询类型：" >
+											</v-text-field>
+										</v-col>
+										<v-textarea v-model="tip" clearable :rules="[rules.required]"
+											placeholder='请输入咨询内容(必填)' auto-grow filled color="deep-purple" label="咨询内容"
+											rows="3" required>
+										</v-textarea>
+									</v-row>
+								</v-container>
+							</v-card-text>
+							<v-card-actions>
+								<v-spacer></v-spacer>
+								<v-btn color="blue darken-1" text @click="dialog = false">取消</v-btn>
+								<v-btn color="blue darken-1" text @click="submit">提交</v-btn>
+							</v-card-actions>
+						</v-card>
+					</v-form>
+				</v-dialog>
+			</v-row>
+		</v-app>
 	</div>
 
 
 	<script src="static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="static/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/axios.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/vue.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/iview.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/vuetify.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/request.js" type="text/javascript" charset="utf-8"></script>
-	<script src="static/js/quasar.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="static/js/zh-hans.min.js" type="text/javascript" charset="utf-8"></script>
+
 
 	<script type="text/javascript">
 		new Vue({
 			el: '#app',
+			vuetify: new Vuetify(),
 			data: function () {
 				return {
 					itemData: [],
 					carouselHeight: '',
-					carouselList:[
+					carouselList: [
 						'./static/img/c_1.jpeg',
 						'./static/img/c_2.jpg',
 						'./static/img/c_3.jpg'
 					],
-					carousel:0,
-					modal:false,
-					moadlTitle:'微信扫码登录'
+					carousel: 0,
+
+					modal: false,
+					moadlTitle: '微信扫码登录',
+
+					dialog:false,
+					tip: '',
+					valid:true,
+					rules: {
+						required: v => !!v || '这是必填的内容',
+					},
 				}
 			},
 			created() {
@@ -281,7 +331,7 @@
 				this.init();
 			},
 			mounted() {
-				
+
 			},
 
 			methods: {
@@ -312,6 +362,13 @@
 					console.log(id);
 					let url = 'houseDetail.html' + '?id=' + id;
 					window.open(url, )
+				},
+
+				showNeed(){
+
+				},
+				submit(){
+
 				}
 			}
 		})

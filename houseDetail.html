@@ -15,6 +15,9 @@
 </head>
 
 <style>
+    [v-cloak]{
+ display: none;
+}
 .box{
     box-sizing: border-box;
     padding: 0 15vw;
@@ -24,7 +27,7 @@
 }
 </style>
 <body>
-    <div id="app" class="">
+    <div id="app" class="" v-cloak>
         <!-- 头部 -->
         <div class="row header">
             <div class="left col-4 col-sm-5 col-md-5 col-lg-5">
@@ -51,9 +54,9 @@
                          loop
                          :autoplay-speed='3000'
                          >
-                            <Carousel-Item v-for='(item,index) in detail.swiperList'>
+                            <Carousel-Item v-for='(item,index) in detail.imgList' :key='index'>
                                 <div class="demo-carousel">
-                                        <img style="width:100%" :style="{height:carouselHeight + 'px'}" :src="item" class="" alt="轮播图片">
+                                        <img style="max-width:100%" :style="{height:carouselHeight + 'px'}" :src="item" class="" alt="轮播图片">
                                 </div>
                             </Carousel-Item>
                             
@@ -88,7 +91,7 @@
                 <div class="detail">
                         <div class="noData" v-if='!detail.detail'>暂无介绍</div>
                         <div class="video" v-if='detail.video'>
-                            <video  :src="detail.video" controls preload ></video>
+                            <video  :src="detail.video" controls  ></video>
                         </div>
                         <div class="content">
                                 {{detail.detail}}
@@ -124,6 +127,7 @@
             data: function () {
                 return {
                     detail: '',
+                    carousel:0,
                     carouselHeight: ''
                 }
             },

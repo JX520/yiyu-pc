@@ -15,6 +15,9 @@
 </head>
 
 <style>
+	[v-cloak]{
+ display: none;
+}
 	body{
 		overflow-y: auto
 	}
@@ -26,10 +29,16 @@
 .ivu-list-split .ivu-list-item:last-child{
 	border-bottom: 1px solid #afb2b8
 }
+.ivu-tabs-bar{
+	margin-bottom: 0
+}
+.ivu-list-item{
+	padding: 0 0 12px 0
+}
 </style>
 
 <body>
-	<div id="app" class="">
+	<div id="app" class="" v-cloak>
 		<div class="row header">
 			<div class="left col-4 col-sm-5 col-md-5 col-lg-5">
 				<div class="">
@@ -46,13 +55,13 @@
 			</div>
 		</div>
 		<div class="box">
-				<Divider></Divider>
+				<!-- <Divider></Divider> -->
 				<Tabs value="name1">
 						<Tab-Pane label="政策" name="name1">
 								<List item-layout="vertical">
 										<List-Item  v-for="(item,index) in policy" :key="index" >
 											<div class="item" @click='detail(item.nid)'>
-												<img :src="item.img" style="width: 15vw;height:10vw;border-radius: 10px;padding: 2px">
+												<img :src="item.img" v-if='item.img' style="width: 15vw;height:8vw;border-radius: 10px;padding: 2px">
 												<div class="right">
 													<p class="title">{{item.title}}</p>
 													<div class="p_time">

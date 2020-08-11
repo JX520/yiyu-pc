@@ -90,7 +90,7 @@ div {
 }
   .box{
     box-sizing: border-box;
-    padding: 0 10vw;
+    padding: 0 12vw;
     
     .tab1{
       margin: 40px 0;
@@ -163,6 +163,11 @@ div {
     }
   }
 
+  .demo-carousel img{
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
 
   // news
 
@@ -175,10 +180,10 @@ div {
        
       .right{
         margin: 0 20px;
-        
+        padding: 5px 0;
         flex: 1;
         .title{
-          font-size: 1rem;
+          font-size: 1.2rem;
           color: #303133
         }
         .p_time{
@@ -234,5 +239,77 @@ div {
     }
   }
   
-  
+  //科技链
 
+
+  // 分割线
+  .m-divider{
+    width: 100%;
+    line-height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    p{
+      flex: 1;
+      border: 0.5px solid #e8eaec
+    }
+    span{
+      width: auto;
+      margin: 0 20px;
+      color: cornflowerblue;
+      font-size: 1rem;
+      text-align: center
+    }
+  }
+  
+//企业服务
+
+.box{
+  .tab-title{
+    font-size: 1rem;
+  }
+  .card{
+    // height: 20vh;
+    overflow-y: auto;
+    display:flex;
+    position: relative;
+    // align-items: center;
+    // justify-content: center;
+    .title{
+      font-size: 1.2rem;
+      text-align: center;
+      color: #303133;
+      line-height: 50px;
+      height: 40px;
+      
+    }
+    .text-center{
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    img{
+      border-radius: 10px;
+      margin: 0 auto;
+      max-height: 20vw
+    }
+    .link{
+      margin-bottom: 15px;
+      display:flex;
+      justify-content: space-evenly;
+      span{
+        color: rgba(0,0,0,.54)
+      }
+    }
+    .content{
+      padding:0 20px 20px;
+      box-sizing: border-box;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      color: #5c5e61
+    }
+  }
+  
+}

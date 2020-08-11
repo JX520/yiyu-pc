@@ -14,6 +14,9 @@
     <!-- <link rel="stylesheet" type="text/css" href="static/css/quasar.min.css" /> -->
 </head>
 <style>
+    [v-cloak]{
+ display: none;
+}
     .box {
         box-sizing: border-box;
         padding: 0 15vw;
@@ -22,10 +25,11 @@
     .card-body {
         padding: 0 1.25rem
     }
+    
 </style>
 
 <body>
-    <div id="app" class="">
+    <div id="app" class="" v-cloak>
         <!-- 头部 -->
         <div class="row header">
             <div class="left col-4 col-sm-5 col-md-5 col-lg-5">
@@ -44,22 +48,19 @@
         </div>
 
         <div class="box">
+            <!-- 轮播 -->
+            <div>
+                <Carousel autoplay v-model="carousel" loop :autoplay-speed='3000'>
+                    <Carousel-Item v-for='(item,index) in detail.swiperList' :key='index'>
+                        <div class="demo-carousel">
+                            <img style="max-width:100%;margin: 0 auto" :style="{height:carouselHeight + 'px'}" :src="item" class=""
+                                alt="轮播图片">
+                        </div>
+                    </Carousel-Item>
+
+                </Carousel>
+            </div>
             <Divider></Divider>
-            <div >
-                    <Carousel 
-                        autoplay
-                         v-model="carousel" 
-                         loop
-                         :autoplay-speed='3000'
-                         >
-                            <Carousel-Item v-for='(item,index) in detail.swiperList' :key='index'>
-                                <div class="demo-carousel">
-                                        <img style="width:100%" :style="{height:carouselHeight + 'px'}" :src="item" class="" alt="轮播图片">
-                                </div>
-                            </Carousel-Item>
-                            
-                        </Carousel>
-                </div>
             <div class="news">
                 <p class="title">{{detail.title}}</p>
 
@@ -67,16 +68,29 @@
                     <span>负责人：{{detail.linkName}}</span>
                     <span style="margin-left:10px">联系电话：{{detail.linkPhone}}</span>
                 </div>
-                <img class="newsImg" :src="detail.img" alt="">
-                <Divider>产品介绍</Divider>
-                <div></div>
-                <Divider>公司介绍</Divider>
+                <!-- <img class="newsImg" :src="detail.img" alt=""> -->
+                <div class="m-divider">
+                    <p></p>
+                    <span>产品介绍</span>
+                    <p></p>
+                </div>
+
+                <div class="news-detail">
+                    {{detail.product}}
+                </div>
+
+                <div class="m-divider">
+                    <p></p>
+                    <span>公司介绍</span>
+                    <p></p>
+                </div>
                 <div class="news-detail">
                     {{detail.detail}}
                 </div>
 
             </div>
             <Divider>end</Divider>
+
         </div>
     </div>
 
@@ -95,7 +109,7 @@
             el: '#app',
             data: function () {
                 return {
-                    carousel:0,
+                    carousel: 0,
                     detail: '',
                     carouselHeight: ''
                 }
