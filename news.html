@@ -7,6 +7,7 @@
 	<title>头条</title>
 	<link rel="stylesheet" type="text/css" href="static/css/index.css" />
 	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="static/css/vuetify.min.css" />
 	<link rel="stylesheet" type="text/css" href="static/css/iview.min.css" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 	<!-- <link rel="stylesheet" type="text/css" href="static/css/animate.min.css" /> -->
@@ -15,119 +16,264 @@
 </head>
 
 <style>
-	[v-cloak]{
- display: none;
-}
-	body{
+	[v-cloak] {
+		display: none;
+	}
+
+	body {
 		overflow-y: auto
 	}
-.ivu-tabs-nav-scroll{
-	display: flex;
-	align-items: center;
-	justify-content: center
-}
-.ivu-list-split .ivu-list-item:last-child{
-	border-bottom: 1px solid #afb2b8
-}
-.ivu-tabs-bar{
-	margin-bottom: 0
-}
-.ivu-list-item{
-	padding: 0 0 12px 0
-}
+
+	.box {
+		box-sizing: border-box;
+		padding: 0 15vw;
+	}
+
+	.ivu-tabs-nav-scroll {
+		display: flex;
+		align-items: center;
+		justify-content: center
+	}
+
+	.ivu-list-split .ivu-list-item:last-child {
+		border-bottom: 1px solid #afb2b8
+	}
+
+	.ivu-tabs-bar {
+		margin-bottom: 0
+	}
+
+	.ivu-list-item {
+		padding: 0 0 12px 0
+	}
+
+	.v-btn-toggle:not(.v-btn-toggle--dense) .v-btn.v-btn.v-size--default {
+		height: 3vw
+	}
+
+	.col {
+		display: flex;
+		justify-content: center;
+		align-items: center
+	}
+
+	.v-btn__content {
+		font-size: 1.2rem
+	}
+	.basil {
+		background-color: #FFFBE6 !important;
+	}
+
+	.basil--text {
+		color: #356859 !important;
+	}
+	.v-card__title {
+		background: darkseagreen;
+	}
+	.v-slide-group__wrapper {
+		display: flex;
+		justify-content: center
+	}
+
+	.v-tab--active {
+		background: lightblue
+	}
+
+	.v-card__title {
+		padding: 0
+	}
+	.v-sheet.v-footer{
+		display: flex;
+		justify-content: center
+	}
+	 .indigo{
+		background-color: #5c6bc0 !important; 
+		border-color: #5c6bc0 !important;
+	}
 </style>
 
 <body>
 	<div id="app" class="" v-cloak>
 		<div class="row header">
-			<div class="left col-4 col-sm-5 col-md-5 col-lg-5">
+			<div class="left  col-sm-0 col-md-5 col-lg-5">
 				<div class="">
 					<img class="logo" src="./static/img/logo.png" alt="" title="安广·规上古">
 				</div>
 			</div>
-			<div class="right col-8 col-sm-7 col-md-7 col-lg-7">
-				<nav class="nav nav-pills">
-					<a class="nav-link " href="./index.html">创客空间</a>
-					<a class="nav-link active" href="./news.html">规上古头条</a>
-					<a class="nav-link" href="./links.html">环保科技链</a>
-					<a class="nav-link " href="./services.html">企业服务</a>
-				</nav>
+			<div class="right  col-sm-5 col-md-5 col-lg-5">
+				<v-row>
+					<v-col>
+						<v-btn-toggle v-model="text" tile color="deep-purple accent-3" group>
+							<v-btn :value="url.title" v-for='(url,index) in toUrl' :key='index'>
+								<a :href="url.url">{{url.title}}</a>
+							</v-btn>
+
+							<v-btn value="需求">
+								我有需求
+							</v-btn>
+						</v-btn-toggle>
+					</v-col>
+				</v-row>
 			</div>
 		</div>
 		<div class="box">
-				<!-- <Divider></Divider> -->
-				<Tabs value="name1">
+			<v-app>
+			<!-- <Divider></Divider> -->
+			<!-- <div class="m-grid">
+				<div class="  col-lg-1 col-xl-1"></div>
+				<div class="col-sm-12 col-md-12 col-lg-10 col-xl-10 "> -->
+			<!-- <Tabs value="name1">
 						<Tab-Pane label="政策" name="name1">
-								<List item-layout="vertical">
-										<List-Item  v-for="(item,index) in policy" :key="index" >
-											<div class="item" @click='detail(item.nid)'>
-												<img :src="item.img" v-if='item.img' style="width: 15vw;height:8vw;border-radius: 10px;padding: 2px">
-												<div class="right">
-													<p class="title">{{item.title}}</p>
-													<div class="p_time">
-														<span>发布者：{{item.publisher}}</span>
-														<span>发布时间：{{item.p_time}}</span>
-													</div>
-													<div class="content">
-														{{item.detail}}
-													</div>
-												</div>
+							<List item-layout="vertical">
+								<List-Item v-for="(item,index) in policy" :key="index">
+									<div class="item" @click='detail(item.nid)'>
+										<img :src="item.img" v-if='item.img'
+											style="width: 15vw;height:8vw;border-radius: 10px;padding: 2px">
+										<div class="right">
+											<p class="title">{{item.title}}</p>
+											<div class="p_time">
+												<span>发布者：{{item.publisher}}</span>
+												<span>发布时间：{{item.p_time}}</span>
 											</div>
-										</List-Item>
-										<Divider>end</Divider>
-									</List>
+											<div class="content">
+												{{item.detail}}
+											</div>
+										</div>
+									</div>
+								</List-Item>
+								<Divider>end</Divider>
+							</List>
 						</Tab-Pane>
 
 						<Tab-Pane label="资讯" name="name2">
-								<List item-layout="vertical">
-										<List-Item  v-for="(item1,index1) in news" :key="index1" >
-												<div class="item" @click='detail(item1.nid)'>
-												<img :src="item1.img" style="width: 15vw;height:10vw;border-radius: 10px;padding: 2px">
-												<div class="right">
-													<p class="title">{{item1.title}}</p>
-													<div class="p_time">
-														<span>发布者：{{item1.publisher}}</span>
-														<span>发布时间：{{item1.p_time}}</span>
-													</div>
-													<div class="content">
-														{{item1.detail}}
-													</div>
-												</div>
-												</div>
-										</List-Item>
-										<Divider>end</Divider>
-									</List>
+							<List item-layout="vertical">
+								<List-Item v-for="(item1,index1) in news" :key="index1">
+									<div class="item" @click='detail(item1.nid)'>
+										<img :src="item1.img" style="width: 15vw;height:10vw;border-radius: 10px;padding: 2px">
+										<div class="right">
+											<p class="title">{{item1.title}}</p>
+											<div class="p_time">
+												<span>发布者：{{item1.publisher}}</span>
+												<span>发布时间：{{item1.p_time}}</span>
+											</div>
+											<div class="content">
+												{{item1.detail}}
+											</div>
+										</div>
+									</div>
+								</List-Item>
+								<Divider>end</Divider>
+							</List>
 						</Tab-Pane>
-				</Tabs>
-		</div>
-    </div>
-	
+					</Tabs> -->
 
-    <script src="static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+			<v-card color="basil" style="width:100%">
+				<v-card-title class="text-center justify-center py-6">
+					<p class="font-weight-bold display-3 basil--text " style="width:100%">News</p>
+				</v-card-title>
+
+				<v-tabs v-model="tab" background-color="transparent" color="basil" grow>
+
+					<v-tab v-for="(item,index) in tabData" :key="index">
+						{{ item }}
+					</v-tab>
+
+				</v-tabs>
+
+				<v-tabs-items v-model="tab">
+					<v-tab-item v-for="(item2,index2) in itemData" :key="index2">
+						<v-card color="basil" flat>
+								<div class="noData" v-if='!item2.detail.length'>暂无数据</div>
+								<div class="item" @click='detail(item1.nid)' v-for='(item1,index1) in item2.detail' :key=index1>
+										<img :src="item1.img"  v-if='item1.img' style="width:15vw;height:10vw;border-radius: 10px;padding: 2px"></img>
+										<div class="right">
+											<p class="title">{{item1.title}}</p>
+											<div class="p_time">
+												<span>发布者：{{item1.publisher}}</span>
+												<span>发布时间：{{item1.p_time}}</span>
+											</div>
+											<div class="content">
+												{{item1.detail}}
+											</div>
+										</div>
+									</div>
+
+						</v-card>
+					</v-tab-item>
+				</v-tabs-items>
+			</v-card>
+			<!-- </div>
+				<div class="  col-lg-1 col-xl-1"></div>
+			</div> -->
+			<v-footer
+
+					padless
+				  >
+					<v-card
+					  flat
+					  tile
+					  class="indigo lighten-1 white--text text-center"
+					>
+					  <v-divider></v-divider>
+					  <v-card-text class="white--text " style="width:100%">
+						{{ new Date().getFullYear() }} — <strong>安广 · 规上古</strong>
+					  </v-card-text>
+					</v-card>
+				  </v-footer>
+				</v-app>
+		</div>
+		
+	</div>
+
+
+	<script src="static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/axios.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/vue.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/iview.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/vuetify.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/request.js" type="text/javascript" charset="utf-8"></script>
-	<script src="static/js/quasar.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="static/js/zh-hans.min.js" type="text/javascript" charset="utf-8"></script>
 
 	<script type="text/javascript">
-
 		new Vue({
 			el: '#app',
+			vuetify: new Vuetify(),
 			data: function () {
 				return {
-					policy:[],
-					news:[],
-                
+					policy: [],
+					news: [],
+					itemData:[],
+					tab:null,
+					tabData: [
+						'政策',
+						'咨询'
+					],
+					text: 'center',
+					toUrl: [{
+							title: '众创空间',
+							url: 'index.html'
+						},
+						{
+							title: '规上古头条',
+							url: 'news.html'
+						},
+						{
+							title: '环保科技链',
+							url: 'links.html'
+						},
+						{
+							title: '企业服务',
+							url: 'services.html'
+						},
+
+					],
 				}
 			},
-			created(){
+			created() {
 				this.init();
 			},
 			mounted() {
-				
+
 			},
 			methods: {
 				init() {
@@ -140,6 +286,7 @@
 					Post('/api/Incubator/APIMethod', postData)
 						.then(res => {
 							console.log(res);
+							this.itemData = res.data.data;
 							this.policy = res.data.data[0].detail;
 							this.news = res.data.data[1].detail;
 
@@ -155,9 +302,7 @@
 					window.open(url, )
 				}
 			}
-        })
-        
-        
+		})
 	</script>
 </body>
 

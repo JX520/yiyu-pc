@@ -47,6 +47,16 @@ div {
   }
 }
 
+.m-grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
 .header {
   padding: 10px;
   width: 100%;
@@ -111,7 +121,7 @@ div {
 .box {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 0 15vw;
+  padding: 0 1vw;
 }
 
 .box .tab1 {
@@ -135,9 +145,8 @@ div {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   font-size: 0.8rem;
   color: #606266;
   line-height: 40px;
@@ -156,7 +165,7 @@ div {
 }
 
 .card-body .title {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: black;
   font-weight: 500;
 }
@@ -177,11 +186,14 @@ div {
 
 .border {
   margin-bottom: 30px;
+  margin: 10px;
 }
 
 .noData {
   width: 100%;
   font-size: 1rem;
+  height: 40px;
+  line-height: 40px;
   color: #606266;
   text-align: center;
 }
@@ -256,7 +268,6 @@ div {
 
 .box .item .right .p_time {
   padding: 5px;
-  width: 40%;
   font-size: 0.6rem;
   color: #606266;
   display: -webkit-box;
@@ -371,8 +382,6 @@ div {
   font-size: 1.2rem;
   text-align: center;
   color: #303133;
-  line-height: 50px;
-  height: 40px;
 }
 
 .box .card .text-center {

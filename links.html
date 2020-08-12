@@ -8,6 +8,8 @@
 	<link rel="stylesheet" type="text/css" href="static/css/index.css" />
 	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="static/css/iview.min.css" />
+	<link rel="stylesheet" type="text/css" href="static/css/vuetify.min.css" />
+	<link rel="stylesheet" type="text/css" href="static/css/materialdesignicons.min.css" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 	<!-- <link rel="stylesheet" type="text/css" href="static/css/animate.min.css" /> -->
 
@@ -21,6 +23,10 @@
 	body{
 		overflow-y: auto
 	}
+	.box {
+        box-sizing: border-box;
+        padding: 0 15vw;
+    }
 .ivu-tabs-nav-scroll{
 	display: flex;
 	align-items: center;
@@ -35,29 +41,82 @@
 .ivu-list-item{
 	padding: 0 0 12px 0
 }
+.v-btn-toggle:not(.v-btn-toggle--dense) .v-btn.v-btn.v-size--default {
+		height: 3vw
+	}
+
+	.col {
+		display: flex;
+		justify-content: center;
+		align-items: center
+	}
+
+	.v-btn__content {
+		font-size: 1.2rem
+	}
+	.basil {
+		background-color: #FFFBE6 !important;
+	}
+
+	.basil--text {
+		color: #356859 !important;
+	}
+
+	.v-slide-group__wrapper {
+		display: flex;
+		justify-content: center
+	}
+
+	.v-tab--active {
+		background: lightblue
+	}
+	.v-card__title {
+		background: darkseagreen;
+	}
+	.v-card__title {
+		padding: 0
+	}
+	.v-sheet.v-footer{
+		display: flex;
+		justify-content: center
+	}
+	.indigo{
+		background-color: #5c6bc0 !important; 
+		border-color: #5c6bc0 !important;
+	}
 </style>
 
 <body>
 	<div id="app" class="" v-cloak>
+			
 		<div class="row header">
-			<div class="left col-4 col-sm-5 col-md-5 col-lg-5">
-				<div class="">
-					<img class="logo" src="./static/img/logo.png" alt="" title="安广·规上古">
-				</div>
-			</div>
-			<div class="right col-8 col-sm-7 col-md-7 col-lg-7">
-				<nav class="nav nav-pills">
-					<a class="nav-link " href="./index.html">创客空间</a>
-					<a class="nav-link " href="./news.html">规上古头条</a>
-					<a class="nav-link active" href="./links.html">环保科技链</a>
-					<a class="nav-link " href="./services.html">企业服务</a>
-				</nav>
-			</div>
+				<div class="left  col-sm-0 col-md-5 col-lg-5">
+						<div class="">
+							<img class="logo" src="./static/img/logo.png" alt="" title="安广·规上古">
+						</div>
+					</div>
+					<div class="right  col-sm-5 col-md-5 col-lg-5">
+						<v-row>
+							<v-col >
+								<v-btn-toggle v-model="text" tile color="deep-purple accent-3" group >
+									<v-btn :value="url.title" v-for='(url,index) in toUrl' :key='index' >
+											<a :href="url.url">{{url.title}}</a>
+									</v-btn>
+		
+									<v-btn value="需求">
+										我有需求
+									</v-btn>
+								</v-btn-toggle>
+							</v-col>
+						</v-row>
+					</div>
 		</div>
 		<div class="box">
+				<v-app>
 				<!-- <Divider></Divider> -->
-				<Tabs value="name2">
-						<!-- <Tab-Pane label="环境" name="name1">
+
+				<!-- <Tabs value="name2">
+						 <Tab-Pane label="环境" name="name1">
 								<List item-layout="vertical">
 										<div class="noData" v-if='!environment.length'>暂无数据</div>
 										<List-Item  v-for="(item,index) in environment" :key="index" >
@@ -78,7 +137,7 @@
 										</List-Item>
 										<Divider>end</Divider>
 									</List>
-						</Tab-Pane> -->
+						</Tab-Pane> 
 
 						<Tab-Pane label="科技" name="name2">
 								<List item-layout="vertical">
@@ -101,10 +160,62 @@
 										<Divider>end</Divider>
 									</List>
 						</Tab-Pane>
-				</Tabs>
+				</Tabs> -->
 
-				
+				<v-card color="basil" style="width:100%">
+						<v-card-title class="text-center justify-center py-6">
+							<p class="font-weight-bold display-3 basil--text " style="width:100%">Technology</p>
+						</v-card-title>
+		
+						<v-tabs v-model="tab" background-color="transparent" color="basil" grow>
+		
+							<v-tab >
+								科技
+							</v-tab>
+		
+						</v-tabs>
+		
+						<v-tabs-items v-model="tab">
+							<v-tab-item >
+								<v-card color="basil" flat>
+										<div class="noData" v-if='!technology.length'>暂无数据</div>
+										<div class="item" @click='detail(item1.tid)' v-for="(item1,index1) in technology" :key="index1" >
+												<img :src="item1.img" style="width: 15vw;height:10vw;border-radius: 10px;padding: 2px">
+												<div class="right">
+													<p class="title">{{item1.title}}</p>
+													<div class="p_time">
+														<span>负责人：{{item1.linkName}}</span>
+														<span>联系电话：{{item1.linkPhone}}</span>
+													</div>
+													<div class="content">
+														{{item1.detail}}
+													</div>
+												</div>
+												</div>
+		
+								</v-card>
+							</v-tab-item>
+						</v-tabs-items>
+					</v-card>
+
+
+					<v-footer
+					padless
+				  >
+					<v-card
+					  flat
+					  tile
+					  class="indigo lighten-1 white--text text-center"
+					>
+					  <v-divider></v-divider>
+					  <v-card-text class="white--text " style="width:100%">
+						{{ new Date().getFullYear() }} — <strong>安广 · 规上古</strong>
+					  </v-card-text>
+					</v-card>
+					</v-footer>
+				</v-app>
 		</div>
+		
     </div>
 	
 
@@ -113,19 +224,39 @@
 	<script src="static/js/axios.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/vue.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/iview.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/vuetify.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/request.js" type="text/javascript" charset="utf-8"></script>
-	<script src="static/js/quasar.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="static/js/zh-hans.min.js" type="text/javascript" charset="utf-8"></script>
+
 
 	<script type="text/javascript">
 
 		new Vue({
 			el: '#app',
+			vuetify: new Vuetify(),
 			data: function () {
 				return {
 					environment:[],
 					technology:[],
-                
+					tab:null,
+          text: 'center',
+					toUrl: [{
+							title: '众创空间',
+							url: 'index.html'
+						},
+						{
+							title: '规上古头条',
+							url: 'news.html'
+						},
+						{
+							title: '环保科技链',
+							url: 'links.html'
+						},
+						{
+							title: '企业服务',
+							url: 'services.html'
+						},
+
+					],
 				}
 			},
 			created(){
