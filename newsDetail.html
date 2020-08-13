@@ -45,13 +45,14 @@
     }
     .v-sheet.v-footer{
 		display: flex;
-		justify-content: center
+        justify-content: center;
+        /* background-color: #5c6bc0 */
 	}
 </style>
 
 <body>
     <div id="app" class="" v-cloak>
-            <v-app>
+            
         <!-- 头部 -->
         <div class="row header">
                 <div class="left  col-sm-0 col-md-5 col-lg-5">
@@ -77,6 +78,7 @@
         </div>
 
         <div class="box">
+                <v-app>
             <Divider></Divider>
             <div class="news">
                 <p class="title">{{detail.title}}</p>

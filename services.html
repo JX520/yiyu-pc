@@ -60,6 +60,7 @@
 	.v-card__title {
 		background: darkseagreen;
 	}
+
 	.basil {
 		background-color: #FFFBE6 !important;
 	}
@@ -67,12 +68,14 @@
 	.basil--text {
 		color: #356859 !important;
 	}
-	.v-sheet.v-footer{
+
+	.v-sheet.v-footer {
 		display: flex;
 		justify-content: center
 	}
-	.indigo{
-		background-color: #5c6bc0 !important; 
+
+	.indigo {
+		background-color: #5c6bc0 !important;
 		border-color: #5c6bc0 !important;
 	}
 </style>
@@ -124,7 +127,7 @@
 								<div class="card" :style="{'min-height':tabHeight + 'px'}">
 									<p class="title">{{tabData.category}}</p>
 									<div class="text-center">
-										<v-btn class="mx-2" fab dark color="teal" @click='dialog=true'>
+										<v-btn class="mx-2" fab dark color="teal" @click='consult(tabData.cid)'>
 											<span>咨询</span>
 										</v-btn>
 									</div>
@@ -151,30 +154,34 @@
 
 				</v-card>
 
-				<v-footer
-				padless
-			  >
-				<v-card
-				  flat
-				  tile
-				  class="indigo lighten-1 white--text text-center"
-				>
-				  <v-divider></v-divider>
-				  <v-card-text class="white--text " style="width:100%">
-					{{ new Date().getFullYear() }} — <strong>安广 · 规上古</strong>
-				  </v-card-text>
-				</v-card>
-			  </v-footer>
+				<v-footer padless>
+					<v-card flat tile class="indigo lighten-1 white--text text-center">
+						<v-divider></v-divider>
+						<v-card-text class="white--text " style="width:100%">
+							{{ new Date().getFullYear() }} — <strong>安广 · 规上古</strong>
+						</v-card-text>
+					</v-card>
+				</v-footer>
 			</div>
 
 			<!-- 咨询框 -->
 			<v-row justify="center">
-				<v-dialog v-model="dialog" persistent max-width="600px">
+				<v-dialog v-model="dialog" max-width="600px" max-height='600px'>
+					
+					
+
 					<v-form ref="form" v-model="valid" lazy-validation>
 						<v-card>
 							<v-card-title>
 								<span class="headline">咨询内容</span>
 							</v-card-title>
+							<div class="chat">
+									<div >
+										<div class="message-item" v-for='(chat,i) in chatList' :key='i' :class="chat.MsgType ? 'right' : 'left' ">
+											<div class="content">{{chat.MsgContent}}</div>
+										</div>
+									</div>
+							</div>
 							<v-card-text>
 								<v-container>
 									<v-row>
@@ -201,7 +208,7 @@
 			</v-row>
 
 
-			
+
 		</v-app>
 	</div>
 
@@ -250,6 +257,25 @@
 						},
 
 					],
+					chatList:[
+						{
+							MsgType:true,
+							MsgContent:'用户消息'
+						},
+						{
+							MsgType:false,
+							MsgContent:'回复消息回复消息回复消息回复消息回复消息回复消息回复消息回复消息回复消息回复消息回复消息回复消息回复消息'
+						},
+						{
+							MsgType:false,
+							MsgContent:'回复消息1'
+						},
+						{
+							MsgType:true,
+							MsgContent:'用户消息用户消息用户消息用户消息用户消息用户消息'
+						},
+
+					]
 
 				}
 			},
@@ -303,17 +329,60 @@
 							console.log(err)
 						})
 				},
+				consult(id){
+					if(!localStorage.getItem('user')){
+							this.$Message.error('请先登录');
+						}else{
+							this.dialog = true;
+							this.getChat(id);
+						}
+				},
 				submit(id) {
 					// this.dialog = false;
 					if (this.$refs.form.validate()) {
+						
 						// this.$refs.form.reset()
 						console.log(id);
-						console.log(this.tip)
+						console.log(this.tip);
+						let postData = {
+						Function: 'InsertConsultation',
+						id: id,
+						intro: this.tip,
+						openid:'123456'
+					};
+					// postData = JSON.stringify(postData);
+					Post('/api/Incubator/APIMethod', postData)
+						.then(res => {
+							console.log(res);
+						})
+						.catch(err => {
+							console.log(err)
+						})
+							
+					
 					}
+				},
+
+				getChat(id){
+					let postData = {
+						Function: 'GetConsultation',
+						id: id,
+						page: 1,
+						rows: 10,
+						openid:'123456'
+					};
+					// postData = JSON.stringify(postData);
+					Post('/api/Incubator/APIMethod', postData)
+						.then(res => {
+							console.log(res);
+						})
+						.catch(err => {
+							console.log(err)
+						})
 				}
+
 			}
 		})
-
 	</script>
 </body>
 

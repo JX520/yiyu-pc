@@ -102,14 +102,16 @@
 	}
 
 	.v-card__title {
-		padding: 0
+		padding: 10px;
 	}
-	.v-sheet.v-footer{
+
+	.v-sheet.v-footer {
 		display: flex;
 		justify-content: center
 	}
-	.indigo{
-		background-color: #5c6bc0 !important; 
+
+	.indigo {
+		background-color: #5c6bc0 !important;
 		border-color: #5c6bc0 !important;
 	}
 </style>
@@ -117,12 +119,12 @@
 <body>
 	<div id="app" class="" v-cloak>
 		<div class="row header">
-			<div class="left  col-sm-0 col-md-5 col-lg-5">
+			<div class="left   col-md-2 col-lg-3 col-xl-4">
 				<div class="">
 					<img class="logo" src="./static/img/logo.png" alt="" title="安广·规上古">
 				</div>
 			</div>
-			<div class="right  col-sm-5 col-md-5 col-lg-5">
+			<div class="right  col-sm-11 col-md-9 col-lg-7 col-xl-6">
 				<v-row>
 					<v-col>
 						<v-btn-toggle v-model="text" tile color="deep-purple accent-3" group>
@@ -130,29 +132,36 @@
 								<a :href="url.url">{{url.title}}</a>
 							</v-btn>
 
-							<v-btn value="需求" @click='dialog=true'>
+							<v-btn value="需求" @click='showNeed'>
 								我有需求
+							</v-btn>
+
+						</v-btn-toggle>
+					</v-col>
+				</v-row>
+			</div>
+			<div class="login  col-sm-1 col-md-1 col-lg-2 col-xl-2">
+				<v-row>
+					<v-col>
+						<v-btn-toggle v-model="text" tile color="deep-purple accent-3" group>
+							<v-btn v-if="!user" value="登录" @click='login=true'>
+								注册登录
+							</v-btn>
+							<span style="display: flex;
+							align-items: center;color: #2d8cf0;" v-if="user">{{user}} </span>
+							<v-btn v-if="user" value="退出" @click='out'>
+								退出
 							</v-btn>
 						</v-btn-toggle>
 					</v-col>
 				</v-row>
 			</div>
-			<!-- <div class="login col-2 col-sm-2 col-md-2 col-lg-2">
-				<span @click='modal = true'>微信登录</span>
-
-			</div> -->
 
 		</div>
-		<!-- 微信登录模态框 -->
-		<Modal :title="moadlTitle" v-model="modal" class-name="vertical-center-modal">
-			<p>Content of dialog</p>
-			<p>Content of dialog</p>
-			<p>Content of dialog</p>
-		</Modal>
 
 		<div class="box">
 			<!-- 轮播 -->
-			
+
 			<div class="m-grid">
 				<div class="col-xl-1"></div>
 				<div class="col-sm-12 col-md-auto col-lg-12 col-xl-10 ">
@@ -170,164 +179,7 @@
 
 					<!-- 众创空间 -->
 					<div class="tab1">
-						<!-- <Tabs type="card" name='tab'>
-							<Tab-Pane tab='tab' :label="item.title" v-for='(item,index) in itemData' :key='index'>
-								<div class="tab-title">
-									<div>
-										负责人：
-										<span>
-											{{item.name}}
-										</span>
-									</div>
-									<div>
-										联系电话：
-										<span>
-											{{item.phone}}
-										</span>
-									</div>
-									<div>
-										地址：
-										<span>
-											{{item.address}}
-										</span>
-									</div>
-								</div>
-								<Tabs :animated="false" size="small" name='tab1'>
-									<Tab-Pane tab='tab1' :label="item.detail[0].category">
-										<div class="album py-5 bg-light">
-											<div class="">
 
-												<div class="row">
-													<div class="noData" v-if='!item.detail[0].detail.length'>暂无数据</div>
-													<div class="col-sm-10 col-md-6  col-lg-6 col-xl-4"
-														v-for='(office,index1) in item.detail[0].detail' :key='index1'>
-														<div class="border">
-
-															<div class="card mb-4 shadow-sm" @click='detail(office.id)'>
-																<div class="itemImg">
-																	<img class="bd-placeholder-img card-img-top"
-																	width="100%" height="300px" :src="office.img"
-																		alt="">
-																</div>
-																<div class="card-body">
-																	<p class="title">
-																		{{office.title}}
-																	</p>
-																	<p class="card-text">
-																		简介： {{office.brief}}
-																	</p>
-																	<div
-																		class="d-flex justify-content-between align-items-center">
-																		<p class="price">
-																			￥: {{office.price}} 元
-																		</p>
-																		<small
-																			class="text-muted">押付：{{office.deposittype}}</small>
-																		<small class="text-muted">面积：{{office.area}}
-																			/m²</small>
-																		<small class="text-muted">楼层：{{office.code}} /
-																			{{office.floortotal}}</small>
-																	</div>
-																</div>
-															</div>
-
-														</div>
-													</div>
-
-												</div>
-											</div>
-										</div>
-									</Tab-Pane>
-									<Tab-Pane tab='tab1' :label="item.detail[1].category">
-										<div class="album py-5 bg-light">
-											<div class="">
-
-												<div class="row">
-													<div class="noData" v-if='!item.detail[1].detail.length'>暂无数据</div>
-													<div class="col-sm-6 col-md-6  col-lg-4"
-														v-for='(flat,index1) in item.detail[1].detail' :key='index1'>
-														<div class="border">
-
-															<div class="card mb-4 shadow-sm" @click='detail(flat.id)'>
-																<div class="itemImg">
-																	<img class="bd-placeholder-img card-img-top"
-																		width="100%" height="280" :src="flat.img"
-																		alt="">
-																</div>
-																<div class="card-body">
-																	<p class="title">
-																		{{flat.title}}
-																	</p>
-																	<p class="card-text">
-																		简介： {{flat.brief}}
-																	</p>
-																	<div
-																		class="d-flex justify-content-between align-items-center">
-																		<p class="price">
-																			￥: {{flat.price}} 元
-																		</p>
-																		<small
-																			class="text-muted">押付：{{flat.deposittype}}</small>
-																		<small class="text-muted">面积：{{flat.area}}
-																			/m²</small>
-																		<small class="text-muted">楼层：{{flat.code}} /
-																			{{flat.floortotal}}</small>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-
-												</div>
-											</div>
-										</div>
-									</Tab-Pane>
-									<Tab-Pane tab='tab1' :label="item.detail[2].category">
-										<div class="album py-5 bg-light">
-											<div class="">
-
-												<div class="row">
-													<div class="noData" v-if='!item.detail[2].detail.length'>暂无数据</div>
-													<div class="col-sm-6 col-md-6  col-lg-4"
-														v-for='(shop,index1) in item.detail[2].detail' :key='index1'>
-														<div class="border">
-															<div class="card mb-4 shadow-sm" @click='detail(shop.id)'>
-																<div class="itemImg">
-																	<img class="bd-placeholder-img card-img-top"
-																		width="100%" height="280" :src="shop.img"
-																		alt="">
-																</div>
-																<div class="card-body">
-																	<p class="title">
-																		{{shop.title}}
-																	</p>
-																	<p class="card-text">
-																		简介： {{shop.brief}}
-																	</p>
-																	<div
-																		class="d-flex justify-content-between align-items-center">
-																		<p class="price">
-																			￥: {{shop.price}} 元
-																		</p>
-																		<small
-																			class="text-muted">押付：{{shop.deposittype}}</small>
-																		<small class="text-muted">面积：{{shop.area}}
-																			/m²</small>
-																		<small class="text-muted">楼层：{{shop.code}} /
-																			{{shop.floortotal}}</small>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-
-												</div>
-											</div>
-										</div>
-									</Tab-Pane>
-								</Tabs>
-							</Tab-Pane>
-						</Tabs> -->
 
 						<v-card color="basil" style="width:100%">
 							<v-card-title class="text-center justify-center py-6">
@@ -390,9 +242,8 @@
 																		<!-- <img class="bd-placeholder-img card-img-top"
 																			width="100%" height="300px" :src="office.img"
 																				alt=""> -->
-																		<v-img
-																			:src="office.img"
-																			height="300" contain class="grey darken-4">
+																		<v-img :src="office.img" height="300" contain
+																			class="grey darken-4">
 																		</v-img>
 																	</div>
 																	<div class="card-body">
@@ -433,22 +284,15 @@
 
 					</div>
 					<v-app>
-					<v-footer
-
-					padless
-				  >
-					<v-card
-					  flat
-					  tile
-					  class="indigo lighten-1 white--text text-center"
-					>
-					  <v-divider></v-divider>
-					  <v-card-text class="white--text " style="width:100%">
-						{{ new Date().getFullYear() }} — <strong>安广 · 规上古</strong>
-					  </v-card-text>
-					</v-card>
-				  </v-footer>
-				</v-app>
+						<v-footer padless>
+							<v-card flat tile class="indigo lighten-1 white--text text-center">
+								<v-divider></v-divider>
+								<v-card-text class="white--text " style="width:100%">
+									{{ new Date().getFullYear() }} — <strong>安广 · 规上古</strong>
+								</v-card-text>
+							</v-card>
+						</v-footer>
+					</v-app>
 				</div>
 				<div class=" col-xl-1"></div>
 			</div>
@@ -457,7 +301,8 @@
 
 		<v-app>
 			<v-row justify="center">
-				<v-dialog v-model="dialog" persistent max-width="600px">
+				<!-- 需求 -->
+				<v-dialog v-model="dialog" max-width="600px">
 					<v-form ref="form" v-model="valid" lazy-validation>
 						<v-card>
 							<v-card-title>
@@ -472,7 +317,7 @@
 											</v-text-field>
 										</v-col>
 										<v-col cols="12">
-											<v-text-field label="手机号：" required :rules="[rules.required]">
+											<v-text-field label="手机号：" required :rules="[rules.phone]">
 											</v-text-field>
 										</v-col>
 										<v-col cols="12">
@@ -495,6 +340,87 @@
 						</v-card>
 					</v-form>
 				</v-dialog>
+				<v-dialog v-model="login" max-width="600px">
+					<!-- 登录 -->
+					<v-form ref="formLogin" v-if='isLogin' v-model="valid" lazy-validation>
+						<v-card>
+							<v-card-title>
+								<span class="headline">登录</span>
+							</v-card-title>
+							<v-card-text>
+								<v-container>
+									<v-row>
+										<v-col cols="12">
+											<v-text-field v-model='formLogin.phone' label="手机号：" required
+												:rules="[rules.phone]">
+											</v-text-field>
+										</v-col>
+										<v-col cols="12">
+											<v-text-field v-model='formLogin.password' label="密码：" type='password'
+												required :rules="[rules.required]">
+											</v-text-field>
+										</v-col>
+
+									</v-row>
+								</v-container>
+							</v-card-text>
+							<v-card-actions>
+								<v-spacer></v-spacer>
+								<v-btn color="blue darken-1" text @click="isLogin = false">前往注册</v-btn>
+								<v-btn color="blue darken-1" text @click="Login">登录</v-btn>
+							</v-card-actions>
+						</v-card>
+					</v-form>
+					<!-- 注册 -->
+					<v-form ref="formReg" v-if='!isLogin' v-model="valid" lazy-validation>
+						<v-card>
+							<v-card-title>
+								<span class="headline">注册</span>
+							</v-card-title>
+							<v-card-text>
+								<v-container>
+									<v-row>
+
+										<v-col cols="12">
+											<v-text-field v-model='formReg.user' label="用户名：" required
+												:rules="[rules.required]">
+											</v-text-field>
+										</v-col>
+										<v-col cols="12">
+											<v-text-field v-model='formReg.phone' label="手机号：" required
+												:rules="[rules.phone]">
+											</v-text-field>
+										</v-col>
+										<v-col cols="12">
+											<v-text-field v-model='formReg.password' label="密码：" type='password'
+												required :rules="[rules.required]">
+											</v-text-field>
+
+										</v-col>
+										<v-col cols="12">
+											<v-text-field v-model='formReg.captcha' label="验证码：" required
+												:rules="[rules.required]">
+											</v-text-field>
+											<canvas id="canvas" width="100" height="35"
+												style="border: 1px solid #009F95;" title="点击刷新验证码"
+												@click='showCaptcha'></canvas>
+										</v-col>
+
+										<!-- <v-snackbar v-model="showTip" timeout="2000" :top="y === 'top'">
+											请输入正确的验证码
+										</v-snackbar> -->
+
+									</v-row>
+								</v-container>
+							</v-card-text>
+							<v-card-actions>
+								<v-spacer></v-spacer>
+								<v-btn color="blue darken-1" text @click="isLogin = true">前往登录</v-btn>
+								<v-btn color="blue darken-1" text @click="Register">提交注册</v-btn>
+							</v-card-actions>
+						</v-card>
+					</v-form>
+				</v-dialog>
 			</v-row>
 		</v-app>
 	</div>
@@ -506,6 +432,7 @@
 	<script src="static/js/iview.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/vuetify.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/request.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/captcha.js" type="text/javascript" charset="utf-8"></script>
 
 
 	<script type="text/javascript">
@@ -551,15 +478,34 @@
 
 					dialog: false,
 					tip: '',
+					showTip: false,
+					y: "top",
 					valid: true,
 					rules: {
 						required: v => !!v || '这是必填的内容',
+						phone: v => (v && v.length == 11) || '请填写11位的手机号',
 					},
+
+					login: false,
+					isLogin: true,
+					formLogin: {
+						phone: '',
+						password: ''
+					},
+					formReg: {
+						user: '',
+						phone: '',
+						password: '',
+						captcha: ''
+					},
+					captcha: '',
+					user: '',
 				}
 			},
 			created() {
 				this.getCHeight();
 				this.init();
+				this.user = localStorage.getItem('user') ? localStorage.getItem('user') : '';
 			},
 			mounted() {
 
@@ -597,13 +543,49 @@
 				toPage(url) {
 					window.open(url, '_self')
 				},
+				showCaptcha() {
+					var num = [];
+					drawCode(num);
+					this.captcha = num.join("");
+				},
 				showNeed() {
-
+					this.dialog = true;
+					this.$Message.warning({
+						content: '登录后才可提交需求',
+						duration: 3
+					});
 				},
 				submit() {
 					if (this.$refs.form.validate()) {
+						if(!localStorage.getItem('user')){
+							this.$Message.error('请先登录');
+						}
 						this.$refs.form.reset()
 					}
+				},
+				Login() {
+					if (this.$refs.formLogin.validate()) {
+						console.log(this.formLogin);
+
+					}
+				},
+				Register() {
+					if (this.$refs.formReg.validate()) {
+						if (this.captcha == this.formReg.captcha) {
+							console.log('success');
+							localStorage.setItem('user', this.formReg.user);
+							this.user = this.formReg.user;
+							this.$refs.form.reset();
+							this.login = false;
+						} else {
+							// this.showTip = true;
+							this.$Message.error('请输入正确的验证码');
+						}
+					}
+				},
+				out() {
+					localStorage.removeItem('user');
+					this.user = ''
 				}
 			}
 		})
