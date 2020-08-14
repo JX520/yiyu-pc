@@ -550,10 +550,13 @@
 				},
 				showNeed() {
 					this.dialog = true;
-					this.$Message.warning({
+					if(!localStorage.getItem('user')){
+						this.$Message.warning({
 						content: '登录后才可提交需求',
 						duration: 3
 					});
+					}
+					
 				},
 				submit() {
 					if (this.$refs.form.validate()) {
