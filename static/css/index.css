@@ -63,12 +63,12 @@ div {
 }
 
 .header {
-  padding: 10px;
   width: 100%;
+  background: cornflowerblue;
+  margin: 0 0 10px 0;
 }
 
 .header .left {
-  height: 3vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -100,7 +100,6 @@ div {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 3vw;
 }
 
 .header .login span:hover {
@@ -515,5 +514,122 @@ div {
   position: absolute;
   left: -8px;
   top: 15px;
+}
+
+.login {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login .login-pannel {
+  max-width: 500px;
+}
+
+.mask {
+  /* pointer-events: none; */
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  background: white;
+  font-size: 1rem;
+  color: #555555;
+}
+
+.mask image {
+  width: 50px;
+  height: 50px;
+}
+
+/* loading加载动画的css */
+.loader {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 35px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.loading8 {
+  border: 4px dotted red;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+  -webkit-animation: dotted-spin 1s linear infinite;
+  animation: dotted-spin 1s linear infinite;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(255, 255, 0, 0.3);
+  border-left-width: 2px;
+  border-left-color: rgba(255, 255, 0, 0.5);
+  border-top-width: 3px;
+  border-right-width: 4px;
+  border-top-color: rgba(255, 255, 0, 0.7);
+}
+
+.loading8 .loader-pacman,
+.loader-pacman {
+  position: absolute;
+  top: 20px;
+  left: 12px;
+  width: 0px;
+  height: 0px;
+  border-right: 6px solid transparent;
+  border-top: 6px solid red;
+  border-left: 6px solid red;
+  border-bottom: 6px solid red;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+@-webkit-keyframes dotted-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(-360deg);
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes dotted-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(-360deg);
+    transform: rotate(-360deg);
+  }
 }
 /*# sourceMappingURL=index.css.map */

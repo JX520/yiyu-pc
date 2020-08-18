@@ -46,7 +46,10 @@
     .indigo{
 		background-color: #5c6bc0 !important; 
 		border-color: #5c6bc0 !important;
-	}
+    }
+    a{
+        color: white
+    }
 </style>
 
 <body>
@@ -54,27 +57,42 @@
             
         <!-- 头部 -->
         <div class="row header">
-                <div class="left  col-sm-0 col-md-5 col-lg-5">
-						<div class="">
-							<img class="logo" src="./static/img/logo.png" alt="" title="安广·规上古">
-						</div>
-					</div>
-					<div class="right  col-sm-5 col-md-5 col-lg-5">
-						<v-row>
-							<v-col >
-								<v-btn-toggle v-model="text" tile color="deep-purple accent-3" group >
-									<v-btn :value="url.title" v-for='(url,index) in toUrl' :key='index' >
-                                            <a :href="url.url">{{url.title}}</a>
-									</v-btn>
-		
-									<v-btn value="需求">
-										我有需求
-									</v-btn>
-								</v-btn-toggle>
-							</v-col>
-						</v-row>
-					</div>
-        </div>
+                <div class="left   col-sm-0 col-md-3 col-lg-5">
+                    <div class="">
+                        <img class="logo" src="./static/img/logo.png" alt="" title="安广·规上古">
+                    </div>
+                </div>
+                <div class="right  col-sm-9 col-md-7 col-lg-5">
+                    <v-row>
+                        <v-col>
+                            <v-btn-toggle v-model="text" tile color="deep-purple accent-3" group>
+                                <v-btn :value="url.title" v-for='(url,index) in toUrl' :key='index'>
+                                    <a :href="url.url">{{url.title}}</a>
+                                </v-btn>
+    
+                                
+    
+                            </v-btn-toggle>
+                        </v-col>
+                    </v-row>
+                </div>
+                <div class="login  col-sm-1 col-md-1 col-lg-2 col-xl-1">
+                    <v-row>
+                        <v-col>
+                            <v-btn-toggle v-model="text" tile color="deep-purple accent-3" group>
+                                <v-btn v-if="!user" value="登录" @click='toLogin'>
+                                    注册登录
+                                </v-btn>
+                                <span style="display: flex;
+                                align-items: center;color: white;" v-if="user">{{user}} </span>
+                                <v-btn v-if="user" value="退出" @click='out'>
+                                        <span style="font-size:0.8rem">退出</span>
+                                </v-btn>
+                            </v-btn-toggle>
+                        </v-col>
+                    </v-row>
+                </div>
+            </div>
 
         <div class="box">
                 <v-app>
@@ -138,6 +156,14 @@
 
         </div>
         </v-app>
+
+        <div class="mask" v-if="showMask">
+				<view class="loader loading8">
+						<view class="loader-pacman"></view>
+					  </view>
+					  <span>加载中</span>
+        </div>
+        
     </div>
 
 
@@ -156,6 +182,7 @@
             vuetify: new Vuetify(),
             data: function () {
                 return {
+                    showMask:true,
                     carousel: 0,
                     detail: '',
                     carouselHeight: '',
@@ -178,15 +205,17 @@
 						},
 
 					],
+                    user:'',
                 }
             },
             created() {
                 this.getCHeight();
                 this.getID();
+                this.user = localStorage.getItem('user') ? localStorage.getItem('user') : '';
             },
             mounted() {
                 // this.init();
-
+                this.showMask = false
             },
 
             methods: {
@@ -220,6 +249,15 @@
                             console.log(err)
                         })
                 },
+
+                toLogin(){
+					window.open('login.html','_self')
+				},
+				out() {
+                    localStorage.removeItem('user');
+                    localStorage.removeItem('phone');
+                    this.user = ''
+                }
 
             }
         })

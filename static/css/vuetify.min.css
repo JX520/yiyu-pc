@@ -26997,8 +26997,8 @@ html.overflow-y-hidden {
     display: flex;
     flex-wrap: wrap;
     flex: 1 1 auto;
-    margin-right: -12px;
-    margin-left: -12px
+    /* margin-right: -12px;
+    margin-left: -12px */
 }
 
 .row--dense {

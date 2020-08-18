@@ -17,31 +17,38 @@
 </head>
 
 <style>
-	[v-cloak]{
- display: none;
-}
-	body{
+	[v-cloak] {
+		display: none;
+	}
+
+	body {
 		overflow-y: auto
 	}
+
 	.box {
-        box-sizing: border-box;
-        padding: 0 15vw;
-    }
-.ivu-tabs-nav-scroll{
-	display: flex;
-	align-items: center;
-	justify-content: center
-}
-.ivu-list-split .ivu-list-item:last-child{
-	border-bottom: 1px solid #afb2b8
-}
-.ivu-tabs-bar{
-	margin-bottom: 0
-}
-.ivu-list-item{
-	padding: 0 0 12px 0
-}
-.v-btn-toggle:not(.v-btn-toggle--dense) .v-btn.v-btn.v-size--default {
+		box-sizing: border-box;
+		padding: 0 15vw;
+	}
+
+	.ivu-tabs-nav-scroll {
+		display: flex;
+		align-items: center;
+		justify-content: center
+	}
+
+	.ivu-list-split .ivu-list-item:last-child {
+		border-bottom: 1px solid #afb2b8
+	}
+
+	.ivu-tabs-bar {
+		margin-bottom: 0
+	}
+
+	.ivu-list-item {
+		padding: 0 0 12px 0
+	}
+
+	.v-btn-toggle:not(.v-btn-toggle--dense) .v-btn.v-btn.v-size--default {
 		height: 3vw
 	}
 
@@ -54,6 +61,7 @@
 	.v-btn__content {
 		font-size: 1.2rem
 	}
+
 	.basil {
 		background-color: #FFFBE6 !important;
 	}
@@ -70,49 +78,71 @@
 	.v-tab--active {
 		background: lightblue
 	}
+
 	.v-card__title {
 		background: darkseagreen;
 	}
+
 	.v-card__title {
 		padding: 0
 	}
-	.v-sheet.v-footer{
+
+	.v-sheet.v-footer {
 		display: flex;
 		justify-content: center
 	}
-	.indigo{
-		background-color: #5c6bc0 !important; 
+
+	.indigo {
+		background-color: #5c6bc0 !important;
 		border-color: #5c6bc0 !important;
 	}
+	a{
+        color: white
+    }
 </style>
 
 <body>
 	<div id="app" class="" v-cloak>
-			
-		<div class="row header">
-				<div class="left  col-sm-0 col-md-5 col-lg-5">
-						<div class="">
-							<img class="logo" src="./static/img/logo.png" alt="" title="安广·规上古">
-						</div>
-					</div>
-					<div class="right  col-sm-5 col-md-5 col-lg-5">
-						<v-row>
-							<v-col >
-								<v-btn-toggle v-model="text" tile color="deep-purple accent-3" group >
-									<v-btn :value="url.title" v-for='(url,index) in toUrl' :key='index' >
-											<a :href="url.url">{{url.title}}</a>
-									</v-btn>
-		
-									<v-btn value="需求">
-										我有需求
-									</v-btn>
-								</v-btn-toggle>
-							</v-col>
-						</v-row>
-					</div>
+
+			<div class="row header">
+					<div class="left   col-sm-0 col-md-3 col-lg-5">
+			<div class="">
+				<img class="logo" src="./static/img/logo.png" alt="" title="安广·规上古">
+			</div>
 		</div>
+		<div class="right  col-sm-9 col-md-7 col-lg-5">
+			<v-row>
+				<v-col>
+					<v-btn-toggle v-model="text" tile color="deep-purple accent-3" group>
+						<v-btn :value="url.title" v-for='(url,index) in toUrl' :key='index'>
+							<a :href="url.url">{{url.title}}</a>
+						</v-btn>
+
+						
+
+					</v-btn-toggle>
+				</v-col>
+			</v-row>
+		</div>
+		<div class="login  col-sm-1 col-md-1 col-lg-2 col-xl-1">
+			<v-row>
+				<v-col>
+					<v-btn-toggle v-model="text" tile color="deep-purple accent-3" group>
+						<v-btn v-if="!user" value="登录" @click='toLogin'>
+							注册登录
+						</v-btn>
+						<span style="display: flex;
+						align-items: center;color: white;" v-if="user">{{user}} </span>
+						<v-btn v-if="user" value="退出" @click='out'>
+								<span style="font-size:0.8rem">退出</span>
+						</v-btn>
+					</v-btn-toggle>
+				</v-col>
+			</v-row>
+		</div>
+			</div>
 		<div class="box">
-				<v-app>
+			<v-app>
 				<!-- <Divider></Divider> -->
 
 				<!-- <Tabs value="name2">
@@ -163,63 +193,64 @@
 				</Tabs> -->
 
 				<v-card color="basil" style="width:100%">
-						<v-card-title class="text-center justify-center py-6">
-							<p class="font-weight-bold display-3 basil--text " style="width:100%">Technology</p>
-						</v-card-title>
-		
-						<v-tabs v-model="tab" background-color="transparent" color="basil" grow>
-		
-							<v-tab >
-								科技
-							</v-tab>
-		
-						</v-tabs>
-		
-						<v-tabs-items v-model="tab">
-							<v-tab-item >
-								<v-card color="basil" flat>
-										<div class="noData" v-if='!technology.length'>暂无数据</div>
-										<div class="item" @click='detail(item1.tid)' v-for="(item1,index1) in technology" :key="index1" >
-												<img :src="item1.img" style="width: 15vw;height:10vw;border-radius: 10px;padding: 2px">
-												<div class="right">
-													<p class="title">{{item1.title}}</p>
-													<div class="p_time">
-														<span>负责人：{{item1.linkName}}</span>
-														<span>联系电话：{{item1.linkPhone}}</span>
-													</div>
-													<div class="content">
-														{{item1.detail}}
-													</div>
-												</div>
-												</div>
-		
-								</v-card>
-							</v-tab-item>
-						</v-tabs-items>
-					</v-card>
+					<v-card-title class="text-center justify-center py-6">
+						<p class="font-weight-bold display-3 basil--text " style="width:100%">Technology</p>
+					</v-card-title>
+
+					<v-tabs v-model="tab" background-color="transparent" color="basil" grow>
+
+						<v-tab>
+							科技
+						</v-tab>
+
+					</v-tabs>
+
+					<v-tabs-items v-model="tab">
+						<v-tab-item>
+							<v-card color="basil" flat>
+								<div class="noData" v-if='!technology.length'>暂无数据</div>
+								<div class="item" @click='detail(item1.tid)' v-for="(item1,index1) in technology" :key="index1">
+									<img :src="item1.img" style="width: 15vw;height:10vw;border-radius: 10px;padding: 2px">
+									<div class="right">
+										<p class="title">{{item1.title}}</p>
+										<div class="p_time">
+											<span>负责人：{{item1.linkName}}</span>
+											<span>联系电话：{{item1.linkPhone}}</span>
+										</div>
+										<div class="content">
+											{{item1.detail}}
+										</div>
+									</div>
+								</div>
+
+							</v-card>
+						</v-tab-item>
+					</v-tabs-items>
+				</v-card>
 
 
-					<v-footer
-					padless
-				  >
-					<v-card
-					  flat
-					  tile
-					  class="indigo lighten-1 white--text text-center"
-					>
-					  <v-divider></v-divider>
-					  <v-card-text class="white--text " style="width:100%">
-						{{ new Date().getFullYear() }} — <strong>安广 · 规上古</strong>
-					  </v-card-text>
+				<v-footer padless>
+					<v-card flat tile class="indigo lighten-1 white--text text-center">
+						<v-divider></v-divider>
+						<v-card-text class="white--text " style="width:100%">
+							{{ new Date().getFullYear() }} — <strong>安广 · 规上古</strong>
+						</v-card-text>
 					</v-card>
-					</v-footer>
-				</v-app>
+				</v-footer>
+			</v-app>
 		</div>
-		
-    </div>
-	
 
-    <script src="static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<div class="mask" v-if="showMask">
+				<view class="loader loading8">
+						<view class="loader-pacman"></view>
+					  </view>
+					  <span>加载中</span>
+		</div>
+
+	</div>
+
+
+	<script src="static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/axios.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="static/js/vue.js" type="text/javascript" charset="utf-8"></script>
@@ -229,16 +260,16 @@
 
 
 	<script type="text/javascript">
-
 		new Vue({
 			el: '#app',
 			vuetify: new Vuetify(),
 			data: function () {
-				return {
-					environment:[],
-					technology:[],
-					tab:null,
-          text: 'center',
+				return {			
+					showMask:true,		
+					environment: [],
+					technology: [],
+					tab: null,
+					text: 'center',
 					toUrl: [{
 							title: '众创空间',
 							url: 'index.html'
@@ -257,13 +288,15 @@
 						},
 
 					],
+					user: ''
 				}
 			},
-			created(){
+			created() {
 				this.init();
+				this.user = localStorage.getItem('user') ? localStorage.getItem('user') : '';
 			},
 			mounted() {
-				
+				this.showMask = false
 			},
 			methods: {
 				init() {
@@ -289,11 +322,18 @@
 					console.log(id);
 					let url = 'linksDetail.html' + '?id=' + id;
 					window.open(url, )
+				},
+
+				toLogin() {
+					window.open('login.html', '_self')
+				},
+				out() {
+					localStorage.removeItem('user');
+					localStorage.removeItem('phone');
+					this.user = ''
 				}
 			}
-        })
-        
-        
+		})
 	</script>
 </body>
 
