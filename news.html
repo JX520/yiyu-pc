@@ -60,6 +60,7 @@
 	.v-btn__content {
 		font-size: 1.2rem
 	}
+
 	.basil {
 		background-color: #FFFBE6 !important;
 	}
@@ -67,9 +68,11 @@
 	.basil--text {
 		color: #356859 !important;
 	}
+
 	.v-card__title {
 		background: darkseagreen;
 	}
+
 	.v-slide-group__wrapper {
 		display: flex;
 		justify-content: center
@@ -82,65 +85,68 @@
 	.v-card__title {
 		padding: 0
 	}
-	.v-sheet.v-footer{
+
+	.v-sheet.v-footer {
 		display: flex;
 		justify-content: center
 	}
-	 .indigo{
-		background-color: #5c6bc0 !important; 
+
+	.indigo {
+		background-color: #5c6bc0 !important;
 		border-color: #5c6bc0 !important;
 	}
-	a{
-        color: white
-    }
+
+	a {
+		color: white
+	}
 </style>
 
 <body>
 	<div id="app" class="" v-cloak>
-			<div class="row header">
-					<div class="left   col-sm-0 col-md-3 col-lg-5">
-						<div class="">
-							<img class="logo" src="./static/img/logo.png" alt="" title="安广·规上古">
-						</div>
-					</div>
-					<div class="right  col-sm-9 col-md-7 col-lg-5">
-						<v-row>
-							<v-col>
-								<v-btn-toggle v-model="text" tile color="deep-purple accent-3" group>
-									<v-btn :value="url.title" v-for='(url,index) in toUrl' :key='index'>
-										<a :href="url.url">{{url.title}}</a>
-									</v-btn>
-		
-									
-		
-								</v-btn-toggle>
-							</v-col>
-						</v-row>
-					</div>
-					<div class="login  col-sm-1 col-md-1 col-lg-2 col-xl-1">
-						<v-row>
-							<v-col>
-								<v-btn-toggle v-model="text" tile color="deep-purple accent-3" group>
-									<v-btn v-if="!user" value="登录" @click='toLogin'>
-										注册登录
-									</v-btn>
-									<span style="display: flex;
-									align-items: center;color: white;" v-if="user">{{user}} </span>
-									<v-btn v-if="user" value="退出" @click='out'>
-											<span style="font-size:0.8rem">退出</span>
-									</v-btn>
-								</v-btn-toggle>
-							</v-col>
-						</v-row>
-					</div>
+		<div class="row header">
+			<div class="left   col-sm-0 col-md-3 col-lg-5">
+				<div class="">
+					<img class="logo" src="./static/img/logo.png" alt="" title="安广·规上古">
 				</div>
+			</div>
+			<div class="right  col-sm-9 col-md-7 col-lg-5">
+				<v-row>
+					<v-col>
+						<v-btn-toggle v-model="text" tile color="deep-purple accent-3" group>
+							<v-btn :value="url.title" v-for='(url,index) in toUrl' :key='index'>
+								<a :href="url.url">{{url.title}}</a>
+							</v-btn>
+
+
+
+						</v-btn-toggle>
+					</v-col>
+				</v-row>
+			</div>
+			<div class="login  col-sm-1 col-md-1 col-lg-2 col-xl-1">
+				<v-row>
+					<v-col>
+						<v-btn-toggle v-model="text" tile color="deep-purple accent-3" group>
+							<v-btn v-if="!user" value="登录" @click='toLogin'>
+								注册登录
+							</v-btn>
+							<span style="display: flex;
+									align-items: center;color: white;" v-if="user">{{user}} </span>
+							<v-btn v-if="user" value="退出" @click='out'>
+								<span style="font-size:0.8rem">退出</span>
+							</v-btn>
+						</v-btn-toggle>
+					</v-col>
+				</v-row>
+			</div>
+		</div>
 		<div class="box">
 			<v-app>
-			<!-- <Divider></Divider> -->
-			<!-- <div class="m-grid">
+				<!-- <Divider></Divider> -->
+				<!-- <div class="m-grid">
 				<div class="  col-lg-1 col-xl-1"></div>
 				<div class="col-sm-12 col-md-12 col-lg-10 col-xl-10 "> -->
-			<!-- <Tabs value="name1">
+				<!-- <Tabs value="name1">
 						<Tab-Pane label="政策" name="name1">
 							<List item-layout="vertical">
 								<List-Item v-for="(item,index) in policy" :key="index">
@@ -185,68 +191,62 @@
 						</Tab-Pane>
 					</Tabs> -->
 
-			<v-card color="basil" style="width:100%">
-				<v-card-title class="text-center justify-center py-6">
-					<p class="font-weight-bold display-3 basil--text " style="width:100%">News</p>
-				</v-card-title>
+				<v-card color="basil" style="width:100%">
+					<v-card-title class="text-center justify-center py-6">
+						<p class="font-weight-bold display-3 basil--text " style="width:100%">News</p>
+					</v-card-title>
 
-				<v-tabs v-model="tab" background-color="transparent" color="basil" grow>
+					<v-tabs v-model="tab" background-color="transparent" color="basil" grow>
 
-					<v-tab v-for="(item,index) in tabData" :key="index">
-						{{ item }}
-					</v-tab>
+						<v-tab v-for="(item,index) in tabData" :key="index">
+							{{ item }}
+						</v-tab>
 
-				</v-tabs>
+					</v-tabs>
 
-				<v-tabs-items v-model="tab">
-					<v-tab-item v-for="(item2,index2) in itemData" :key="index2">
-						<v-card color="basil" flat>
+					<v-tabs-items v-model="tab">
+						<v-tab-item v-for="(item2,index2) in itemData" :key="index2">
+							<v-card color="basil" flat>
 								<div class="noData" v-if='!item2.detail.length'>暂无数据</div>
 								<div class="item" @click='detail(item1.nid)' v-for='(item1,index1) in item2.detail' :key=index1>
-										<img :src="item1.img"  v-if='item1.img' style="width:15vw;height:10vw;border-radius: 10px;padding: 2px"></img>
-										<div class="right">
-											<p class="title">{{item1.title}}</p>
-											<div class="p_time">
-												<span>发布者：{{item1.publisher}}</span>
-												<span>发布时间：{{item1.p_time}}</span>
-											</div>
-											<div class="content">
-												{{item1.detail}}
-											</div>
+									<img :src="item1.img" v-if='item1.img'
+										style="width:15vw;height:10vw;border-radius: 10px;padding: 2px"></img>
+									<div class="right">
+										<p class="title">{{item1.title}}</p>
+										<div class="p_time">
+											<span>发布者：{{item1.publisher}}</span>
+											<span>发布时间：{{item1.p_time}}</span>
+										</div>
+										<div class="content">
+											{{item1.detail}}
 										</div>
 									</div>
+								</div>
 
-						</v-card>
-					</v-tab-item>
-				</v-tabs-items>
-			</v-card>
-			<!-- </div>
+							</v-card>
+						</v-tab-item>
+					</v-tabs-items>
+				</v-card>
+				<!-- </div>
 				<div class="  col-lg-1 col-xl-1"></div>
 			</div> -->
-			<v-footer
-
-					padless
-				  >
-					<v-card
-					  flat
-					  tile
-					  class="indigo lighten-1 white--text text-center"
-					>
-					  <v-divider></v-divider>
-					  <v-card-text class="white--text " style="width:100%">
-						{{ new Date().getFullYear() }} — <strong>安广 · 规上古</strong>
-					  </v-card-text>
+				<v-footer padless>
+					<v-card flat tile class="indigo lighten-1 white--text text-center">
+						<v-divider></v-divider>
+						<v-card-text class="white--text " style="width:100%">
+							{{ new Date().getFullYear() }} — <strong>安广 · 规上古</strong>
+						</v-card-text>
 					</v-card>
-				  </v-footer>
-				</v-app>
+				</v-footer>
+			</v-app>
 		</div>
 		<div class="mask" v-if="showMask">
-				<view class="loader loading8">
-						<view class="loader-pacman"></view>
-					  </view>
-					  <span>加载中</span>
+			<view class="loader loading8">
+				<view class="loader-pacman"></view>
+			</view>
+			<span>加载中</span>
 		</div>
-		
+
 	</div>
 
 
@@ -264,11 +264,11 @@
 			vuetify: new Vuetify(),
 			data: function () {
 				return {
-					showMask:true,
+					showMask: true,
 					policy: [],
 					news: [],
-					itemData:[],
-					tab:null,
+					itemData: [],
+					tab: null,
 					tabData: [
 						'政策',
 						'咨询'
@@ -292,12 +292,12 @@
 						},
 
 					],
-					user:'',
+					user: '',
 				}
 			},
 			created() {
 				this.init();
-				this.user = localStorage.getItem('user') ? localStorage.getItem('user') : '';
+				this.checkStorage()
 			},
 			mounted() {
 				this.showMask = false
@@ -329,17 +329,26 @@
 					window.open(url, )
 				},
 
-				toLogin(){
-					window.open('login.html','_self')
+				toLogin() {
+					window.open('login.html', '_self')
 				},
 				out() {
-                    localStorage.removeItem('user');
-                    localStorage.removeItem('phone');
-                    this.user = ''
-                }
+					localStorage.removeItem('userInfo');
+					this.user = ''
+				},
+
+				checkStorage() {
+					let userInfo = JSON.parse(localStorage.getItem('userInfo'));
+					console.log(userInfo);
+					if (userInfo) {
+						if (Date.now() - userInfo.time < 7200000)
+							this.user = userInfo.user;
+						else localStorage.removeItem('userInfo');
+					}
+				}
+
 			}
 		})
-
 	</script>
 </body>
 

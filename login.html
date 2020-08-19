@@ -224,8 +224,14 @@
                                 .then(res => {
                                     console.log(res);
                                     if (res.data.Code == 1) {
-                                        localStorage.setItem('user', res.data.data.name);
-                                        localStorage.setItem('phone',res.data.data.phone)
+                                        // localStorage.setItem('user', res.data.data.name);
+                                        // localStorage.setItem('phone',res.data.data.phone);
+                                        let userInfo = JSON.stringify({
+                                            user:res.data.data.name,
+                                            phone:res.data.data.phone,
+                                            time:Date.now(),
+                                        });
+                                        localStorage.setItem('userInfo',userInfo);
                                         this.$Message.success('登录成功!');
                                         setTimeout(function(){
                                             // window.open('index.html','_self');

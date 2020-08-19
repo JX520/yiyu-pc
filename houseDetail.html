@@ -218,7 +218,7 @@
             },
             created() {
                 this.getCHeight();
-                this.user = localStorage.getItem('user') ? localStorage.getItem('user') : '';
+                this.checkStorage()
             },
             mounted() {
                 // this.init();
@@ -265,10 +265,19 @@
 					window.open('login.html','_self')
 				},
 				out() {
-                    localStorage.removeItem('user');
-                    localStorage.removeItem('phone');
-                    this.user = ''
-                }
+					localStorage.removeItem('userInfo');
+					this.user = ''
+				},
+
+				checkStorage() {
+					let userInfo = JSON.parse(localStorage.getItem('userInfo'));
+					console.log(userInfo);
+					if (userInfo) {
+						if (Date.now() - userInfo.time < 7200000)
+							this.user = userInfo.user;
+						else localStorage.removeItem('userInfo');
+					}
+				}
 
             }
         })

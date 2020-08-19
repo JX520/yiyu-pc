@@ -418,15 +418,17 @@
 						phone: v => (v && v.length == 11) || '请填写11位的手机号',
 					},
 					user: '',
+					phone:''
 				}
 			},
 			created() {
 				this.getCHeight();
 				this.init();
-				this.user = localStorage.getItem('user') ? localStorage.getItem('user') : '';
+				this.checkStorage()
 			},
 			mounted() {
-				this.showMask = false
+				this.showMask = false;
+				
 			},
 
 			methods: {
@@ -474,12 +476,12 @@
 				},
 				submit() {
 					if (this.$refs.form.validate()) {
-						if(!localStorage.getItem('user')){
+						if(!localStorage.getItem('userInfo')){
 							this.$Message.error('请先登录');
 						}else{
 							let postData = this.need;
 							postData.Function = 'InsertDemand';
-							postData.openid = localStorage.getItem('phone') ? localStorage.getItem('phone') : "";
+							postData.openid = this.phone;
 							Post('/api/Incubator/APIMethod', postData)
 						.then(res => {
 							console.log(res);
@@ -502,10 +504,21 @@
 					window.open('login.html','_self')
 				},
 				out() {
-                    localStorage.removeItem('user');
-                    localStorage.removeItem('phone');
+                    localStorage.removeItem('userInfo');
                     this.user = ''
-                }
+                },
+
+				checkStorage(){
+					let userInfo = JSON.parse(localStorage.getItem('userInfo'));
+					console.log(userInfo);
+					if(userInfo){
+					if(Date.now() - userInfo.time < 7200000){
+						this.user = userInfo.user;
+						this.phone = userInfo.phone;
+					}
+					else localStorage.removeItem('userInfo');
+					}
+				}
 				
 			}
 		})

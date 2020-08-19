@@ -286,12 +286,13 @@
 					],
 					chatList:[
 					],
-					user:''
+					user:'',
+					phone:''
 
 				}
 			},
 			created() {
-				this.user = localStorage.getItem('user') ? localStorage.getItem('user') : '';
+				this.checkStorage()
 			},
 			beforeMount() {
 
@@ -300,7 +301,8 @@
 				this.init();
 				this.getData(32);
 				this.getHeight();
-				this.showMask = false
+				this.showMask = false;
+				
 			},
 			methods: {
 				getHeight() {
@@ -343,7 +345,7 @@
 						})
 				},
 				consult(id){
-					if(!localStorage.getItem('user'))
+					if(!localStorage.getItem('userInfo'))
 					this.$Message.error('请先登录');
 					else this.dialog = true;
 
@@ -357,7 +359,7 @@
 						Function: 'InsertConsultation',
 						id: id,
 						intro: this.tip,
-						openid:localStorage.getItem('phone') ? localStorage.getItem('phone') : '1'
+						openid:this.phone
 					};
 					// postData = JSON.stringify(postData);
 					Post('/api/Incubator/APIMethod', postData)
@@ -383,7 +385,7 @@
 						id: id,
 						page: 1,
 						rows: 10,
-						openid:localStorage.getItem('phone') ? localStorage.getItem('phone') : '1'
+						openid:this.phone
 					};
 					// postData = JSON.stringify(postData);
 					Post('/api/Incubator/APIMethod', postData)
@@ -400,10 +402,21 @@
 					window.open('login.html','_self')
 				},
 				out() {
-                    localStorage.removeItem('user');
-                    localStorage.removeItem('phone');
+                    localStorage.removeItem('userInfo');
                     this.user = ''
-                }
+                },
+
+				checkStorage(){
+					let userInfo = JSON.parse(localStorage.getItem('userInfo'));
+					console.log(userInfo);
+					if(userInfo){
+					if(Date.now() - userInfo.time < 7200000){
+						this.user = userInfo.user;
+						this.phone = userInfo.phone
+					}
+					else localStorage.removeItem('userInfo');
+					}
+				}
 
 			}
 		})
