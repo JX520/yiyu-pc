@@ -335,19 +335,18 @@
 					Post('/api/Incubator/APIMethod', postData)
 						.then(res => {
 							console.log(res);
-							this.tabData = res.data.data
+							this.tabData = res.data.data;
+							this.getChat(id);
 						})
 						.catch(err => {
 							console.log(err)
 						})
 				},
 				consult(id){
-					if(!localStorage.getItem('user')){
-							this.$Message.error('请先登录');
-						}else{
-							this.dialog = true;
-							this.getChat(id);
-						}
+					if(!localStorage.getItem('user'))
+					this.$Message.error('请先登录');
+					else this.dialog = true;
+
 				},
 				submit(id) {
 					// this.dialog = false;

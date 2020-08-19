@@ -226,14 +226,15 @@
                                     if (res.data.Code == 1) {
                                         localStorage.setItem('user', res.data.data.name);
                                         localStorage.setItem('phone',res.data.data.phone)
-                                        this.$Message.success('登录成功,正在前往首页...');
+                                        this.$Message.success('登录成功!');
                                         setTimeout(function(){
-                                            window.open('index.html','_self')
+                                            // window.open('index.html','_self');
+                                            window.history.back();
                                         },1000);
                                         setTimeout(function(){
                                             localStorage.removeItem('user')
                                             localStorage.removeItem('phone')
-                                        },7200000)
+                                        },600000)
                                     }else{
                                         this.$Message.error(res.data.Message);
                                     }
