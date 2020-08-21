@@ -89,7 +89,7 @@
 			<div class="row header">
 					<div class="left   col-sm-0 col-md-3 col-lg-5">
 						<div class="">
-							<img class="logo" src="./static/img/logo.png" alt="" title="安广·规上古">
+							<img class="logo" src="./static/img/logo.png" alt="" title="安广·规上谷">
 						</div>
 					</div>
 					<div class="right  col-sm-9 col-md-7 col-lg-5">
@@ -123,14 +123,15 @@
 						</v-row>
 					</div>
 				</div>
-		<v-app>
+		
 			<div class="box">
-
+				<v-app>
 				<v-card color="basil" style="width:100%">
 
 					<v-card-title class="text-center justify-center py-6">
 						<p class="font-weight-bold display-3 basil--text " style="width:100%">企业服务</p>
 					</v-card-title>
+					
 					<v-tabs vertical>
 						<div ref='element'>
 							<v-tab class="tab-title" v-for='(tab,index) in tabsList' :key='index'
@@ -139,7 +140,7 @@
 							</v-tab>
 						</div>
 
-
+						
 						<v-tab-item v-for='(tab,index) in tabsList' :key='index'>
 							<v-card flat>
 								<div class="card" :style="{'min-height':tabHeight + 'px'}">
@@ -176,7 +177,7 @@
 					<v-card flat tile class="indigo lighten-1 white--text text-center">
 						<v-divider></v-divider>
 						<v-card-text class="white--text " style="width:100%">
-							{{ new Date().getFullYear() }} — <strong>安广 · 规上古</strong>
+							{{ new Date().getFullYear() }} — <strong>安广 · 规上谷</strong>
 						</v-card-text>
 					</v-card>
 				</v-footer>
@@ -271,7 +272,7 @@
 							url: 'index.html'
 						},
 						{
-							title: '规上古头条',
+							title: '规上谷头条',
 							url: 'news.html'
 						},
 						{
