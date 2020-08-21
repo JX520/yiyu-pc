@@ -123,9 +123,10 @@
 					<img class="logo" src="./static/img/logo.png" alt="" title="安广·规上古">
 				</div>
 			</div>
-			<div class="right  col-sm-11 col-md-9 col-lg-7 col-xl-6">
-				<v-row>
-					<v-col>
+			<div class="right  col-sm-10 col-md-8 col-lg-7 col-xl-6">
+				<!-- <v-row class="center"> -->
+					<!-- <v-col> -->
+						<div >
 						<v-btn-toggle v-model="text" tile color="deep-purple accent-3" group>
 							<v-btn :value="url.title" v-for='(url,index) in toUrl' :key='index'>
 								<a :href="url.url">{{url.title}}</a>
@@ -136,12 +137,13 @@
 							</v-btn>
 
 						</v-btn-toggle>
-					</v-col>
-				</v-row>
+					</div>
+					<!-- </v-col> -->
+				<!-- </v-row> -->
 			</div>
 			<div class="login  col-sm-1 col-md-1 col-lg-2 col-xl-2">
-				<v-row>
-					<v-col>
+<!-- 				<v-row>
+					<v-col> -->
 						<v-btn-toggle v-model="text" tile color="deep-purple accent-3" group>
 							<v-btn v-if="!user" value="登录" @click='toLogin'>
 								注册登录
@@ -152,8 +154,8 @@
 								<span style="font-size:0.8rem">退出</span>
 							</v-btn>
 						</v-btn-toggle>
-					</v-col>
-				</v-row>
+		<!-- 			</v-col>
+				</v-row> -->
 			</div>
 
 		</div>
