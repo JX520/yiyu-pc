@@ -17803,7 +17803,8 @@ html.overflow-y-hidden {
     flex-direction: column;
     min-height: 100vh;
     max-width: 100%;
-    position: relative
+    position: relative;
+    overflow-y:auto
 }
 
 @-moz-document url-prefix() {

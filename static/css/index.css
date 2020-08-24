@@ -133,6 +133,7 @@ div {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 0 1vw;
+  overflow-y: auto;
 }
 
 .box .tab1 {
@@ -522,7 +523,7 @@ div {
   top: 15px;
 }
 
-.login {
+.login1 {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -533,10 +534,13 @@ div {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-image: url(../img/bg.jpg);
+  background-size: cover;
 }
 
-.login .login-pannel {
-  max-width: 500px;
+.login1 .login-pannel {
+  position: absolute;
+  max-width: 600px;
 }
 
 .mask {

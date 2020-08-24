@@ -107,7 +107,7 @@ div {
   .box{
     box-sizing: border-box;
     padding: 0 1vw;
-    
+    overflow-y: auto;
     .tab1{
       margin: 40px 0;
       display: flex;
@@ -410,13 +410,30 @@ div {
 }
 
 //登录
-.login{
+.login1{
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url(../img/bg.jpg);
+	background-size: cover;
+//   .bg-img , .bg-color {
+//     min-width: 50%;
+//     vertical-align: top;
+//     padding: 0;
+//     margin-left: 0;
+//     height: 100%;
+//     background-color: #CAF0D3;
+//     display: inline-block;
+//     overflow: hidden;
+// }
+// .bg-img {
+// 	background-image: url(../img/bg.jpg);
+// 	background-size: cover;
+// }
   .login-pannel{
-    max-width:500px;
+    position: absolute;
+    max-width: 600px;
   }
 }
 

@@ -16,7 +16,7 @@
 
 <style>
     .v-card__title {
-        background-color: cadetblue;
+        background-color: cornflowerblue;
     }
 </style>
 
@@ -28,7 +28,9 @@
 
         <!-- 登录 -->
         <v-app>
-            <div class="login" :style="{height:Height +'px'}">
+            <div class="login1" :style="{height:Height +'px'}">
+                <!-- <div class="bg-img"></div>
+                <div class="bg-color"></div> -->
                 <div class="login-pannel">
                     <v-form ref="formLogin" v-if='isLogin' v-model="valid" lazy-validation>
                         <v-card>
@@ -54,7 +56,7 @@
                             </v-card-text>
                             <v-card-actions>
                                 <v-spacer></v-spacer>
-                                <v-btn color="blue darken-1" text @click="goReg()">前往注册</v-btn>
+                                <v-btn color="blue darken-1" text @click="goReg()">注册</v-btn>
                                 <v-btn color="blue darken-1" text @click="Login">登录</v-btn>
                             </v-card-actions>
                         </v-card>
@@ -109,8 +111,8 @@
                             </v-card-text>
                             <v-card-actions>
                                 <v-spacer></v-spacer>
-                                <v-btn color="blue darken-1" text @click="isLogin = true">前往登录</v-btn>
-                                <v-btn color="blue darken-1" text @click="Register">提交注册</v-btn>
+                                <v-btn color="blue darken-1" text @click="isLogin = true">登录</v-btn>
+                                <v-btn color="blue darken-1" text @click="Register">注册</v-btn>
                             </v-card-actions>
                         </v-card>
                     </v-form>
@@ -237,10 +239,6 @@
                                             // window.open('index.html','_self');
                                             window.history.back();
                                         },1000);
-                                        setTimeout(function(){
-                                            localStorage.removeItem('user')
-                                            localStorage.removeItem('phone')
-                                        },600000)
                                     }else{
                                         this.$Message.error(res.data.Message);
                                     }
@@ -255,7 +253,6 @@
                 Register() {
                     if (this.$refs.formReg.validate()) {
                         if (this.captcha == this.formReg.captcha) {
-                            console.log('success');
                             let postData = {
                                 Function: 'InsertRegUser',
                                 name: this.formReg.user,
@@ -267,16 +264,16 @@
                                 .then(res => {
                                     console.log(res);
                                     if (res.data.Code == 1) {
-                                        localStorage.setItem('user', this.formReg.user);
-                                        localStorage.setItem('phone',this.formReg.phone)
+                                        let userInfo = JSON.stringify({
+                                            user:this.formReg.user,
+                                            phone:this.formReg.phone,
+                                            time:Date.now(),
+                                        });
+                                        localStorage.setItem('userInfo',userInfo);
                                         this.$Message.success('注册成功,正在前往首页...');
                                         setTimeout(function(){
                                             window.open('index.html','_self')
                                         },1000);
-                                        setTimeout(function(){
-                                            localStorage.removeItem('user')
-                                            localStorage.removeItem('phone')
-                                        },7200000)
                                     }else{
                                         this.$Message.error(res.data.Message);
                                     }
@@ -295,6 +292,7 @@
                 
             }
         })
+
     </script>
 </body>
 

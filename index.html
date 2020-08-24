@@ -120,7 +120,7 @@
 		<div class="row header">
 			<div class="left   col-md-2 col-lg-3 col-xl-4">
 				<div class="">
-					<img class="logo" src="./static/img/logo.png" alt="" title="安广·规上古">
+					<img class="logo" src="./static/img/logo.png" alt="" title="安广·规上谷">
 				</div>
 			</div>
 			<div class="right  col-sm-10 col-md-8 col-lg-7 col-xl-6">
@@ -289,7 +289,7 @@
 							<v-card flat tile class="indigo lighten-1 white--text text-center">
 								<v-divider></v-divider>
 								<v-card-text class="white--text " style="width:100%">
-									{{ new Date().getFullYear() }} — <strong>安广 · 规上古</strong>
+									{{ new Date().getFullYear() }} — <strong>安广 · 规上谷</strong>
 								</v-card-text>
 							</v-card>
 						</v-footer>
@@ -468,7 +468,7 @@
 				
 				showNeed() {
 					this.dialog = true;
-					if(!localStorage.getItem('user')){
+					if(!localStorage.getItem('userInfo')){
 						this.$Message.warning({
 						content: '登录后才可提交需求',
 						duration: 3
