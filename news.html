@@ -192,8 +192,8 @@
 					</Tabs> -->
 
 				<v-card color="basil" style="width:100%">
-					<v-card-title class="text-center justify-center py-6">
-						<p class="font-weight-bold display-3 basil--text " style="width:100%">News</p>
+					<v-card-title class="text-center justify-center ">
+						<p class="font-weight-bold  basil--text " style="width:100%">规上谷头条</p>
 					</v-card-title>
 
 					<v-tabs v-model="tab" background-color="transparent" color="basil" grow>
@@ -209,7 +209,7 @@
 							<v-card color="basil" flat>
 								<div class="noData" v-if='!item2.detail.length'>暂无数据</div>
 								<div class="item" @click='detail(item1.nid)' v-for='(item1,index1) in item2.detail' :key=index1>
-									<img :src="item1.img" v-if='item1.img'
+									<img :src="item1.img ? item1.img : './static/img/logo.png'" 
 										style="width:15vw;height:10vw;border-radius: 10px;padding: 2px"></img>
 									<div class="right">
 										<p class="title">{{item1.title}}</p>
@@ -271,7 +271,7 @@
 					tab: null,
 					tabData: [
 						'政策',
-						'咨询'
+						'资讯'
 					],
 					text: 'center',
 					toUrl: [{

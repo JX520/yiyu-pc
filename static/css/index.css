@@ -47,6 +47,28 @@ div {
   }
 }
 
+@media screen and (max-width: 650px) {
+  .box .tab1 .tab-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  .row {
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+  }
+}
+
+.v-tabs--grow > .v-tabs-bar .v-tab {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
 .m-grid {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -81,12 +103,11 @@ div {
 }
 
 .header .left .logo {
-  height: 3vw;
+  max-height: 70px;
 }
 
 .header .right {
   font-size: 1rem;
-  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -161,14 +182,14 @@ div {
       justify-content: space-around;
   font-size: 0.8rem;
   color: #606266;
-  height: 60px;
+  line-height: 3.5vw;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
 .box .tab1 .tab-title span {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #303133;
 }
 
@@ -278,6 +299,7 @@ div {
 .box .item .right .title {
   font-size: 1.2rem;
   color: #303133;
+  font-weight: 600;
 }
 
 .box .item .right .p_time {
@@ -331,6 +353,7 @@ div {
 .box .news .title {
   font-size: 1.2rem;
   color: #303133;
+  font-weight: 600;
 }
 
 .box .news .newsImg {

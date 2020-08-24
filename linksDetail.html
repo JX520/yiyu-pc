@@ -98,7 +98,7 @@
                 <v-app>
             <!-- 轮播 -->
             <div>
-                <Carousel autoplay v-model="carousel" loop :autoplay-speed='3000'>
+                <!-- <Carousel autoplay v-model="carousel" loop :autoplay-speed='3000'>
                     <Carousel-Item v-for='(item,index) in detail.swiperList' :key='index'>
                         <div class="demo-carousel">
                             <img style="max-width:100%;margin: 0 auto" :style="{height:carouselHeight + 'vw'}" :src="item" class=""
@@ -106,7 +106,26 @@
                         </div>
                     </Carousel-Item>
 
-                </Carousel>
+                </Carousel> -->
+                <v-carousel 
+						cycle  :style="{height:carouselHeight + 'vw'}"
+						hide-delimiter-background 
+						:show-arrows="false" 
+						:interval='3000'
+						>
+							<v-carousel-item  :style="{height:carouselHeight + 'vw'}" v-for='(item,index) in detail.swiperList' :key='index' >
+                                    <img style="width:100%;margin:0 auto" :style="{height:carouselHeight + 'vw'}"
+                                    :src="item" class="" alt="轮播图片">
+								<!-- <v-sheet  height="100%">
+									<v-row class="fill-height" align="center" justify="center">
+										 <div class="display-3">{{ slide }} Slide</div> 
+										<img style="width:100%;margin:0 auto" :style="{height:carouselHeight + 'vw'}"
+										:src="item" class="" alt="轮播图片">
+									</v-row>
+									
+								</v-sheet> -->
+							</v-carousel-item>
+						</v-carousel>
             </div>
             <Divider></Divider>
             <div class="news">
@@ -220,7 +239,7 @@
 
             methods: {
                 getCHeight() {
-                    this.carouselHeight = (window.innerHeight - 100) / 100 * (window.innerHeight - 100) / 180;
+                    this.carouselHeight = (window.innerHeight - 100) / 100 * (window.innerHeight - 100) / 160;
                 },
                 getID() {
                     let params = location.search.substring(1);
