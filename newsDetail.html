@@ -20,7 +20,10 @@
 }
     .box {
         box-sizing: border-box;
-        padding: 0 15vw;
+        /* padding: 0 15vw; */
+        flex-direction: column;
+    display: flex;
+    align-items: center
     }
 
     .card-body {
@@ -49,7 +52,7 @@
         /* background-color: #5c6bc0 */
     }
     a{
-        color: white
+        color: antiquewhite
     }
 </style>
 
@@ -58,45 +61,36 @@
             
         <!-- 头部 -->
         <div class="row header">
-                <div class="left   col-sm-0 col-md-3 col-lg-5">
+                <div class="left   col-md-2 col-lg-3 col-xl-4">
                     <div class="">
                         <img class="logo" src="./static/img/logo.png" alt="" title="安广·规上谷">
                     </div>
                 </div>
-                <div class="right  col-sm-9 col-md-7 col-lg-5">
-                    <v-row>
-                        <v-col>
-                            <v-btn-toggle v-model="text" tile color="deep-purple accent-3" group>
-                                <v-btn :value="url.title" v-for='(url,index) in toUrl' :key='index'>
-                                    <a :href="url.url">{{url.title}}</a>
-                                </v-btn>
-    
+                <div class="right  col-sm-10 col-md-8 col-lg-7 col-xl-6">
+                        <div class="menu1">
+                                <a  href="index.html">众创空间</a>
+                                <a class="active" href="news.html">规上谷头条</a>
                                 
-    
-                            </v-btn-toggle>
-                        </v-col>
-                    </v-row>
+                                <a  href="links.html">环保科技链</a>
+                                <a   href="services.html">企业服务</a>
+                                <a href="require.html"> 我有需求</a>
+                        </div>
                 </div>
-                <div class="login  col-sm-1 col-md-1 col-lg-2 col-xl-1">
-                    <v-row>
-                        <v-col>
-                            <v-btn-toggle v-model="text" tile color="deep-purple accent-3" group>
-                                <v-btn v-if="!user" value="登录" @click='toLogin'>
-                                    注册登录
-                                </v-btn>
+                <div class="login  col-sm-2  col-md-2 col-lg-2 col-xl-2">
+                        <div class="menu1">
+                                <a v-if="!user" style="color: white;" @click='toLogin'>注册登录</a>
                                 <span style="display: flex;
-                                align-items: center;color: white;" v-if="user">{{user}} </span>
-                                <v-btn v-if="user" value="退出" @click='out'>
-                                        <span style="font-size:0.8rem">退出</span>
-                                </v-btn>
-                            </v-btn-toggle>
-                        </v-col>
-                    </v-row>
+							align-items: center;color: white;margin-right: 10px" v-if="user">{{user}} </span>
+							
+							<span v-if="user"  @click='out' style="font-size:0.8rem;color: gray">退出</span>
+                        </div>
                 </div>
             </div>
 
         <div class="box">
-                <v-app>
+                <div class="col-lg-1 col-xl-2"></div>
+					<div class="col-sm-12 col-md-auto col-lg-10 col-xl-8 ">
+                            <v-app>
             <Divider></Divider>
             <div class="news">
                 <p class="title">{{detail.title}}</p>
@@ -127,10 +121,13 @@
 					  <v-card-text class="white--text " style="width:100%">
 						{{ new Date().getFullYear() }} — <strong>安广 · 规上谷</strong>
 					  </v-card-text>
-					</v-card>
+					
                   </v-footer>
-                </v-app>
+                </v-card>
         </div>
+    
+        </div>
+        <div class="col-lg-1 col-xl-2"></div>
         <div class="mask" v-if="showMask">
 				<view class="loader loading8">
 						<view class="loader-pacman"></view>

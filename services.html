@@ -25,7 +25,10 @@
 
 	.box {
 		box-sizing: border-box;
-		padding: 0 15vw;
+		/* padding: 0 15vw; */
+		flex-direction: column;
+    display: flex;
+    align-items: center
 	}
 
 	.v-application--wrap {
@@ -79,24 +82,34 @@
 		border-color: #5c6bc0 !important;
 	}
 	a{
-        color: white
-    }
+		/* color: paleturquoise */
+		color: antiquewhite
+	}
+	 .v-card__title{
+		padding: 5px
+	}
+	.v-tab.v-tab{
+		color: white
+	}
+	.v-tab--active{
+		background: #5c6bc0
+	}
 </style>
 
 <body>
 	<div id="app" class="" v-cloak>
 
 			<div class="row header">
-					<div class="left   col-sm-0 col-md-3 col-lg-5">
+					<div class="left   col-md-2 col-lg-3 col-xl-4">
 						<div class="">
 							<img class="logo" src="./static/img/logo.png" alt="" title="安广·规上谷">
 						</div>
 					</div>
-					<div class="right  col-sm-9 col-md-7 col-lg-5">
-						<v-row>
+					<div class="right  col-sm-10 col-md-8 col-lg-7 col-xl-6">
+						<!-- <v-row>
 							<v-col>
 								<v-btn-toggle v-model="text" tile color="deep-purple accent-3" group>
-									<v-btn :value="url.title" v-for='(url,index) in toUrl' :key='index'>
+									<v-btn :value="url.title" color="success" v-for='(url,index) in toUrl' :key='index'>
 										<a :href="url.url">{{url.title}}</a>
 									</v-btn>
 		
@@ -104,10 +117,25 @@
 		
 								</v-btn-toggle>
 							</v-col>
-						</v-row>
+						</v-row> -->
+						<div class="menu1">
+								<a href="index.html">众创空间</a>
+								<a href="news.html">规上谷头条</a>
+								
+								<a href="links.html">环保科技链</a>
+								<a class="active"  href="services.html">企业服务</a>
+								<a href="require.html"> 我有需求</a>
+						</div>
 					</div>
-					<div class="login  col-sm-1 col-md-1 col-lg-2 col-xl-1">
-						<v-row>
+					<div class="login  col-sm-2  col-md-2 col-lg-2 col-xl-2">
+							<div class="menu1">
+									<a v-if="!user" style="color: white;" @click='toLogin'>注册登录</a>
+									<span style="display: flex;
+							align-items: center;color: white;margin-right: 10px" v-if="user">{{user}} </span>
+							
+							<span v-if="user"  @click='out' style="font-size:0.8rem;color: gray">退出</span>
+							</div>
+						<!-- <v-row>
 							<v-col>
 								<v-btn-toggle v-model="text" tile color="deep-purple accent-3" group>
 									<v-btn v-if="!user" value="登录" @click='toLogin'>
@@ -120,16 +148,20 @@
 									</v-btn>
 								</v-btn-toggle>
 							</v-col>
-						</v-row>
+						</v-row> -->
 					</div>
 				</div>
 		
 			<div class="box">
-				<v-app>
+				
+					<div class="col-lg-1 col-xl-2"></div>
+					
+					<div class="col-sm-12 col-md-auto col-lg-10 col-xl-8 ">
+							<v-app>
 				<v-card color="basil" style="width:100%">
 
 					<v-card-title class="text-center justify-center ">
-						<h3 class="font-weight-bold  basil--text " style="width:100%">企业服务</h3>
+						<p class="font-weight-bold  basil--text " style="width:100%">企业服务</p>
 					</v-card-title>
 					
 					<v-tabs vertical>
@@ -172,6 +204,7 @@
 					</v-tabs>
 
 				</v-card>
+			
 
 				<v-footer padless>
 					<v-card flat tile class="indigo lighten-1 white--text text-center">
@@ -227,14 +260,16 @@
 				</v-dialog>
 			</v-row>
 
-
-
 		</v-app>
+			</div>
+		
+			<div class="col-lg-1 col-xl-2"></div>
+		
 		<div class="mask" v-if="showMask">
 				<view class="loader loading8">
 						<view class="loader-pacman"></view>
 					  </view>
-					  <span>加载中</span>
+					  <span>加载中...</span>
 		</div>
 
 	</div>

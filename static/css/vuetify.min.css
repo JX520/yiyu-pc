@@ -17801,7 +17801,7 @@ html.overflow-y-hidden {
     backface-visibility: hidden;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     max-width: 100%;
     position: relative;
     overflow-y:auto
@@ -18155,7 +18155,7 @@ html.overflow-y-hidden {
 .v-responsive {
     position: relative;
     overflow: hidden;
-    flex: 1 0 auto;
+    /* flex: 1 0 auto; */
     max-width: 100%;
     display: flex
 }
