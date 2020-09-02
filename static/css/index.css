@@ -136,7 +136,7 @@ div {
 }
 
 .header .left .logo {
-  max-height: 65px;
+  max-height: 60px;
   border-radius: 5px;
 }
 
@@ -542,7 +542,7 @@ div {
 }
 
 .chat .message-item.right .content::after {
-  content: '';
+  content: "";
   display: block;
   width: 0;
   height: 0;
@@ -568,7 +568,7 @@ div {
 }
 
 .chat .message-item.left .content::after {
-  content: '';
+  content: "";
   display: block;
   width: 0;
   height: 0;

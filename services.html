@@ -27,8 +27,8 @@
 		box-sizing: border-box;
 		/* padding: 0 15vw; */
 		flex-direction: column;
-    display: flex;
-    align-items: center
+		display: flex;
+		align-items: center
 	}
 
 	.v-application--wrap {
@@ -61,7 +61,7 @@
 	}
 
 	.v-card__title {
-		background: darkseagreen;
+		background: rgb(88, 155, 243);
 	}
 
 	.basil {
@@ -69,7 +69,11 @@
 	}
 
 	.basil--text {
-		color: #356859 !important;
+		color: white !important;
+	}
+
+	.v-tab--active {
+		background: #5c6bc0
 	}
 
 	.v-sheet.v-footer {
@@ -81,17 +85,21 @@
 		background-color: #5c6bc0 !important;
 		border-color: #5c6bc0 !important;
 	}
-	a{
+
+	a {
 		/* color: paleturquoise */
 		color: antiquewhite
 	}
-	 .v-card__title{
+
+	.v-card__title {
 		padding: 5px
 	}
-	.v-tab.v-tab{
+
+	.v-tab.v-tab {
 		color: white
 	}
-	.v-tab--active{
+
+	.v-tab--active {
 		background: #5c6bc0
 	}
 </style>
@@ -99,14 +107,14 @@
 <body>
 	<div id="app" class="" v-cloak>
 
-			<div class="row header">
-					<div class="left   col-md-2 col-lg-3 col-xl-4">
-						<div class="">
-							<img class="logo" src="./static/img/logo.png" alt="" title="安广·规上谷">
-						</div>
-					</div>
-					<div class="right  col-sm-10 col-md-8 col-lg-7 col-xl-6">
-						<!-- <v-row>
+		<div class="row header">
+			<div class="left   col-md-2 col-lg-3 col-xl-4">
+				<div class="">
+					<img class="logo" src="./static/img/logo.png" alt="" title="安广·规上谷">
+				</div>
+			</div>
+			<div class="right  col-sm-10 col-md-8 col-lg-7 col-xl-6">
+				<!-- <v-row>
 							<v-col>
 								<v-btn-toggle v-model="text" tile color="deep-purple accent-3" group>
 									<v-btn :value="url.title" color="success" v-for='(url,index) in toUrl' :key='index'>
@@ -118,24 +126,24 @@
 								</v-btn-toggle>
 							</v-col>
 						</v-row> -->
-						<div class="menu1">
-								<a href="index.html">众创空间</a>
-								<a href="news.html">规上谷头条</a>
-								
-								<a href="links.html">环保科技链</a>
-								<a class="active"  href="services.html">企业服务</a>
-								<a href="require.html"> 我有需求</a>
-						</div>
-					</div>
-					<div class="login  col-sm-2  col-md-2 col-lg-2 col-xl-2">
-							<div class="menu1">
-									<a v-if="!user" style="color: white;" @click='toLogin'>注册登录</a>
-									<span style="display: flex;
+				<div class="menu1">
+					<a href="index.html">众创空间</a>
+					<a href="news.html">规上谷头条</a>
+
+					<a href="links.html">环保科技链</a>
+					<a class="active" href="services.html">企业服务</a>
+					<a href="require.html"> 我有需求</a>
+				</div>
+			</div>
+			<div class="login  col-sm-2  col-md-2 col-lg-2 col-xl-2">
+				<div class="menu1">
+					<a v-if="!user" style="color: white;font-size:0.8rem;" @click='toLogin'>注册登录</a>
+					<span style="display: flex;
 							align-items: center;color: white;margin-right: 10px" v-if="user">{{user}} </span>
-							
-							<span v-if="user"  @click='out' style="font-size:0.8rem;color: gray">退出</span>
-							</div>
-						<!-- <v-row>
+
+					<span v-if="user" @click='out' style="font-size:0.8rem;color: gray">退出</span>
+				</div>
+				<!-- <v-row>
 							<v-col>
 								<v-btn-toggle v-model="text" tile color="deep-purple accent-3" group>
 									<v-btn v-if="!user" value="登录" @click='toLogin'>
@@ -149,78 +157,77 @@
 								</v-btn-toggle>
 							</v-col>
 						</v-row> -->
-					</div>
-				</div>
-		
-			<div class="box">
-				
-					<div class="col-lg-1 col-xl-2"></div>
-					
-					<div class="col-sm-12 col-md-auto col-lg-10 col-xl-8 ">
-							<v-app>
-				<v-card color="basil" style="width:100%">
+			</div>
+		</div>
 
-					<v-card-title class="text-center justify-center ">
-						<p class="font-weight-bold  basil--text " style="width:100%">企业服务</p>
-					</v-card-title>
-					
-					<v-tabs vertical>
-						<div ref='element'>
-							<v-tab class="tab-title" v-for='(tab,index) in tabsList' :key='index'
-								@click='getData(tab.id)'>
-								{{tab.title}}
-							</v-tab>
-						</div>
+		<div class="box">
 
-						
-						<v-tab-item v-for='(tab,index) in tabsList' :key='index'>
-							<v-card flat>
-								<div class="card" :style="{'min-height':tabHeight + 'px'}">
-									<p class="title">{{tabData.category}}</p>
-									<div class="text-center">
-										<v-btn class="mx-2" fab dark color="teal" @click='consult(tabData.cid)'>
-											<span>咨询</span>
-										</v-btn>
+			<div class="col-lg-1 col-xl-2"></div>
+
+			<div class="col-sm-12 col-md-auto col-lg-10 col-xl-8 ">
+				<v-app>
+					<v-card color="basil" style="width:100%">
+
+						<!-- <v-card-title class="text-center justify-center ">
+							<p class="font-weight-bold  basil--text " style="width:100%">企业服务</p>
+						</v-card-title> -->
+
+						<v-tabs vertical>
+							<div ref='element'>
+								<v-tab class="tab-title" v-for='(tab,index) in tabsList' :key='index' @click='getData(tab.id)'>
+									{{tab.title}}
+								</v-tab>
+							</div>
+
+
+							<v-tab-item v-for='(tab,index) in tabsList' :key='index'>
+								<v-card flat>
+									<div class="card" :style="{'min-height':tabHeight + 'px'}">
+										<p class="title">{{tabData.category}}</p>
+										<div class="text-center">
+											<v-btn class="mx-2" fab dark color="teal" @click='consult(tabData.cid)'>
+												<span>咨询</span>
+											</v-btn>
+										</div>
+										<div class="link">
+											<div><span>负责人：</span>{{tabData.name}}</div>
+											<div><span>联系电话：</span>{{tabData.phone}}</div>
+										</div>
+										<img :src="tabData.img" alt="">
+										<div class="m-divider">
+											<p></p>
+											<span>服务介绍</span>
+											<p></p>
+										</div>
+										<div class="content">
+											{{tabData.detail}}
+										</div>
 									</div>
-									<div class="link">
-										<div><span>负责人：</span>{{tabData.name}}</div>
-										<div><span>联系电话：</span>{{tabData.phone}}</div>
-									</div>
-									<img :src="tabData.img" alt="">
-									<div class="m-divider">
-										<p></p>
-										<span>服务介绍</span>
-										<p></p>
-									</div>
-									<div class="content">
-										{{tabData.detail}}
-									</div>
-								</div>
 
 
-							</v-card>
-						</v-tab-item>
+								</v-card>
+							</v-tab-item>
 
-					</v-tabs>
+						</v-tabs>
 
-				</v-card>
-			
-
-				<v-footer padless>
-					<v-card flat tile class="indigo lighten-1 white--text text-center">
-						<v-divider></v-divider>
-						<v-card-text class="white--text " style="width:100%">
-							{{ new Date().getFullYear() }} — <strong>安广 · 规上谷</strong>
-						</v-card-text>
 					</v-card>
-				</v-footer>
+
+
+					<v-footer padless>
+						<v-card flat tile class="indigo lighten-1 white--text text-center">
+							<v-divider></v-divider>
+							<v-card-text class="white--text " style="width:100%">
+								{{ new Date().getFullYear() }} — <strong>安广 · 规上谷</strong>
+							</v-card-text>
+						</v-card>
+					</v-footer>
 			</div>
 
 			<!-- 咨询框 -->
 			<v-row justify="center">
 				<v-dialog v-model="dialog" max-width="600px" max-height='600px'>
-					
-					
+
+
 
 					<v-form ref="form" v-model="valid" lazy-validation>
 						<v-card>
@@ -229,11 +236,12 @@
 							</v-card-title>
 							<div class="chat">
 								<div v-if='!chatList.length' style="text-align:center">暂无对话</div>
-									<div >
-										<div class="message-item" v-for='(chat,i) in chatList' :key='i' :class="chat.MsgType ? 'right' : 'left' ">
-											<div class="content">{{chat.MsgContent}}</div>
-										</div>
+								<div>
+									<div class="message-item" v-for='(chat,i) in chatList' :key='i'
+										:class="chat.MsgType ? 'right' : 'left' ">
+										<div class="content">{{chat.MsgContent}}</div>
 									</div>
+								</div>
 							</div>
 							<v-card-text>
 								<v-container>
@@ -243,9 +251,8 @@
 											<v-text-field label="咨询类型：" disabled :placeholder='tabData.category'>
 											</v-text-field>
 										</v-col>
-										<v-textarea v-model="tip" clearable :rules="[rules.required]"
-											placeholder='请输入咨询内容(必填)' auto-grow filled color="deep-purple" label="咨询内容"
-											rows="3" required>
+										<v-textarea v-model="tip" clearable :rules="[rules.required]" placeholder='请输入咨询内容(必填)' auto-grow
+											filled color="deep-purple" label="咨询内容" rows="3" required>
 										</v-textarea>
 									</v-row>
 								</v-container>
@@ -260,16 +267,16 @@
 				</v-dialog>
 			</v-row>
 
-		</v-app>
-			</div>
-		
-			<div class="col-lg-1 col-xl-2"></div>
-		
+			</v-app>
+		</div>
+
+		<div class="col-lg-1 col-xl-2"></div>
+
 		<div class="mask" v-if="showMask">
-				<view class="loader loading8">
-						<view class="loader-pacman"></view>
-					  </view>
-					  <span>加载中...</span>
+			<view class="loader loading8">
+				<view class="loader-pacman"></view>
+			</view>
+			<span>加载中...</span>
 		</div>
 
 	</div>
@@ -289,7 +296,7 @@
 			vuetify: new Vuetify(),
 			data: function () {
 				return {
-					showMask:true,
+					showMask: true,
 					tabsList: [
 						'选项1', '选项2', '选项3'
 					],
@@ -320,10 +327,9 @@
 						},
 
 					],
-					chatList:[
-					],
-					user:'',
-					phone:''
+					chatList: [],
+					user: '',
+					phone: ''
 
 				}
 			},
@@ -338,7 +344,7 @@
 				this.getData(32);
 				this.getHeight();
 				this.showMask = false;
-				
+
 			},
 			methods: {
 				getHeight() {
@@ -380,48 +386,48 @@
 							console.log(err)
 						})
 				},
-				consult(id){
-					if(!localStorage.getItem('userInfo'))
-					this.$Message.error('请先登录');
+				consult(id) {
+					if (!localStorage.getItem('userInfo'))
+						this.$Message.error('请先登录');
 					else this.dialog = true;
 
 				},
 				submit(id) {
 					// this.dialog = false;
 					if (this.$refs.form.validate()) {
-						
+
 						// this.$refs.form.reset()
 						let postData = {
-						Function: 'InsertConsultation',
-						id: id,
-						intro: this.tip,
-						openid:this.phone
-					};
-					// postData = JSON.stringify(postData);
-					Post('/api/Incubator/APIMethod', postData)
-						.then(res => {
-							console.log(res);
-							if(res.data.Code ==1){
-								this.$Message.success('提交成功!请等待客服回复');
-								this.$refs.form.reset();
-								this.getChat(id);
-							}
-						})
-						.catch(err => {
-							console.log(err)
-						})
-							
-					
+							Function: 'InsertConsultation',
+							id: id,
+							intro: this.tip,
+							openid: this.phone
+						};
+						// postData = JSON.stringify(postData);
+						Post('/api/Incubator/APIMethod', postData)
+							.then(res => {
+								console.log(res);
+								if (res.data.Code == 1) {
+									this.$Message.success('提交成功!请等待客服回复');
+									this.$refs.form.reset();
+									this.getChat(id);
+								}
+							})
+							.catch(err => {
+								console.log(err)
+							})
+
+
 					}
 				},
 
-				getChat(id){
+				getChat(id) {
 					let postData = {
 						Function: 'GetConsultation',
 						id: id,
 						page: 1,
 						rows: 10,
-						openid:this.phone
+						openid: this.phone
 					};
 					// postData = JSON.stringify(postData);
 					Post('/api/Incubator/APIMethod', postData)
@@ -434,23 +440,22 @@
 						})
 				},
 
-				toLogin(){
-					window.open('login.html','_self')
+				toLogin() {
+					window.open('login.html', '_self')
 				},
 				out() {
-                    localStorage.removeItem('userInfo');
-                    this.user = ''
-                },
+					localStorage.removeItem('userInfo');
+					this.user = ''
+				},
 
-				checkStorage(){
+				checkStorage() {
 					let userInfo = JSON.parse(localStorage.getItem('userInfo'));
 					console.log(userInfo);
-					if(userInfo){
-					if(Date.now() - userInfo.time < 7200000){
-						this.user = userInfo.user;
-						this.phone = userInfo.phone
-					}
-					else localStorage.removeItem('userInfo');
+					if (userInfo) {
+						if (Date.now() - userInfo.time < 7200000) {
+							this.user = userInfo.user;
+							this.phone = userInfo.phone
+						} else localStorage.removeItem('userInfo');
 					}
 				}
 

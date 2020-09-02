@@ -29,8 +29,8 @@
 		box-sizing: border-box;
 		/* padding: 0 15vw; */
 		flex-direction: column;
-    display: flex;
-    align-items: center
+		display: flex;
+		align-items: center
 	}
 
 	.ivu-tabs-nav-scroll {
@@ -70,7 +70,7 @@
 	}
 
 	.basil--text {
-		color: #356859 !important;
+		color: white !important;
 	}
 
 	.v-slide-group__wrapper {
@@ -79,15 +79,20 @@
 	}
 
 	.v-tab--active {
-		background: lightblue
+		background: #5c6bc0
 	}
 
 	.v-card__title {
-		background: darkseagreen;
+		background: rgb(88, 155, 243);
+
 	}
 
 	.v-card__title {
 		padding: 5px
+	}
+
+	.v-tab.v-tab {
+		color: white
 	}
 
 	.v-sheet.v-footer {
@@ -99,10 +104,12 @@
 		background-color: #5c6bc0 !important;
 		border-color: #5c6bc0 !important;
 	}
-	a{
-        color: antiquewhite
-		}
-		.v-application--wrap {
+
+	a {
+		color: antiquewhite
+	}
+
+	.v-application--wrap {
 		height: 60px;
 	}
 </style>
@@ -110,31 +117,31 @@
 <body>
 	<div id="app" class="" v-cloak>
 
-			<div class="row header">
-					<div class="left   col-md-2 col-lg-3 col-xl-4">
-			<div class="">
-				<img class="logo" src="./static/img/logo.png" alt="" title="安广·规上谷">
+		<div class="row header">
+			<div class="left   col-md-2 col-lg-3 col-xl-4">
+				<div class="">
+					<img class="logo" src="./static/img/logo.png" alt="" title="安广·规上谷">
+				</div>
 			</div>
-		</div>
-		<div class="right  col-sm-10 col-md-8 col-lg-7 col-xl-6">
+			<div class="right  col-sm-10 col-md-8 col-lg-7 col-xl-6">
 				<div class="menu1">
-						<a  href="index.html">众创空间</a>
-						<a  href="news.html">规上谷头条</a>
-						
-						<a class="active" href="links.html">环保科技链</a>
-						<a   href="services.html">企业服务</a>
-						<a href="require.html"> 我有需求</a>
+					<a href="index.html">众创空间</a>
+					<a href="news.html">规上谷头条</a>
+
+					<a class="active" href="links.html">环保科技链</a>
+					<a href="services.html">企业服务</a>
+					<a href="require.html"> 我有需求</a>
 				</div>
-		</div>
-		<div class="login  col-sm-2  col-md-2 col-lg-2 col-xl-2">
+			</div>
+			<div class="login  col-sm-2  col-md-2 col-lg-2 col-xl-2">
 				<div class="menu1">
-						<a v-if="!user" style="color: white;" @click='toLogin'>注册登录</a>
-						<span style="display: flex;
+					<a v-if="!user" style="color: white;font-size:0.8rem;" @click='toLogin'>注册登录</a>
+					<span style="display: flex;
 							align-items: center;color: white;margin-right: 10px" v-if="user">{{user}} </span>
-							
-							<span v-if="user"  @click='out' style="font-size:0.8rem;color: gray">退出</span>
+
+					<span v-if="user" @click='out' style="font-size:0.8rem;color: gray">退出</span>
 				</div>
-			<!-- <v-row>
+				<!-- <v-row>
 				<v-col>
 					<v-btn-toggle v-model="text" tile color="deep-purple accent-3" group>
 						<v-btn v-if="!user" value="登录" @click='toLogin'>
@@ -148,13 +155,13 @@
 					</v-btn-toggle>
 				</v-col>
 			</v-row> -->
-		</div>
 			</div>
+		</div>
 		<div class="box">
-			
-				<!-- <Divider></Divider> -->
 
-				<!-- <Tabs value="name2">
+			<!-- <Divider></Divider> -->
+
+			<!-- <Tabs value="name2">
 						 <Tab-Pane label="环境" name="name1">
 								<List item-layout="vertical">
 										<div class="noData" v-if='!environment.length'>暂无数据</div>
@@ -200,49 +207,49 @@
 									</List>
 						</Tab-Pane>
 				</Tabs> -->
-				<div class="col-lg-1 col-xl-2"></div>
-				<div class="col-sm-12 col-md-auto col-lg-10 col-xl-8 ">
-						<div :style="{height:Height + 'px'}">
-				<v-card color="basil" style="width:100%">
-					<v-card-title class="text-center justify-center ">
-						<p class="font-weight-bold  basil--text " style="width:100%">环保科技链</p>
-					</v-card-title>
+			<div class="col-lg-1 col-xl-2"></div>
+			<div class="col-sm-12 col-md-auto col-lg-10 col-xl-8 ">
+				<div :style="{height:Height + 'px'}">
+					<v-card color="basil" style="width:100%">
+						<!-- <v-card-title class="text-center justify-center ">
+							<p class="font-weight-bold  basil--text " style="width:100%">环保科技链</p>
+						</v-card-title> -->
 
-					<!-- <v-tabs v-model="tab" background-color="transparent" color="basil" grow>
+						<!-- <v-tabs v-model="tab" background-color="transparent" color="basil" grow>
 
 						<v-tab>
 							科技
 						</v-tab>
 
 					</v-tabs> -->
-					
-					<!-- <v-tabs-items v-model="tab">
+
+						<!-- <v-tabs-items v-model="tab">
 						<v-tab-item> -->
-							<v-card color="basil" flat>
-								<div class="noData" v-if='!technology.length'>暂无数据</div>
-								<div class="item" @click='detail(item1.tid)' v-for="(item1,index1) in technology" :key="index1">
-									<!-- <img :src="item1.img" style="width: 15vw;height:10vw;border-radius: 10px;padding: 2px"> -->
-									<v-img style="width:15vw" :src="item1.img ? item1.img : './static/img/logo.png'" height="10vw" contain
-																			class="grey darken-4">
-																		</v-img>
-									<div class="right">
-										<p class="title">{{item1.title}}</p>
-										<div class="p_time">
-											<span>负责人：{{item1.linkName}}</span>
-											<span>联系电话：{{item1.linkPhone}}</span>
-										</div>
-										<div class="content">
-											{{item1.detail}}
-										</div>
+						<v-card color="basil" flat>
+							<div class="noData" v-if='!technology.length'>暂无数据</div>
+							<div class="item" @click='detail(item1.tid)' v-for="(item1,index1) in technology" :key="index1">
+								<!-- <img :src="item1.img" style="width: 15vw;height:10vw;border-radius: 10px;padding: 2px"> -->
+								<v-img style="width:15vw" :src="item1.img ? item1.img : './static/img/logo.png'" height="10vw" contain
+									class="grey darken-4">
+								</v-img>
+								<div class="right">
+									<p class="title">{{item1.title}}</p>
+									<div class="p_time">
+										<span>负责人：{{item1.linkName}}</span>
+										<span>联系电话：{{item1.linkPhone}}</span>
+									</div>
+									<div class="content">
+										{{item1.detail}}
 									</div>
 								</div>
+							</div>
 
-							</v-card>
+						</v-card>
 						<!-- </v-tab-item>
 					</v-tabs-items> -->
-				</v-card>
-</div>
-				
+					</v-card>
+				</div>
+
 				<v-footer padless>
 					<v-card flat tile class="indigo lighten-1 white--text text-center">
 						<v-divider></v-divider>
@@ -251,16 +258,16 @@
 						</v-card-text>
 					</v-card>
 				</v-footer>
-			
-				</div>
+
+			</div>
 			<div class="col-lg-1 col-xl-2"></div>
 		</div>
 
 		<div class="mask" v-if="showMask">
-				<view class="loader loading8">
-						<view class="loader-pacman"></view>
-					  </view>
-					  <span>加载中</span>
+			<view class="loader loading8">
+				<view class="loader-pacman"></view>
+			</view>
+			<span>加载中</span>
 		</div>
 
 	</div>
@@ -280,9 +287,9 @@
 			el: '#app',
 			vuetify: new Vuetify(),
 			data: function () {
-				return {	
-					Height:'',		
-					showMask:true,		
+				return {
+					Height: '',
+					showMask: true,
 					environment: [],
 					technology: [],
 					tab: null,
