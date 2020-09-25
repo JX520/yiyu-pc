@@ -188,8 +188,8 @@
 			<!-- 轮播 -->
 
 			<div class="m-grid">
-				<div class=" col-xl-1"></div>
-				<div class="col-sm-12 col-md-auto col-lg-12 col-xl-10 ">
+				<div class=" col-xl-2"></div>
+				<div class="col-sm-12 col-md-auto col-lg-12 col-xl-8 ">
 					<div>
 						<Carousel autoplay v-model="carousel" loop :autoplay-speed='3000' arrow="never">
 							<Carousel-Item v-for='(item,index) in carouselList' :key='index'>
@@ -338,7 +338,7 @@
 						</v-footer>
 					</v-app>
 				</div>
-				<div class=" col-xl-1"></div>
+				<div class=" col-xl-2"></div>
 			</div>
 		</div>
 
@@ -480,8 +480,7 @@
 
 			methods: {
 				getCHeight() {
-					this.carouselHeight = parseInt((window.innerHeight - 100) / 100 * (window.innerHeight - 100) /
-						160);
+					this.carouselHeight = (window.innerHeight - 100) / 100 * (window.innerHeight - 100) / 180;
 				},
 				init() {
 					let postData = {

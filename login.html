@@ -22,10 +22,6 @@
 
 <body>
     <div id='app'>
-
-
-
-
         <!-- 登录 -->
         <v-app>
             <div class="login1" :style="{height:Height +'px'}">
@@ -120,11 +116,11 @@
             </div>
         </v-app>
         <div class="mask" v-if="showMask">
-				<view class="loader loading8">
-						<view class="loader-pacman"></view>
-					  </view>
-					  <span>加载中...</span>
-		</div>
+            <view class="loader loading8">
+                <view class="loader-pacman"></view>
+            </view>
+            <span>加载中...</span>
+        </div>
     </div>
 
     <script src="static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
@@ -142,7 +138,7 @@
             vuetify: new Vuetify(),
             data: function () {
                 return {
-                    showMask:true,
+                    showMask: true,
                     Height: '',
                     dialog: false,
                     valid: true,
@@ -218,35 +214,35 @@
                 Login() {
                     if (this.$refs.formLogin.validate()) {
                         let postData = {
-                                Function: 'GetUserInfo',
-                                phone: this.formLogin.phone,
-                                password: this.formLogin.password
+                            Function: 'GetUserInfo',
+                            phone: this.formLogin.phone,
+                            password: this.formLogin.password
                         };
                         Post('/api/Incubator/APIMethod', postData)
-                                .then(res => {
-                                    console.log(res);
-                                    if (res.data.Code == 1) {
-                                        // localStorage.setItem('user', res.data.data.name);
-                                        // localStorage.setItem('phone',res.data.data.phone);
-                                        let userInfo = JSON.stringify({
-                                            user:res.data.data.name,
-                                            phone:res.data.data.phone,
-                                            time:Date.now(),
-                                        });
-                                        localStorage.setItem('userInfo',userInfo);
-                                        this.$Message.success('登录成功!');
-                                        setTimeout(function(){
-                                            // window.open('index.html','_self');
-                                            window.history.back();
-                                        },1000);
-                                    }else{
-                                        this.$Message.error(res.data.Message);
-                                    }
+                            .then(res => {
+                                console.log(res);
+                                if (res.data.Code == 1) {
+                                    // localStorage.setItem('user', res.data.data.name);
+                                    // localStorage.setItem('phone',res.data.data.phone);
+                                    let userInfo = JSON.stringify({
+                                        user: res.data.data.name,
+                                        phone: res.data.data.phone,
+                                        time: Date.now(),
+                                    });
+                                    localStorage.setItem('userInfo', userInfo);
+                                    this.$Message.success('登录成功!');
+                                    setTimeout(function () {
+                                        // window.open('index.html','_self');
+                                        window.history.back();
+                                    }, 1000);
+                                } else {
+                                    this.$Message.error(res.data.Message);
+                                }
 
-                                })
-                                .catch(err => {
-                                    console.log(err)
-                                })
+                            })
+                            .catch(err => {
+                                console.log(err)
+                            })
 
                     }
                 },
@@ -265,16 +261,16 @@
                                     console.log(res);
                                     if (res.data.Code == 1) {
                                         let userInfo = JSON.stringify({
-                                            user:this.formReg.user,
-                                            phone:this.formReg.phone,
-                                            time:Date.now(),
+                                            user: this.formReg.user,
+                                            phone: this.formReg.phone,
+                                            time: Date.now(),
                                         });
-                                        localStorage.setItem('userInfo',userInfo);
+                                        localStorage.setItem('userInfo', userInfo);
                                         this.$Message.success('注册成功,正在前往首页...');
-                                        setTimeout(function(){
-                                            window.open('index.html','_self')
-                                        },1000);
-                                    }else{
+                                        setTimeout(function () {
+                                            window.open('index.html', '_self')
+                                        }, 1000);
+                                    } else {
                                         this.$Message.error(res.data.Message);
                                     }
 
@@ -289,10 +285,9 @@
                         }
                     }
                 },
-                
+
             }
         })
-
     </script>
 </body>
 
