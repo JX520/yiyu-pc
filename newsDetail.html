@@ -15,125 +15,124 @@
     <!-- <link rel="stylesheet" type="text/css" href="static/css/quasar.min.css" /> -->
 </head>
 <style>
-    [v-cloak]{
- display: none;
-}
+    [v-cloak] {
+        display: none;
+    }
+
     .box {
         box-sizing: border-box;
         /* padding: 0 15vw; */
         flex-direction: column;
-    display: flex;
-    align-items: center
+        display: flex;
+        align-items: center
     }
 
     .card-body {
         padding: 0 1.25rem
     }
+
     .v-btn-toggle:not(.v-btn-toggle--dense) .v-btn.v-btn.v-size--default {
-		height: 3vw
-	}
-
-	.col {
-		display: flex;
-		justify-content: center;
-		align-items: center
-	}
-
-	.v-btn__content {
-		font-size: 1.2rem
+        height: 3vw
     }
-    .indigo{
-		background-color: #5c6bc0 !important; 
-		border-color: #5c6bc0 !important;
+
+    .col {
+        display: flex;
+        justify-content: center;
+        align-items: center
     }
-    .v-sheet.v-footer{
-		display: flex;
+
+    .v-btn__content {
+        font-size: 1.2rem
+    }
+
+    .indigo {
+        background-color: #5c6bc0 !important;
+        border-color: #5c6bc0 !important;
+    }
+
+    .v-sheet.v-footer {
+        display: flex;
         justify-content: center;
         /* background-color: #5c6bc0 */
     }
-    a{
+
+    a {
         color: antiquewhite
     }
 </style>
 
 <body>
     <div id="app" class="" v-cloak>
-            
+
         <!-- 头部 -->
         <div class="row header">
-                <div class="left   col-md-2 col-lg-3 col-xl-4">
-                    <div class="">
-                        <img class="logo" src="./static/img/logo.png" alt="" title="安广·规上谷">
-                    </div>
-                </div>
-                <div class="right  col-sm-10 col-md-8 col-lg-7 col-xl-6">
-                        <div class="menu1">
-                                <a  href="index.html">众创空间</a>
-                                <a class="active" href="news.html">规上谷头条</a>
-                                
-                                <a  href="links.html">环保科技链</a>
-                                <a   href="services.html">企业服务</a>
-                                <a href="require.html"> 我有需求</a>
-                        </div>
-                </div>
-                <div class="login  col-sm-2  col-md-2 col-lg-2 col-xl-2">
-                        <div class="menu1">
-                                <a v-if="!user" style="color: white;font-size:0.8rem;" @click='toLogin'>注册登录</a>
-                                <span style="display: flex;
-							align-items: center;color: white;margin-right: 10px" v-if="user">{{user}} </span>
-							
-							<span v-if="user"  @click='out' style="font-size:0.8rem;color: gray">退出</span>
-                        </div>
+            <div class="left   col-md-2 col-lg-3 col-xl-4">
+                <div class="">
+                    <img class="logo" src="./static/img/logo.png" alt="" title="安广·规上谷">
                 </div>
             </div>
+            <div class="right  col-sm-10 col-md-8 col-lg-7 col-xl-6">
+                <div class="menu1">
+                    <a href="index.html">众创空间</a>
+                    <a class="active" href="news.html">规上谷头条</a>
+
+                    <a href="links.html">环保科技链</a>
+                    <a href="services.html">企业服务</a>
+                    <a href="require.html"> 我有需求</a>
+                </div>
+            </div>
+            <div class="login  col-sm-2  col-md-2 col-lg-2 col-xl-2">
+                <div class="menu1">
+                    <a v-if="!user" style="color: white;font-size:0.8rem;" @click='toLogin'>注册登录</a>
+                    <span style="display: flex;
+							align-items: center;color: white;margin-right: 10px" v-if="user">{{user}} </span>
+
+                    <span v-if="user" @click='out' style="font-size:0.8rem;color: gray">退出</span>
+                </div>
+            </div>
+        </div>
 
         <div class="box">
-                <div class="col-lg-1 col-xl-2"></div>
-					<div class="col-sm-12 col-md-auto col-lg-10 col-xl-8 ">
-                            <v-app>
-            <Divider></Divider>
-            <div class="news">
-                <p class="title">{{detail.title}}</p>
+            <div class="col-lg-1 col-xl-2"></div>
+            <div class="col-sm-12 col-md-auto col-lg-10 col-xl-8 ">
+                <v-app>
+                    <Divider></Divider>
+                    <div class="news">
+                        <p class="title">{{detail.title}}</p>
 
-                <div class="p_time">
-                    <span>发布者：{{detail.publisher}}</span>
-                    <span style="margin-left:10px">发布时间：{{detail.p_time}}</span>
-                </div>
-                <img class="newsImg" :src="detail.img" alt="">
-                <div class="news-detail">
-                    {{detail.detail}}
-                </div>
+                        <div class="p_time">
+                            <!-- <span>发布者：{{detail.publisher}}</span> -->
+                            <span style="margin-left:10px">发布时间：{{detail.p_time}}</span>
+                        </div>
+                        <img class="newsImg" :src="detail.img" alt="">
+                        <div class="news-detail">
+                            {{detail.detail}}
+                        </div>
 
+                    </div>
+
+
+
+
+                    <v-footer padless>
+                        <v-card flat tile class="indigo lighten-1 white--text text-center">
+                            <v-divider></v-divider>
+                            <v-card-text class="white--text " style="width:100%">
+                                {{ new Date().getFullYear() }} — <strong>安广 · 规上谷</strong>
+                            </v-card-text>
+
+                    </v-footer>
+                    </v-card>
             </div>
 
-            
-
-            
-            <v-footer
-					padless
-				  >
-					<v-card
-					  flat
-					  tile
-					  class="indigo lighten-1 white--text text-center"
-					>
-					  <v-divider></v-divider>
-					  <v-card-text class="white--text " style="width:100%">
-						{{ new Date().getFullYear() }} — <strong>安广 · 规上谷</strong>
-					  </v-card-text>
-					
-                  </v-footer>
-                </v-card>
-        </div>
-    
         </div>
         <div class="col-lg-1 col-xl-2"></div>
         <div class="mask" v-if="showMask">
-				<view class="loader loading8">
-						<view class="loader-pacman"></view>
-					  </view>
-					  <span>加载中</span>
-		</div>
+            <view class="loader loading8">
+                <view class="loader-pacman"></view>
+            </view>
+            <span>加载中</span>
+        </div>
     </div>
 
 
@@ -152,29 +151,29 @@
             vuetify: new Vuetify(),
             data: function () {
                 return {
-                    showMask:true,
+                    showMask: true,
                     detail: '',
                     // carouselHeight: '',
                     text: 'center',
-					toUrl: [{
-							title: '众创空间',
-							url: 'index.html'
-						},
-						{
-							title: '规上谷头条',
-							url: 'news.html'
-						},
-						{
-							title: '环保科技链',
-							url: 'links.html'
-						},
-						{
-							title: '企业服务',
-							url: 'services.html'
-						},
+                    toUrl: [{
+                            title: '众创空间',
+                            url: 'index.html'
+                        },
+                        {
+                            title: '规上谷头条',
+                            url: 'news.html'
+                        },
+                        {
+                            title: '环保科技链',
+                            url: 'links.html'
+                        },
+                        {
+                            title: '企业服务',
+                            url: 'services.html'
+                        },
 
-					],
-                    user:'',
+                    ],
+                    user: '',
                 }
             },
             created() {
@@ -218,23 +217,23 @@
                             console.log(err)
                         })
                 },
-                toLogin(){
-					window.open('login.html','_self')
-				},
-				out() {
+                toLogin() {
+                    window.open('login.html', '_self')
+                },
+                out() {
                     localStorage.removeItem('userInfo');
                     this.user = ''
                 },
 
-				checkStorage(){
-					let userInfo = JSON.parse(localStorage.getItem('userInfo'));
-					console.log(userInfo);
-					if(userInfo){
-					if(Date.now() - userInfo.time < 7200000)
-					this.user = userInfo.user;
-					else localStorage.removeItem('userInfo');
-					}
-				}
+                checkStorage() {
+                    let userInfo = JSON.parse(localStorage.getItem('userInfo'));
+                    console.log(userInfo);
+                    if (userInfo) {
+                        if (Date.now() - userInfo.time < 7200000)
+                            this.user = userInfo.user;
+                        else localStorage.removeItem('userInfo');
+                    }
+                }
             }
         })
     </script>

@@ -99,63 +99,61 @@
             <div class="col-sm-12 col-md-auto col-lg-10 col-xl-8 ">
                 <!-- 轮播 -->
                 <div class="head">
-                    <Row>
-                        <Col>
-                        <div class="ivu-col-span-12">
-                            <Carousel autoplay v-model="carousel" loop :autoplay-speed='3000' arrow="never">
-                                <Carousel-Item v-for='(item,index) in detail.imgList' :key='index'>
-                                    <div class="demo-carousel">
-                                        <img style="width:100%;margin:0 auto" :style="{height:carouselHeight + 'vw'}"
-                                            :src="item" class="" alt="轮播图片">
-                                    </div>
-                                </Carousel-Item>
 
-                            </Carousel>
-                        </div>
-
-                        </Col>
-                        <Col span="6">
-                        <!-- 文字介绍 -->
-                        <div class="intro">
-                            <div class="card-body">
-                                <p class="title">
-                                    {{detail.title}}
-                                </p>
-                                <p class="card-text">
-                                    简介： {{detail.brief}}
-                                </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="price">
-                                        ￥: {{detail.price}} 元
-                                    </p>
-                                    <div class="other d-flex justify-content-between">
-                                        <small class="text-muted">押付：{{detail.deposittype}}</small>
-                                        <small class="text-muted">面积：{{detail.area}} /m²</small>
-                                        <small class="text-muted">楼层：{{detail.code}} /
-                                            {{detail.floortotal}}</small>
-                                    </div>
+                    <div style="width: 35vw;">
+                        <Carousel autoplay v-model="carousel" loop :autoplay-speed='3000' arrow="never">
+                            <Carousel-Item v-for='(item,index) in detail.imgList' :key='index'>
+                                <div class="demo-carousel">
+                                    <img style="max-width:100%;margin:0 auto" :style="{height:carouselHeight + 'vw'}"
+                                        :src="item" class="" alt="轮播图片">
                                 </div>
-                            </div>
-                        </div>
-                        </Col>
-                    </Row>
+                            </Carousel-Item>
 
+                        </Carousel>
+                    </div>
+                    <!-- 文字介绍 -->
+                    <div class="intro">
+                        <div class="card-body">
+                            <p class="title">
+                                {{detail.title}}
+                            </p>
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="price">
+                                    ￥: {{detail.price}} 元
+                                </p>
+
+                            </div>
+                            <div class="d-flex justify-content-between m-margin">
+                                <small class="text-muted">押付：{{detail.deposittype}}</small>
+                                <small class="text-muted">面积：{{detail.area}} /m²</small>
+                                <small class="text-muted">楼层：{{detail.code}} /
+                                    {{detail.floortotal}}</small>
+                            </div>
+                            <p class="card-text">
+                                简介： {{detail.brief}}
+                            </p>
+                        </div>
+                    </div>
 
                 </div>
 
 
                 <!-- 详情 -->
                 <div>
-                    <Divider></Divider>
-
                     <Divider>详情介绍</Divider>
                     <div class="detail">
                         <div class="noData" v-if='!detail.detail'>暂无介绍</div>
                         <div class="video" v-if='detail.video'>
                             <video :src="detail.video" controls></video>
                         </div>
+                        <Divider>文字描述</Divider>
                         <div class="content">
                             {{detail.detail}}
+                        </div>
+                        <Divider>图片描述</Divider>
+                        <div class="img">
+                            <img :src="item" alt="" srcset="" v-for='(item,index) in detail.imgList' :key='index'>
                         </div>
                     </div>
 
@@ -237,7 +235,8 @@
 
             methods: {
                 getCHeight() {
-                    this.carouselHeight = (window.innerHeight - 100) / 100 * (window.innerHeight - 100) / 220;
+                    this.carouselHeight = parseInt((window.innerHeight - 100) / 100 * (window.innerHeight -
+                        100) / 270);
                 },
                 getID() {
                     let params = location.search.substring(1);

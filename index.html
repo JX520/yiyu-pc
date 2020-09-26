@@ -195,7 +195,7 @@
 							<Carousel-Item v-for='(item,index) in carouselList' :key='index'>
 								<div class="demo-carousel">
 									<img style="width:100%;margin:0 auto" :style="{height:carouselHeight + 'vw'}"
-										:src="item" class="" alt="轮播图片">
+										:src="item.ImgUrl" class="" alt="轮播图片">
 								</div>
 							</Carousel-Item>
 						</Carousel>
@@ -420,9 +420,9 @@
 					tab1: null,
 					carouselHeight: '',
 					carouselList: [
-						'./static/img/c_1.jpg',
-						'./static/img/c_2.jpg',
-						'./static/img/c_3.jpg'
+						// './static/img/c_1.jpg',
+						// './static/img/c_2.jpg',
+						// './static/img/c_3.jpg'
 					],
 					carousel: 0,
 					text: 'center',
@@ -469,6 +469,7 @@
 				}
 			},
 			created() {
+				this.getCarousel();
 				this.getCHeight();
 				this.init();
 				this.checkStorage()
@@ -487,13 +488,30 @@
 						Function: 'GetHousingStockList',
 						page: 1,
 						rows: 10,
-						isrented: 0
+						isrented: -1
+					};
+					// postData = JSON.stringify(postData);
+					Post('/api/Incubator/APIMethod', postData)
+						.then(res => {
+							// console.log(res);
+							this.itemData = res.data.data;
+							// console.log(this.itemData);
+
+						})
+						.catch(err => {
+							console.log(err)
+						})
+				},
+
+				getCarousel() {
+					let postData = {
+						Function: 'GetRotationPlot',
 					};
 					// postData = JSON.stringify(postData);
 					Post('/api/Incubator/APIMethod', postData)
 						.then(res => {
 							console.log(res);
-							this.itemData = res.data.data;
+							this.carouselList = res.data.data;
 							// console.log(this.itemData);
 
 						})

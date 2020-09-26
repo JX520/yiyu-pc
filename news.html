@@ -212,16 +212,17 @@
 							<v-tab-item v-for="(item2,index2) in itemData" :key="index2">
 								<v-card color="basil" flat>
 									<div class="noData" v-if='!item2.detail.length'>暂无数据</div>
-									<div class="item" @click='detail(item1.nid)' v-for='(item1,index1) in item2.detail' :key=index1>
+									<div class="item" @click='detail(item1.nid)' v-for='(item1,index1) in item2.detail'
+										:key=index1>
 										<!-- <img :src="item1.img ? item1.img : './static/img/logo.png'" 
 										style="width:15vw;height:10vw;border-radius: 10px;padding: 2px"></img> -->
-										<v-img style="width:15vw" :src="item1.img ? item1.img : './static/img/logo.png'" height="10vw"
-											contain class="grey darken-4">
+										<v-img style="width:15vw" :src="item1.img ? item1.img : './static/img/logo.png'"
+											height="10vw" contain class="grey darken-4">
 										</v-img>
 										<div class="right">
 											<p class="title">{{item1.title}}</p>
 											<div class="p_time">
-												<span>发布者：{{item1.publisher}}</span>
+												<!-- <span>发布者：{{item1.publisher}}</span> -->
 												<span>发布时间：{{item1.p_time}}</span>
 											</div>
 											<div class="content">
