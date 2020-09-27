@@ -104,7 +104,7 @@
                         <Carousel autoplay v-model="carousel" loop :autoplay-speed='3000' arrow="never">
                             <Carousel-Item v-for='(item,index) in detail.imgList' :key='index'>
                                 <div class="demo-carousel">
-                                    <img style="max-width:100%;margin:0 auto" :style="{height:carouselHeight + 'vw'}"
+                                    <img style="max-width:100%;margin:0 auto" :style="{height:carouselHeight + 'px'}"
                                         :src="item" class="" alt="轮播图片">
                                 </div>
                             </Carousel-Item>
@@ -235,8 +235,7 @@
 
             methods: {
                 getCHeight() {
-                    this.carouselHeight = parseInt((window.innerHeight - 100) / 100 * (window.innerHeight -
-                        100) / 270);
+                    this.carouselHeight = window.innerHeight * 0.45;
                 },
                 getID() {
                     let params = location.search.substring(1);

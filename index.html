@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="static/css/index.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="static/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="static/css/iview.min.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/vuetify.min.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="static/css/materialdesignicons.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>首页</title>
-	<link rel="stylesheet" type="text/css" href="static/css/index.css" />
-	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="static/css/iview.min.css" />
-	<link rel="stylesheet" type="text/css" href="static/css/vuetify.min.css" />
-	<link rel="stylesheet" type="text/css" href="static/css/materialdesignicons.min.css" />
-	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-	<link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
-</head>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
 
-<style>
-	[v-cloak] {
-		display: none;
-	}
-
-	/* .ivu-tabs {
+    /* .ivu-tabs {
 		width: 100%
 	}
 
@@ -27,146 +40,168 @@
 		width: 100%;
 
 	} */
-	body {
-		box-sizing: border-box
-	}
+    body {
+      box-sizing: border-box;
+    }
 
-	.ivu-tabs-nav {
-		display: flex;
-		align-items: center;
-		justify-content: center
-	}
+    .ivu-tabs-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-	.ivu-tabs-nav-scroll {
-		display: flex;
-		align-items: center;
-		justify-content: center
-	}
+    .ivu-tabs-nav-scroll {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-	.mb-4,
-	.my-4 {
-		margin-bottom: 0 !important
-	}
+    .mb-4,
+    .my-4 {
+      margin-bottom: 0 !important;
+    }
 
-	.pt-5,
-	.py-5 {
-		padding-top: 0 !important
-	}
+    .pt-5,
+    .py-5 {
+      padding-top: 0 !important;
+    }
 
-	.v-application--wrap {
-		min-height: 0
-	}
+    .v-application--wrap {
+      min-height: 0;
+    }
 
-	.card-body {
-		padding: 1rem
-	}
+    .card-body {
+      padding: 1rem;
+    }
 
-	/* 导航栏 */
-	.v-btn-toggle:not(.v-btn-toggle--dense) .v-btn.v-btn.v-size--default {
-		height: 3vw
-	}
+    /* 导航栏 */
+    .v-btn-toggle:not(.v-btn-toggle--dense) .v-btn.v-btn.v-size--default {
+      height: 3vw;
+    }
 
-	.col {
-		display: flex;
-		justify-content: center;
-		align-items: center
-	}
+    .col {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-	.v-btn__content {
-		font-size: 1.2rem
-	}
+    .v-btn__content {
+      font-size: 1.2rem;
+    }
 
-	.v-card__title {
-		background: rgb(88, 155, 243);
-	}
+    .v-card__title {
+      background: rgb(88, 155, 243);
+    }
 
-	.basil {
-		background-color: #FFFBE6 !important;
-	}
+    .basil {
+      background-color: #fffbe6 !important;
+    }
 
-	.basil--text {
-		color: white !important;
-	}
+    .basil--text {
+      color: white !important;
+    }
 
-	.v-slide-group__wrapper {
-		display: flex;
-		justify-content: center
-	}
+    .v-slide-group__wrapper {
+      display: flex;
+      justify-content: center;
+    }
 
-	.v-tab.v-tab {
-		color: white
-	}
+    .v-tab.v-tab {
+      color: white;
+    }
 
-	.v-tab--active {
-		background: #5c6bc0;
-		color: white
-	}
+    .v-tab--active {
+      background: #5c6bc0;
+      color: white;
+    }
 
-	.v-card__title {
-		padding: 10px;
-	}
+    .v-card__title {
+      padding: 10px;
+    }
 
-	.v-sheet.v-footer {
-		display: flex;
-		justify-content: center
-	}
+    .v-sheet.v-footer {
+      display: flex;
+      justify-content: center;
+    }
 
-	.indigo {
-		background-color: #5c6bc0 !important;
-		border-color: #5c6bc0 !important;
-	}
+    .indigo {
+      background-color: #5c6bc0 !important;
+      border-color: #5c6bc0 !important;
+    }
 
-	a {
-		color: antiquewhite
-	}
+    a {
+      color: antiquewhite;
+    }
 
-	.v-btn-toggle--tile {
-		display: flex;
-		align-items: center;
-	}
+    .v-btn-toggle--tile {
+      display: flex;
+      align-items: center;
+    }
 
-	.v-item-group {
-		height: 100%;
-	}
+    .v-item-group {
+      height: 100%;
+    }
 
-	.v-tabs--grow>.v-tabs-bar .v-tab {
-		height: 40px;
-		font-size: 1.2rem;
-	}
-</style>
+    .v-tabs--grow > .v-tabs-bar .v-tab {
+      height: 40px;
+      font-size: 1.2rem;
+    }
+  </style>
 
-<body>
-	<div id="app" class="" v-cloak>
-		<div class="row header">
-			<div class="left   col-md-2 col-lg-3 col-xl-4">
-				<div class="">
-					<img class="logo" src="./static/img/logo.png" alt="" title="安广·规上谷">
-				</div>
-			</div>
-			<div class="right  col-sm-10 col-md-8 col-lg-7 col-xl-6">
-				<!-- <v-row class="center"> -->
-				<!-- <v-col> -->
-				<div class="menu1">
-					<a class="active" href="index.html">众创空间</a>
-					<a href="news.html">规上谷头条</a>
+  <body>
+    <div id="app" class="" v-cloak>
+      <div class="row header">
+        <div class="left col-md-2 col-lg-3 col-xl-4">
+          <div class="">
+            <img
+              class="logo"
+              src="./static/img/logo.png"
+              alt=""
+              title="安广·规上谷"
+            />
+          </div>
+        </div>
+        <div class="right col-sm-10 col-md-8 col-lg-7 col-xl-6">
+          <!-- <v-row class="center"> -->
+          <!-- <v-col> -->
+          <div class="menu1">
+            <a class="active" href="index.html">众创空间</a>
+            <a href="news.html">规上谷头条</a>
 
-					<a href="links.html">环保科技链</a>
-					<a href="services.html">企业服务</a>
-					<a href="require.html"> 我有需求</a>
-				</div>
-				<!-- </v-col> -->
-				<!-- </v-row> -->
-			</div>
-			<div class="login col-sm-2  col-md-2 col-lg-2 col-xl-2">
-				<div class="menu1">
-					<a v-if="!user" style="color: white;font-size:0.8rem;" @click='toLogin'>注册登录</a>
-					<span style="display: flex;
-							align-items: center;color: white;margin-right: 10px" v-if="user">{{user}} </span>
+            <a href="links.html">环保科技链</a>
+            <a href="services.html">企业服务</a>
+            <a href="require.html"> 我有需求</a>
+          </div>
+          <!-- </v-col> -->
+          <!-- </v-row> -->
+        </div>
+        <div class="login col-sm-2 col-md-2 col-lg-2 col-xl-2">
+          <div class="menu1">
+            <a
+              v-if="!user"
+              style="color: white; font-size: 0.8rem"
+              @click="toLogin"
+              >注册登录</a
+            >
+            <span
+              style="
+                display: flex;
+                align-items: center;
+                color: white;
+                margin-right: 10px;
+              "
+              v-if="user"
+              >{{user}}
+            </span>
 
-					<span v-if="user" @click='out' style="font-size:0.8rem;color: gray">退出</span>
-
-				</div>
-				<!-- 				<v-row>
+            <span
+              v-if="user"
+              @click="out"
+              style="font-size: 0.8rem; color: gray"
+              >退出</span
+            >
+          </div>
+          <!-- 				<v-row>
 					<v-col> 
 				<v-btn-toggle v-model="text" tile color="deep-purple accent-3" group>
 					<v-btn v-if="!user" value="登录" @click='toLogin'>
@@ -180,27 +215,40 @@
 				</v-btn-toggle>
 				 			</v-col>
 				</v-row> -->
-			</div>
+        </div>
+      </div>
 
-		</div>
+      <div class="box">
+        <!-- 轮播 -->
 
-		<div class="box">
-			<!-- 轮播 -->
+        <div class="m-grid">
+          <div class="col-xl-2"></div>
+          <div class="col-sm-12 col-md-auto col-lg-12 col-xl-8">
+            <div>
+              <Carousel
+                autoplay
+                v-model="carousel"
+                loop
+                :autoplay-speed="3000"
+                arrow="never"
+              >
+                <Carousel-Item
+                  v-for="(item,index) in carouselList"
+                  :key="index"
+                >
+                  <div class="demo-carousel">
+                    <img
+                      style="width: 100%; margin: 0 auto"
+                      :style="{height:carouselHeight + 'px'}"
+                      :src="item.ImgUrl"
+                      class=""
+                      alt="轮播图片"
+                    />
+                  </div>
+                </Carousel-Item>
+              </Carousel>
 
-			<div class="m-grid">
-				<div class=" col-xl-2"></div>
-				<div class="col-sm-12 col-md-auto col-lg-12 col-xl-8 ">
-					<div>
-						<Carousel autoplay v-model="carousel" loop :autoplay-speed='3000' arrow="never">
-							<Carousel-Item v-for='(item,index) in carouselList' :key='index'>
-								<div class="demo-carousel">
-									<img style="width:100%;margin:0 auto" :style="{height:carouselHeight + 'vw'}"
-										:src="item.ImgUrl" class="" alt="轮播图片">
-								</div>
-							</Carousel-Item>
-						</Carousel>
-
-						<!-- <v-carousel 
+              <!-- <v-carousel 
 						cycle height="carouselHeight" 
 						hide-delimiter-background 
 						:show-arrows="false" 
@@ -217,376 +265,431 @@
 								</v-sheet> 
 							</v-carousel-item>
 						</v-carousel> -->
-					</div>
+            </div>
 
-					<!-- 众创空间 -->
-					<div class="tab1">
-
-
-						<v-card color="basil" style="width:100%">
-							<!-- <v-card-title class="text-center justify-center py-6">
+            <!-- 众创空间 -->
+            <div class="tab1">
+              <v-card color="basil" style="width: 100%">
+                <!-- <v-card-title class="text-center justify-center py-6">
 								<p class="font-weight-bold  basil--text " style="width:100%">房源信息</p>
 							</v-card-title> -->
 
-							<v-tabs v-model="tab" background-color="transparent" color="basil" grow>
+                <v-tabs
+                  v-model="tab"
+                  background-color="transparent"
+                  color="basil"
+                  grow
+                >
+                  <v-tab v-for="(item,index) in itemData" :key="index">
+                    {{ item.title }}
+                  </v-tab>
+                </v-tabs>
 
-								<v-tab v-for="(item,index) in itemData" :key="index">
-									{{ item.title }}
-								</v-tab>
+                <v-tabs-items v-model="tab">
+                  <v-tab-item v-for="(item,index) in itemData" :key="index">
+                    <v-card color="basil" flat>
+                      <div class="tab-title">
+                        <div>
+                          负责人：
+                          <span> {{item.name}} </span>
+                        </div>
+                        <div>
+                          联系电话：
+                          <span> {{item.phone}} </span>
+                        </div>
+                        <div>
+                          地址：
+                          <span> {{item.address}} </span>
+                        </div>
+                      </div>
 
-							</v-tabs>
+                      <v-tabs
+                        class="font-weight-bold"
+                        v-model="tab1"
+                        background-color="transparent"
+                        color="basil"
+                        grow
+                      >
+                        <v-tab
+                          class="font-weight-bold"
+                          v-for="(item1,index1) in second_tab"
+                          :key="index1"
+                        >
+                          {{ item1 }}
+                        </v-tab>
+                      </v-tabs>
 
-							<v-tabs-items v-model="tab">
-								<v-tab-item v-for="(item,index) in itemData" :key="index">
-									<v-card color="basil" flat>
-										<div class="tab-title">
-											<div>
-												负责人：
-												<span>
-													{{item.name}}
-												</span>
-											</div>
-											<div>
-												联系电话：
-												<span>
-													{{item.phone}}
-												</span>
-											</div>
-											<div>
-												地址：
-												<span>
-													{{item.address}}
-												</span>
-											</div>
-										</div>
-
-										<v-tabs class="font-weight-bold" v-model="tab1" background-color="transparent"
-											color="basil" grow>
-
-											<v-tab class="font-weight-bold" v-for="(item1,index1) in second_tab"
-												:key="index1">
-												{{ item1 }}
-											</v-tab>
-
-										</v-tabs>
-
-										<v-tabs-items v-model="tab1">
-											<v-tab-item v-for="(item2,index2) in item.detail" :key="index2">
-												<v-card color="basil" flat>
-
-													<div class="row">
-														<div class="noData" v-if='!item2.detail.length'>暂无数据</div>
-														<div class="col-sm-10 col-md-6  col-lg-6 col-xl-4"
-															v-for='(office,index3) in item2.detail' :key='index3'>
-															<div class="border">
-
-																<div class="card mb-4 shadow-sm"
-																	@click='detail(office.id)'>
-																	<div class="itemImg">
-																		<!-- <img class="bd-placeholder-img card-img-top"
+                      <v-tabs-items v-model="tab1">
+                        <v-tab-item
+                          v-for="(item2,index2) in item.detail"
+                          :key="index2"
+                        >
+                          <v-card color="basil" flat>
+                            <div class="row">
+                              <div class="noData" v-if="!item2.detail.length">
+                                暂无数据
+                              </div>
+                              <div
+                                class="col-sm-10 col-md-6 col-lg-6 col-xl-4"
+                                v-for="(office,index3) in item2.detail"
+                                :key="index3"
+                              >
+                                <div class="border">
+                                  <div
+                                    class="card mb-4 shadow-sm"
+                                    @click="detail(office.id)"
+                                  >
+                                    <div class="itemImg">
+                                      <!-- <img class="bd-placeholder-img card-img-top"
 																			width="100%" height="300px" :src="office.img"
 																				alt=""> -->
-																		<v-img :src="office.img" height="300" contain
-																			class="grey darken-4">
-																		</v-img>
-																	</div>
-																	<div class="card-body">
-																		<p class="title">
-																			{{office.title}}
-																		</p>
-																		<p class="card-text">
-																			简介： {{office.brief}}
-																		</p>
-																		<div
-																			class="d-flex justify-content-between align-items-center">
-																			<p class="price">
-																				￥: {{office.price}} 元
-																			</p>
-																			<small
-																				class="text-muted">押付：{{office.deposittype}}</small>
-																			<small class="text-muted">面积：{{office.area}}
-																				/m²</small>
-																			<small class="text-muted">楼层：{{office.code}}
-																				/
-																				{{office.floortotal}}</small>
-																		</div>
-																	</div>
-																</div>
+                                      <v-img
+                                        :src="office.img"
+                                        height="300"
+                                        contain
+                                        class="grey darken-4"
+                                      >
+                                      </v-img>
+                                    </div>
+                                    <div class="card-body">
+                                      <p class="title">{{office.title}}</p>
+                                      <p class="card-text">
+                                        简介： {{office.brief}}
+                                      </p>
+                                      <div
+                                        class="d-flex justify-content-between align-items-center"
+                                      >
+                                        <p class="price">
+                                          ￥: {{office.price}} 元
+                                        </p>
+                                        <small class="text-muted"
+                                          >押付：{{office.deposittype}}</small
+                                        >
+                                        <small class="text-muted"
+                                          >面积：{{office.area}} /m²</small
+                                        >
+                                        <small class="text-muted"
+                                          >楼层：{{office.code}} /
+                                          {{office.floortotal}}</small
+                                        >
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </v-card>
+                        </v-tab-item>
+                      </v-tabs-items>
+                    </v-card>
+                  </v-tab-item>
+                </v-tabs-items>
+              </v-card>
+            </div>
+            <v-app>
+              <v-footer padless>
+                <v-card
+                  flat
+                  tile
+                  class="indigo lighten-1 white--text text-center"
+                >
+                  <v-divider></v-divider>
+                  <v-card-text class="white--text" style="width: 100%">
+                    {{ new Date().getFullYear() }} —
+                    <strong>安广 · 规上谷</strong>
+                  </v-card-text>
+                </v-card>
+              </v-footer>
+            </v-app>
+          </div>
+          <div class="col-xl-2"></div>
+        </div>
+      </div>
 
-															</div>
-														</div>
+      <v-app>
+        <v-row justify="center">
+          <!-- 需求 -->
+          <v-dialog v-model="dialog" max-width="600px">
+            <v-form ref="form" v-model="valid" lazy-validation>
+              <v-card>
+                <v-card-title>
+                  <span class="headline">我有需求</span>
+                </v-card-title>
+                <v-card-text>
+                  <v-container>
+                    <v-row>
+                      <v-col cols="12">
+                        <v-text-field
+                          v-model="need.name"
+                          label="姓名："
+                          required
+                          :rules="[rules.required]"
+                        >
+                        </v-text-field>
+                      </v-col>
+                      <v-col cols="12">
+                        <v-text-field
+                          v-model="need.phone"
+                          label="手机号："
+                          required
+                          :rules="[rules.phone]"
+                        >
+                        </v-text-field>
+                      </v-col>
+                      <v-col cols="12">
+                        <v-text-field
+                          v-model="need.title"
+                          label="需求类型："
+                          placeholder="小程序,APP开发..."
+                          required
+                          :rules="[rules.required]"
+                        >
+                        </v-text-field>
+                      </v-col>
+                      <v-textarea
+                        v-model="need.intro"
+                        clearable
+                        :rules="[rules.required]"
+                        placeholder="请输入需求内容"
+                        auto-grow
+                        filled
+                        color="deep-purple"
+                        label="咨询内容"
+                        rows="3"
+                        required
+                      >
+                      </v-textarea>
+                    </v-row>
+                  </v-container>
+                </v-card-text>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="blue darken-1" text @click="dialog = false"
+                    >取消</v-btn
+                  >
+                  <v-btn color="blue darken-1" text @click="submit">提交</v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-form>
+          </v-dialog>
+        </v-row>
+      </v-app>
 
-													</div>
-												</v-card>
-											</v-tab-item>
-										</v-tabs-items>
+      <div class="mask" v-if="showMask">
+        <view class="loader loading8">
+          <view class="loader-pacman"></view>
+        </view>
+        <span>加载中</span>
+      </div>
+    </div>
 
-									</v-card>
-								</v-tab-item>
-							</v-tabs-items>
-						</v-card>
+    <script
+      src="static/js/jquery.min.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script
+      src="static/js/axios.min.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script
+      src="static/js/vue.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script
+      src="static/js/iview.min.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script
+      src="static/js/vuetify.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script
+      src="static/js/request.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script
+      src="static/js/captcha.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
 
-					</div>
-					<v-app>
-						<v-footer padless>
-							<v-card flat tile class="indigo lighten-1 white--text text-center">
-								<v-divider></v-divider>
-								<v-card-text class="white--text " style="width:100%">
-									{{ new Date().getFullYear() }} — <strong>安广 · 规上谷</strong>
-								</v-card-text>
-							</v-card>
-						</v-footer>
-					</v-app>
-				</div>
-				<div class=" col-xl-2"></div>
-			</div>
-		</div>
+    <script type="text/javascript">
+      new Vue({
+        el: "#app",
+        vuetify: new Vuetify(),
+        data: function () {
+          return {
+            showMask: true,
+            itemData: [],
+            tab: null,
+            tab1: null,
+            carouselHeight: "",
+            carouselList: [
+              // './static/img/c_1.jpg',
+              // './static/img/c_2.jpg',
+              // './static/img/c_3.jpg'
+            ],
+            carousel: 0,
+            text: "center",
+            second_tab: ["办公室", "商铺", "公寓"],
+            toUrl: [
+              {
+                title: "众创空间",
+                url: "index.html",
+              },
+              {
+                title: "规上谷头条",
+                url: "news.html",
+              },
+              {
+                title: "环保科技链",
+                url: "links.html",
+              },
+              {
+                title: "企业服务",
+                url: "services.html",
+              },
+            ],
+            modal: false,
+            moadlTitle: "微信扫码登录",
 
+            dialog: false,
+            need: {
+              name: "",
+              phone: "",
+              title: "",
+              intro: "",
+            },
+            showTip: false,
+            y: "top",
+            valid: true,
+            rules: {
+              required: (v) => !!v || "这是必填的内容",
+              phone: (v) => (v && v.length == 11) || "请填写11位的手机号",
+            },
+            user: "",
+            phone: "",
+          };
+        },
+        created() {
+          this.getCarousel();
+          this.getCHeight();
+          this.init();
+          this.checkStorage();
+        },
+        mounted() {
+          this.showMask = false;
+        },
 
-		<v-app>
-			<v-row justify="center">
-				<!-- 需求 -->
-				<v-dialog v-model="dialog" max-width="600px">
-					<v-form ref="form" v-model="valid" lazy-validation>
-						<v-card>
-							<v-card-title>
-								<span class="headline">我有需求</span>
-							</v-card-title>
-							<v-card-text>
-								<v-container>
-									<v-row>
+        methods: {
+          getCHeight() {
+            this.carouselHeight = window.innerHeight * 0.7;
+            console.log(window.innerHeight);
+          },
+          init() {
+            let postData = {
+              Function: "GetHousingStockList",
+              page: 1,
+              rows: 10,
+              isrented: -1,
+            };
+            // postData = JSON.stringify(postData);
+            Post("/api/Incubator/APIMethod", postData)
+              .then((res) => {
+                // console.log(res);
+                this.itemData = res.data.data;
+                // console.log(this.itemData);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          },
 
-										<v-col cols="12">
-											<v-text-field v-model='need.name' label="姓名：" required
-												:rules="[rules.required]">
-											</v-text-field>
-										</v-col>
-										<v-col cols="12">
-											<v-text-field v-model='need.phone' label="手机号：" required
-												:rules="[rules.phone]">
-											</v-text-field>
-										</v-col>
-										<v-col cols="12">
-											<v-text-field v-model='need.title' label="需求类型：" placeholder="小程序,APP开发..."
-												required :rules="[rules.required]">
-											</v-text-field>
-										</v-col>
-										<v-textarea v-model="need.intro" clearable :rules="[rules.required]"
-											placeholder='请输入需求内容' auto-grow filled color="deep-purple" label="咨询内容"
-											rows="3" required>
-										</v-textarea>
-									</v-row>
-								</v-container>
-							</v-card-text>
-							<v-card-actions>
-								<v-spacer></v-spacer>
-								<v-btn color="blue darken-1" text @click="dialog = false">取消</v-btn>
-								<v-btn color="blue darken-1" text @click="submit">提交</v-btn>
-							</v-card-actions>
-						</v-card>
-					</v-form>
-				</v-dialog>
+          getCarousel() {
+            let postData = {
+              Function: "GetRotationPlot",
+            };
+            // postData = JSON.stringify(postData);
+            Post("/api/Incubator/APIMethod", postData)
+              .then((res) => {
+                console.log(res);
+                this.carouselList = res.data.data;
+                // console.log(this.itemData);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          },
 
-			</v-row>
-		</v-app>
+          detail(id) {
+            console.log(id);
+            let url = "houseDetail.html" + "?id=" + id;
+            window.open(url);
+          },
+          toPage(url) {
+            window.open(url, "_self");
+          },
 
-		<div class="mask" v-if="showMask">
-			<view class="loader loading8">
-				<view class="loader-pacman"></view>
-			</view>
-			<span>加载中</span>
-		</div>
-	</div>
+          showNeed() {
+            this.dialog = true;
+            if (!localStorage.getItem("userInfo")) {
+              this.$Message.warning({
+                content: "登录后才可提交需求",
+                duration: 3,
+              });
+            }
+          },
+          submit() {
+            if (this.$refs.form.validate()) {
+              if (!localStorage.getItem("userInfo")) {
+                this.$Message.error("请先登录");
+              } else {
+                let postData = this.need;
+                postData.Function = "InsertDemand";
+                postData.openid = this.phone;
+                Post("/api/Incubator/APIMethod", postData)
+                  .then((res) => {
+                    console.log(res);
+                    if (res.data.Code == 1) {
+                      this.$Message.success("提交成功!");
+                      this.$refs.form.reset();
+                      this.dialog = false;
+                    } else {
+                      this.$Message.error(res.data.data.Message);
+                    }
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                  });
+              }
+            }
+          },
+          toLogin() {
+            window.open("login.html", "_self");
+          },
+          out() {
+            localStorage.removeItem("userInfo");
+            this.user = "";
+          },
 
-
-	<script src="static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="static/js/axios.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="static/js/vue.js" type="text/javascript" charset="utf-8"></script>
-	<script src="static/js/iview.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="static/js/vuetify.js" type="text/javascript" charset="utf-8"></script>
-	<script src="static/js/request.js" type="text/javascript" charset="utf-8"></script>
-	<script src="static/js/captcha.js" type="text/javascript" charset="utf-8"></script>
-
-
-	<script type="text/javascript">
-		new Vue({
-			el: '#app',
-			vuetify: new Vuetify(),
-			data: function () {
-				return {
-					showMask: true,
-					itemData: [],
-					tab: null,
-					tab1: null,
-					carouselHeight: '',
-					carouselList: [
-						// './static/img/c_1.jpg',
-						// './static/img/c_2.jpg',
-						// './static/img/c_3.jpg'
-					],
-					carousel: 0,
-					text: 'center',
-					second_tab: [
-						'办公室', '商铺', '公寓'
-					],
-					toUrl: [{
-							title: '众创空间',
-							url: 'index.html'
-						},
-						{
-							title: '规上谷头条',
-							url: 'news.html'
-						},
-						{
-							title: '环保科技链',
-							url: 'links.html'
-						},
-						{
-							title: '企业服务',
-							url: 'services.html'
-						},
-
-					],
-					modal: false,
-					moadlTitle: '微信扫码登录',
-
-					dialog: false,
-					need: {
-						name: '',
-						phone: '',
-						title: '',
-						intro: ''
-					},
-					showTip: false,
-					y: "top",
-					valid: true,
-					rules: {
-						required: v => !!v || '这是必填的内容',
-						phone: v => (v && v.length == 11) || '请填写11位的手机号',
-					},
-					user: '',
-					phone: ''
-				}
-			},
-			created() {
-				this.getCarousel();
-				this.getCHeight();
-				this.init();
-				this.checkStorage()
-			},
-			mounted() {
-				this.showMask = false;
-
-			},
-
-			methods: {
-				getCHeight() {
-					this.carouselHeight = (window.innerHeight - 100) / 100 * (window.innerHeight - 100) / 180;
-				},
-				init() {
-					let postData = {
-						Function: 'GetHousingStockList',
-						page: 1,
-						rows: 10,
-						isrented: -1
-					};
-					// postData = JSON.stringify(postData);
-					Post('/api/Incubator/APIMethod', postData)
-						.then(res => {
-							// console.log(res);
-							this.itemData = res.data.data;
-							// console.log(this.itemData);
-
-						})
-						.catch(err => {
-							console.log(err)
-						})
-				},
-
-				getCarousel() {
-					let postData = {
-						Function: 'GetRotationPlot',
-					};
-					// postData = JSON.stringify(postData);
-					Post('/api/Incubator/APIMethod', postData)
-						.then(res => {
-							console.log(res);
-							this.carouselList = res.data.data;
-							// console.log(this.itemData);
-
-						})
-						.catch(err => {
-							console.log(err)
-						})
-				},
-
-				detail(id) {
-					console.log(id);
-					let url = 'houseDetail.html' + '?id=' + id;
-					window.open(url, )
-				},
-				toPage(url) {
-					window.open(url, '_self')
-				},
-
-				showNeed() {
-					this.dialog = true;
-					if (!localStorage.getItem('userInfo')) {
-						this.$Message.warning({
-							content: '登录后才可提交需求',
-							duration: 3
-						});
-					}
-
-				},
-				submit() {
-					if (this.$refs.form.validate()) {
-						if (!localStorage.getItem('userInfo')) {
-							this.$Message.error('请先登录');
-						} else {
-							let postData = this.need;
-							postData.Function = 'InsertDemand';
-							postData.openid = this.phone;
-							Post('/api/Incubator/APIMethod', postData)
-								.then(res => {
-									console.log(res);
-									if (res.data.Code == 1) {
-										this.$Message.success('提交成功!');
-										this.$refs.form.reset();
-										this.dialog = false
-									} else {
-										this.$Message.error(res.data.data.Message)
-									}
-
-								})
-								.catch(err => {
-									console.log(err)
-								})
-						}
-					}
-				},
-				toLogin() {
-					window.open('login.html', '_self')
-				},
-				out() {
-					localStorage.removeItem('userInfo');
-					this.user = ''
-				},
-
-				checkStorage() {
-					let userInfo = JSON.parse(localStorage.getItem('userInfo'));
-					console.log(userInfo);
-					if (userInfo) {
-						if (Date.now() - userInfo.time < 7200000) {
-							this.user = userInfo.user;
-							this.phone = userInfo.phone;
-						} else localStorage.removeItem('userInfo');
-					}
-				}
-
-			}
-		})
-	</script>
-</body>
-
+          checkStorage() {
+            let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+            console.log(userInfo);
+            if (userInfo) {
+              if (Date.now() - userInfo.time < 7200000) {
+                this.user = userInfo.user;
+                this.phone = userInfo.phone;
+              } else localStorage.removeItem("userInfo");
+            }
+          },
+        },
+      });
+    </script>
+  </body>
 </html>

@@ -262,6 +262,17 @@ div {
   text-align: center;
 }
 
+.card-body .card-text {
+  overflow: hidden;
+  word-break: break-all;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 .card-body .price {
   font-size: 1rem;
   color: red;
